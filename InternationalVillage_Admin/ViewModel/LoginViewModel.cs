@@ -51,9 +51,8 @@ namespace InternationalVillage_Admin.ViewModel
             {
                 if (AccountStore.Instance.Authentication(Username, Password))
                 {
-                    MainWindow main = new MainWindow();
-                    MainViewModel mv = main.DataContext as MainViewModel;
-                    main.Show();
+                    MenuWindow menuform = new MenuWindow();
+                    menuform.Show();
                     p.Close();
                 }
                 else
