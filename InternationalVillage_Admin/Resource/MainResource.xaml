@@ -3,4 +3,14 @@
                     xmlns:viewmodel="clr-namespace:InternationalVillage_Admin.ViewModel">
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
+    <viewmodel:MenuViewModel x:Key="MenuVM"></viewmodel:MenuViewModel>
+    <viewmodel:PaymentDetailViewModel x:Key="PaymentDetailVM"></viewmodel:PaymentDetailViewModel>
+    <viewmodel:HandleRequestViewModel x:Key="ApartmentRequestVM"></viewmodel:HandleRequestViewModel>
+    <viewmodel:NotificationPageViewModel x:Key="NotificationPageVM"></viewmodel:NotificationPageViewModel>
+    <viewmodel:BookApartmentServicePageViewModel x:Key="BookApartmentServicePageVM"></viewmodel:BookApartmentServicePageViewModel>
+    <viewmodel:OverviewPageViewModel x:Key="OverviewPageVM"></viewmodel:OverviewPageViewModel>
+    <viewmodel:ApartmentRequestDetailViewModel x:Key="ApartmentRequestDetailVM"></viewmodel:ApartmentRequestDetailViewModel>
+    <viewmodel:ApartmentWindowViewModel x:Key="ApartmentVM"></viewmodel:ApartmentWindowViewModel>
+    <viewmodel:HandleRequestViewModel x:Key="ApartmentRequestPageVM"></viewmodel:HandleRequestViewModel>
+    <viewmodel:ExchangeRatePageViewModel x:Key="ExchangeRatePageVM"></viewmodel:ExchangeRatePageViewModel>
 </ResourceDictionary>

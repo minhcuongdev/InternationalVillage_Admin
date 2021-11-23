@@ -1,0 +1,319 @@
+﻿<Page x:Class="InternationalVillage_Admin.Pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:InternationalVillage_Admin.Pages"
+      mc:Ignorable="d" 
+      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      
+      
+     
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="HomePage">
+
+    <Grid>
+        <Border CornerRadius="5" Background="#f9f9f9">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" CornerRadius="25" Margin="0,0,0,9" Opacity="0.9" >
+                    <Border.Background>
+                        <ImageBrush ImageSource="/Image/loginform.jpg" Stretch="UniformToFill"/>
+                    </Border.Background>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="SUNFLOWER INTERNATIONAL VILLAGE" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="Bell MT" Margin="0,25,0,0"/>
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <materialDesign:Card Width="650" Height="50" Margin="0,25,0,0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Text="Location" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Margin="10,8,0,0"/>
+                                        <TextBlock Grid.Row="1" Text="35A Văn Cao, Hải Phòng" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,9" />
+                                    </Grid>
+
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Text="PhoneNo" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Margin="10,8,0,0"/>
+                                        <TextBlock Grid.Row="1" Text="(0225) 3892000" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,9" />
+                                    </Grid>
+
+                                    <Grid Grid.Column="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Text="Fax" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Margin="10,8,0,0"/>
+                                        <TextBlock Grid.Row="1" Text="(0225) 3892021" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,9" />
+                                    </Grid>
+
+                                    <Grid Grid.Column="3" Margin="-20,0,0,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Text="Email" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Margin="10,8,0,0"/>
+                                        <TextBlock Grid.Row="1" Text="booking@sunflower.com.vn" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,9" />
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:Card>
+                        </Grid>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="1" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0" Margin="0,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" CornerRadius="15" Margin="0,0,15,0" Opacity="0.85" >
+                            <Border.Background>
+                                <ImageBrush  Stretch="UniformToFill" ImageSource="/Image/luxury.jpg" />
+                            </Border.Background>
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="Luxury Apartment" Foreground="White" FontSize="13" FontWeight="Bold" VerticalAlignment="Bottom" Margin="10,0,0,-100" HorizontalAlignment="Left"/>
+                                <TextBlock Grid.Row="1" Text="Total number: 16" Foreground="WhiteSmoke" FontSize="10"  Margin="10,100,0,3"/>
+                            </Grid>
+                        </Border>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Border Grid.Row="0" CornerRadius="15" Margin="0,0,0,5" Opacity="0.95" >
+                                <Border.Background>
+                                    <ImageBrush  Stretch="UniformToFill" ImageSource="/Image/standard.jpg"/>
+                                </Border.Background>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="High Standard Apartment" Foreground="White" FontSize="12" FontWeight="Bold" VerticalAlignment="Bottom" Margin="10,0,0,-42"/>
+                                    <TextBlock Grid.Row="1" Text="Total number: 32" Foreground="WhiteSmoke" FontSize="10"  Margin="10,41,0,0"/>
+                                </Grid>
+                            </Border>
+
+                            <Border Grid.Row="1" CornerRadius="15" Margin="0,5,0,0" >
+                                <Border.Background>
+                                    <ImageBrush  Stretch="UniformToFill" ImageSource="/Image/standard1.jpg"  />
+                                </Border.Background>
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="Standard Apartment" Foreground="White" FontSize="12" FontWeight="Bold" VerticalAlignment="Bottom" Margin="10,0,0,-41"/>
+                                    <TextBlock Grid.Row="1" Text="Total number: 72" Foreground="WhiteSmoke" FontSize="10"  Margin="10,41,0,0"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid Width="350">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0"  VerticalAlignment="Top">
+                                <TextBlock Text="Top services"  FontWeight="Bold" VerticalAlignment="Top" />
+                            </Grid>
+
+                            <Grid Grid.Row="1" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" CornerRadius="12" Width="50" Height="50" HorizontalAlignment="Right" Margin="0,8,0.667,8.667" >
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="/Image/swimming.png" Stretch="Uniform"/>
+                                        </Border.Background>
+                                    </Border>
+
+                                    <TextBlock Grid.Column="1" Text="Pool" FontSize="13"   FontWeight="Bold" Height="67"  VerticalAlignment="Bottom" Margin="5,0,0,-30"/>
+                                    <TextBlock Grid.Column="1" Text="98%" Margin="5,44,0,0" FontSize="10"/>
+
+                                </Grid>
+
+                                <Grid Grid.Column="1" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" CornerRadius="12" Width="50" Height="50" >
+                                        <Border.Background>
+                                            <ImageBrush  Stretch="Uniform" ImageSource="/Image/dumbbell.png"/>
+                                        </Border.Background>
+                                    </Border>
+
+                                    <TextBlock Grid.Column="1" Text="Gym" FontSize="13"   FontWeight="Bold" Height="67"  VerticalAlignment="Bottom" Margin="5,0,0,-30"/>
+                                    <TextBlock Grid.Column="1" Text="95%" Margin="5,44,0,0" FontSize="10"/>
+
+                                </Grid>
+
+                            </Grid>
+
+                            <Grid Grid.Row="2" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" CornerRadius="12" Width="50" Height="50" >
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="/Image/dinner.png" Stretch="Uniform"/>
+                                        </Border.Background>
+                                    </Border>
+
+                                    <TextBlock Grid.Column="1" Text="Dinner" FontSize="13"   FontWeight="Bold" Height="67"  VerticalAlignment="Bottom" Margin="5,0,0,-30"/>
+                                    <TextBlock Grid.Column="1" Text="90%" Margin="5,44,0,0" FontSize="10"/>
+
+                                </Grid>
+
+                                <Grid Grid.Column="1" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" CornerRadius="12" Width="50" Height="50" >
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="/Image/supermarket.png" Stretch="UniformToFill"/>
+                                        </Border.Background>
+                                    </Border>
+
+                                    <TextBlock Grid.Column="1" Text="SuperMarket" FontSize="13"   FontWeight="Bold" Height="67"  VerticalAlignment="Bottom" Margin="5,0,0,-30"/>
+                                    <TextBlock Grid.Column="1" Text="87%" Margin="5,44,0,0" FontSize="10"/>
+
+                                </Grid>
+                            </Grid>
+
+                            <Grid Grid.Row="3" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" CornerRadius="12" Width="50" Height="50" >
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="/Image/golfer.png" Stretch="UniformToFill"/>
+                                        </Border.Background>
+                                    </Border>
+
+                                    <TextBlock Grid.Column="1" Text="Golf" FontSize="13"   FontWeight="Bold" Height="67"  VerticalAlignment="Bottom" Margin="5,0,0,-30"/>
+                                    <TextBlock Grid.Column="1" Text="63%" Margin="5,44,0,0" FontSize="10"/>
+
+                                </Grid>
+
+                                <Grid Grid.Column="1" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" CornerRadius="12" Width="50" Height="50" >
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="/Image/tennis.png" Stretch="UniformToFill"/>
+                                        </Border.Background>
+                                    </Border>
+
+                                    <TextBlock Grid.Column="1" Text="Tennis" FontSize="13"   FontWeight="Bold" Height="67"  VerticalAlignment="Bottom" Margin="5,0,0,-30"/>
+                                    <TextBlock Grid.Column="1" Text="65%" Margin="5,44,0,0" FontSize="10"/>
+
+                                </Grid>
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
+

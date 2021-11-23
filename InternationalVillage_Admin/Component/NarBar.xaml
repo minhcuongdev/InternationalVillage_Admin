@@ -10,42 +10,55 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              
              x:Name="navbarUC"
-             d:DesignHeight="70" d:DesignWidth="800">
+             d:DesignHeight="50" d:DesignWidth="800">
+
+
+
+
+
+
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="MouseDown">
             <i:InvokeCommandAction Command="{Binding DragWindow}" CommandParameter="{Binding ElementName=navbarUC}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid>
-        <materialDesign:ColorZone
-             Mode="SecondaryMid"
-             Padding="16" Background="{DynamicResource MaterialDesignPaper}">
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+    <Border CornerRadius="20,20,0,0" Background="White">
+        <Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,15,0" >
                 <Button
                     Command="{Binding MinimizeWindow}"
                     CommandParameter="{Binding ElementName=navbarUC}"
-                    ToolTip="minimize"
+                    ToolTip="Minimize"
                     BorderBrush="Transparent"
-                    Background="#F3F3F3"
-                    Content="{materialDesign:PackIcon Kind=WindowMinimize}" Foreground="#DD000000" Margin="5,0,0,0"/>
+                    Margin="5,0,0,0" Height="20" Width="22">
+                    <Button.Background>
+                        <ImageBrush  Stretch="UniformToFill" ImageSource="minus.png" />
+                    </Button.Background>
+                </Button>
 
                 <Button
                     Command="{Binding MaximizeWindow}"
                     CommandParameter="{Binding ElementName=navbarUC}"
-                    ToolTip="maximize"
+                    ToolTip="Maximize"
                     BorderBrush="Transparent"
-                    Background="#F3F3F3"
-                    Content="{materialDesign:PackIcon Kind=WindowMaximize}" Foreground="#DD000000" Margin="5,0,0,0" />
+                    Margin="5,0,0,0" Height="20" Width="21" Padding="16,0,16,4" HorizontalContentAlignment="Center" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="maximize.png"/>
+                    </Button.Background>
+                </Button>
 
                 <Button
                     Command="{Binding CloseWindow}"
                     CommandParameter="{Binding ElementName=navbarUC}"
-                    ToolTip="close"
-                    BorderBrush="Transparent"
-                    Background="Red"
-                    Content="{materialDesign:PackIcon Kind=Close}" Margin="5,0,0,0" />
+                    ToolTip="Close"
+                    Margin="5,0,0,0" Height="20" BorderBrush="White" Width="25" 
+                    >
+                    <Button.Background>
+                        <ImageBrush ImageSource="icons8-close-window-48.png" Stretch="UniformToFill"/>
+                    </Button.Background>
+                </Button>
             </StackPanel>
-        </materialDesign:ColorZone>
-    </Grid>
+        </Grid>
+    </Border>
 </UserControl>
