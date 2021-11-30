@@ -68,7 +68,7 @@
                     <RowDefinition Height="40"></RowDefinition>
                     <RowDefinition Height="40"></RowDefinition>
                     <RowDefinition></RowDefinition>
-                    
+
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Text="Booking Details" FontSize="40" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
 
@@ -78,16 +78,30 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="ID" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock Grid.Column="1" Text="A19520244" FontSize="13" Foreground="Black" />
+                    <TextBlock x:Name="ID" Grid.Column="1" Text="A19520244" FontSize="13" Foreground="Black">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadID}" CommandParameter="{Binding ElementName=ID}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBlock>
                 </Grid>
 
                 <Grid Grid.Row="2"  >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="53.6"></ColumnDefinition>
+                        <ColumnDefinition Width="146.4"/>
+                        <ColumnDefinition Width="23*"></ColumnDefinition>
+                        <ColumnDefinition Width="77*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Customer" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock Grid.Column="1" Text="Le Thanh Tam" FontSize="13" Foreground="Black" />
+                    <TextBlock Grid.Column="0" Text="Customer" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,-0.2" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="Customer" Grid.Column="2" Text="Le Thanh Tam" FontSize="13" Foreground="Black" Margin="0,0,0,-0.2" Grid.ColumnSpan="2">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadCustomer}" CommandParameter="{Binding ElementName=Customer}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBlock>
                 </Grid>
 
                 <Grid Grid.Row="3"  >
@@ -95,8 +109,14 @@
                         <ColumnDefinition Width="200"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Receptionist" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock Grid.Column="1" Text="Khanh Quynh" FontSize="13" Foreground="Black" />
+                    <TextBlock Grid.Column="0" Text="Booking Time" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
+                    <TextBlock x:Name="BookingTime" Grid.Column="1" FontSize="13" Foreground="Black">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadBookingTime}" CommandParameter="{Binding ElementName=BookingTime}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBlock>
                 </Grid>
 
 
@@ -107,7 +127,13 @@
 
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Check_in Date" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" Text="20/10/2021" FontSize="13" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0"/>
+                    <TextBlock x:Name="CheckInDate" Grid.Column="1" Text="20/10/2021" FontSize="13" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadCheckInDate}" CommandParameter="{Binding ElementName=CheckInDate}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBlock>
                 </Grid>
 
                 <Grid Grid.Row="5" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -117,7 +143,13 @@
 
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Check_out Date" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" Text="23/10/2021" FontSize="13" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0"/>
+                    <TextBlock x:Name="CheckOutDate" Grid.Column="1" Text="23/10/2021" FontSize="13" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadCheckOutDate}" CommandParameter="{Binding ElementName=CheckOutDate}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBlock>
                 </Grid>
 
                 <Grid Grid.Row="6" >
@@ -126,7 +158,13 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" FontSize="13" Text="Type of Apartment" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock Grid.Column="1" FontSize="13" Text="Luxury" Foreground="Black" />
+                    <TextBlock x:Name="Type" Grid.Column="1" FontSize="13" Text="Luxury" Foreground="Black">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadTypeOfApartment}" CommandParameter="{Binding ElementName=Type}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBlock>
                 </Grid>
 
 
@@ -137,7 +175,13 @@
 
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" FontSize="13" Text="Quantity" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" FontSize="13" Text="2" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0"/>
+                    <TextBlock x:Name="Quantity" Grid.Column="1" FontSize="13" Text="2" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadQuantity}" CommandParameter="{Binding ElementName=Quantity}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBlock>
                 </Grid>
 
 
@@ -147,7 +191,7 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Avalable" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock Grid.Column="1" Text="30" FontSize="13" Foreground="Black"  Margin="0,0,0,0" HorizontalAlignment="Left"  />
+                    <TextBlock Grid.Column="1" Text="Cái này bỏ" FontSize="13" Foreground="Black"  Margin="0,0,0,0" HorizontalAlignment="Left"  />
 
                 </Grid>
 
@@ -157,7 +201,13 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Status" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock Grid.Column="1" Text="Approved" FontSize="13" Foreground="Black"  Margin="0,0,0,0" HorizontalAlignment="Left"  />
+                    <TextBlock x:Name="Status" Grid.Column="1" Text="Approved" FontSize="13" Foreground="Black"  Margin="0,0,0,0" HorizontalAlignment="Left">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadStatus}" CommandParameter="{Binding ElementName=Status}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBlock>
 
                 </Grid>
 

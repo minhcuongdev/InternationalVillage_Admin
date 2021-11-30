@@ -9,30 +9,46 @@ namespace InternationalVillage_Admin.Model
 {
     class ApartmentRequest
     {
-        public ApartmentRequest(string id, string idB, string idA, string checkin, string checkout)
+        public ApartmentRequest(int id, string idB, string idA, string checkin, string checkout)
         {
-            Type = idA;
             ID = id;
             Fullname = idB;
+            Type = idA;
             CheckIn = checkin;
             CheckOut = checkout;
             
         }
 
+        public ApartmentRequest(DataRow row,int id)
+        {
+            ID = id;
+            Fullname = row["FullName"].ToString();
+            Type = row["Description"].ToString();
+            CheckIn = row["CheckInDate"].ToString();
+            CheckOut = row["CheckOutDate"].ToString();
+            Quantity = (int)row["Quantity"];
+            State = row["State"].ToString();
+            BookingTime = row["BookingTime"].ToString();
+        }
 
-
-        private string iD;
+        private int iD;
         private string type;
         private string fullname;
         private string checkIn;
         private string checkOut;
+        private int quantity;
+        private string state;
+        private string bookingTime;
 
         
         public string Type { get => type; set => type = value; }
         public string Fullname { get => fullname; set => fullname = value; }
         public string CheckIn { get => checkIn; set => checkIn = value; }
         public string CheckOut { get => checkOut; set => checkOut = value; }
-        public string ID { get => iD; set => iD = value; }
+        public int ID { get => iD; set => iD = value; }
+        public int Quantity { get => quantity; set => quantity = value; }
+        public string State { get => state; set => state = value; }
+        public string BookingTime { get => bookingTime; set => bookingTime = value; }
     }
 }
 

@@ -7,11 +7,11 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using InternationalVillage_Admin.Store;
 using InternationalVillage_Admin.Model;
-
+using System.Windows;
 
 namespace InternationalVillage_Admin.ViewModel
 {
-    class HandleRequestViewModel:BaseViewModel
+    class HandleRequestViewModel : BaseViewModel
     {
         public ICommand LoadTable { get; set; }
 
@@ -19,10 +19,10 @@ namespace InternationalVillage_Admin.ViewModel
         {
             LoadTable = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
             {
-                
                 List<ApartmentRequest> detailBookings =ApartmentRequestStore.Instance.GetBookingList();
                 p.ItemsSource = detailBookings;
             });
+
         }
     }
 }

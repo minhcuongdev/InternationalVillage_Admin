@@ -18,6 +18,7 @@ namespace InternationalVillage_Admin.ViewModel
         public ICommand SignIn { get; set; }
         public ICommand HandleTextChanged { get; set; }
         public ICommand HandlePasswordChanged { get; set; }
+        public ICommand Drag { get; set; }
 
         private string username = "";
         private string password = "";
@@ -45,12 +46,18 @@ namespace InternationalVillage_Admin.ViewModel
                 Keyboard.ClearFocus();
             });
 
+            Drag = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                p.DragMove();
+            });
+
             SignIn = new RelayCommand<Window>((p) => {
                 return !Username.Equals("") && !Password.Equals("");
             }, (p) =>
             {
                 if (AccountStore.Instance.Authentication(Username, Password))
                 {
+                    AccountStore.Instance.GetAccount(Username, Password);
                     MenuWindow menuform = new MenuWindow();
                     menuform.Show();
                     p.Close();
