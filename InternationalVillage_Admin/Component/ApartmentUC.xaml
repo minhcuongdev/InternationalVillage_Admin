@@ -37,8 +37,8 @@
                     IsChecked="True" />
                 <Image Grid.Row="1" Source="apartment.png" Height="20" Width="20"/>
                 <TextBlock Grid.Row="2" x:Name="ContentOfApartment" Text="3A001" FontSize="9" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center"/>
-                <Grid Grid.Row="3" Background="#2f9cfa">
-                    <TextBlock Text="available" FontSize="8" Foreground="white" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <Grid x:Name="StatusBg" Grid.Row="3" Background="#2f9cfa">
+                    <TextBlock x:Name="Status" Text="available" FontSize="8" Foreground="white" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 </Grid>
 
 

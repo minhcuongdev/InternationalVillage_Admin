@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using InternationalVillage_Admin.Model;
+using InternationalVillage_Admin.Store;
+
 namespace InternationalVillage_Admin.Pages
 {
     /// <summary>
@@ -24,6 +27,12 @@ namespace InternationalVillage_Admin.Pages
         {
             InitializeComponent();
             
+        }
+
+        private void ShowDetail_Click(object sender, RoutedEventArgs e)
+        {
+            ApartmentRequest a = DataGridApartment.SelectedItem as ApartmentRequest;            
+            ApartmentRequestStore.Instance.ApartmentRequest = ApartmentRequestStore.Instance.GetApartmentById(int.Parse(a.ID.ToString()));
         }
     }
     

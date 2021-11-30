@@ -7,6 +7,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
+using InternationalVillage_Admin.Store;
+
 namespace InternationalVillage_Admin.ViewModel
 {
     class MenuViewModel:BaseViewModel
@@ -28,7 +30,21 @@ namespace InternationalVillage_Admin.ViewModel
 
             OpenActivityReceptionistPage = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
-                p.Navigate(new System.Uri("Pages/ReceptionistPage.xaml", UriKind.RelativeOrAbsolute));
+                switch(AccountStore.Instance.Role.ToString())
+                {
+                    case "Receptionist":
+                        p.Navigate(new System.Uri("Pages/ReceptionistPage.xaml", UriKind.RelativeOrAbsolute));
+                        break;
+                    case "Accountant":
+                        p.Navigate(new System.Uri("Pages/AccountantPage.xaml", UriKind.RelativeOrAbsolute));
+                        break;
+                    case "Manager":
+                        p.Navigate(new System.Uri("Pages/DirectorPage.xaml", UriKind.RelativeOrAbsolute));
+                        break;
+                    default:
+                        break;
+                }
+                
             });
             
             OpenSettingPage = new RelayCommand<Frame>((p) => { return true; }, (p) =>
@@ -42,8 +58,6 @@ namespace InternationalVillage_Admin.ViewModel
                 LoginWindow loginform = new LoginWindow();
                 loginform.Show();
                 p.Close();
-
-
             });
         }
     }

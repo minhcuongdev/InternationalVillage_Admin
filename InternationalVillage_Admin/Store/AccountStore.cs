@@ -25,7 +25,7 @@ namespace InternationalVillage_Admin.Store
 
         public bool Authentication(string username, string password)
         {
-            string query = "select* from Account where Username = '" + username + "' and Password = '" + password + "'";
+            string query = "select* from Account where Username = '" + username + "' and Password = '" + password + "' and Role != 'Customer'";
             DataTable result = DataProvider.Instance.ExecuteQuery(query);
             return result.Rows.Count > 0;
         }

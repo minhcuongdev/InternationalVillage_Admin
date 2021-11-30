@@ -56,16 +56,52 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <ListBox Grid.Row="0"
-                Style="{StaticResource MaterialDesignFilterChipPrimaryListBox}">
-                    <ListBoxItem 
+                    Style="{StaticResource MaterialDesignFilterChipPrimaryListBox}">
+                    <ListBoxItem x:Name="All"
                     IsSelected="True"
-                    Content="All" />
+                    Content="All" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding SelectedItem}" CommandParameter="{Binding ElementName=All}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding LoadApartment}" CommandParameter="{Binding ElementName=ApartmentPanel}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBoxItem>
                     <ListBoxItem                   
-                    Content="Taken" HorizontalAlignment="Left" Margin="6,0,0,0" />
-                    <ListBoxItem
-                    Content="Avalable" HorizontalAlignment="Left" Margin="6,0,0,0" />
-                    <ListBoxItem
-                    Content="Incident" HorizontalAlignment="Left" Margin="6,0,0,0" />
+                    Content="Taken" HorizontalAlignment="Left" Margin="6,0,0,0" x:Name="Taken">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding SelectedItem}" CommandParameter="{Binding ElementName=Taken}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding LoadTaken}" CommandParameter="{Binding ElementName=ApartmentPanel}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="Available"
+                    Content="Available" HorizontalAlignment="Left" Margin="6,0,0,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding SelectedItem}" CommandParameter="{Binding ElementName=Available}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding LoadAvailable}" CommandParameter="{Binding ElementName=ApartmentPanel}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="Incident"
+                    Content="Incident" HorizontalAlignment="Left" Margin="6,0,0,0" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding SelectedItem}" CommandParameter="{Binding ElementName=Incident}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding LoadIncident}" CommandParameter="{Binding ElementName=ApartmentPanel}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBoxItem>
 
                 </ListBox>
                 <ComboBox Grid.Column="1"                      
