@@ -17,9 +17,11 @@
       
       DataContext="{StaticResource ApartmentRequestVM}"
       
+      x:Name="PaymentRequestPage"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PaymentRequest">
+
 
     <Grid Background="white">
         <Grid.RowDefinitions>
@@ -134,6 +136,12 @@
                         Width="240"
                         x:Name="Identification"
                         IsEnabled="True" Margin="40,0,0,0" HorizontalAlignment="Left"   >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding IDNumberChanged}" CommandParameter="{Binding ElementName=Identification}"/>
+                            </i:EventTrigger>
+                            
+                        </i:Interaction.Triggers>
                     </TextBox>
                     <TextBlock Grid.Column="0" Text="Example: 123456789 " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
                     
@@ -147,12 +155,18 @@
                         Width="240"
                         x:Name="VISA"
                         IsEnabled="True" Margin="40,0,0,0" HorizontalAlignment="Left"   >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding VisaChanged}" CommandParameter="{Binding ElementName=VISA}"/>
+                            </i:EventTrigger>
+
+                        </i:Interaction.Triggers>
                     </TextBox>
                     <TextBlock Grid.Column="1" Text="Example: 1234ABC " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
 
                 </Grid>
 
-                <Grid Grid.Row="2" Margin="0,10,0,0">
+               <!-- <Grid Grid.Row="2" Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="300"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -183,9 +197,11 @@
                     </TextBox>
                     <TextBlock Grid.Column="1" Text="Example: 10 " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
                 </Grid>
-                
-                <Button Grid.Row="5" Width="540" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top">
-                    <Hyperlink NavigateUri="PaymentDetail.xaml">NEXT</Hyperlink>
+               -->
+                <Button x:Name="Next"  Grid.Row="5" Width="540" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top" 
+                        Command="{Binding NextPage}" CommandParameter="{Binding ElementName=PaymentRequestPage}">
+                    Next
+                    <!--<Hyperlink NavigateUri="PaymentDetail.xaml" >NEXT</Hyperlink> -->
                 </Button>
 
 

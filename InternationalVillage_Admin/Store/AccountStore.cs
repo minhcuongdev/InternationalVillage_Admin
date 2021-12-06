@@ -20,8 +20,11 @@ namespace InternationalVillage_Admin.Store
 
         string role = "";
         string idUser = "";
+        string name = "";
         public string Role { get { return role; } }
         public string IdUser { get { return idUser; } }
+
+        public string Name { get => name; set => name = value; }
 
         public bool Authentication(string username, string password)
         {
@@ -32,7 +35,8 @@ namespace InternationalVillage_Admin.Store
 
         // Test get data
         public Account GetAccount(string username, string password)
-        {
+        { 
+
             string query = "select * from Account where Username = '" + username + "' and Password = '" + password + "'";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
@@ -40,9 +44,19 @@ namespace InternationalVillage_Admin.Store
                 Account account = new Account(item);
                 role = account.Role;
                 idUser = account.IdUser;
+
+                if (role.Equals("Receptionist"))
+                {
+                    string query2 = "select * from Receptionist where ID_Receptionist = '" + IdUser+  "'";
+                    DataTable data2 = DataProvider.Instance.ExecuteQuery(query2);
+                    name = (data2.Rows[0])["FullName"].ToString();
+                }
                 return account;
             }
+ 
             return null;
         }
+
+       
     }
 }

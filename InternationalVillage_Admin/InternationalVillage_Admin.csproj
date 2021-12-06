@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\ApartmentRequest.cs" />
+    <Compile Include="Model\DetailBooking.cs" />
     <Compile Include="Model\ExchangeRate.cs" />
     <Compile Include="MsgBoxOK.xaml.cs">
       <DependentUpon>MsgBoxOK.xaml</DependentUpon>
@@ -154,6 +155,7 @@
     <Compile Include="Store\ApartmentRequestStore.cs" />
     <Compile Include="Store\DataProvider.cs" />
     <Compile Include="Store\ExchangeRateStore.cs" />
+    <Compile Include="Store\PaymentStore.cs" />
     <Compile Include="Utilties\ConnectDB.cs" />
     <Compile Include="ViewModel\ApartmentRequestDetailViewModel.cs" />
     <Compile Include="ViewModel\ApartmentWindowViewModel.cs" />
