@@ -7,6 +7,10 @@ using System.Windows.Controls;
 using System.Windows.Input;
 
 using InternationalVillage_Admin.Component;
+using InternationalVillage_Admin.Store;
+using InternationalVillage_Admin.Model;
+using InternationalVillage_Admin.Utilties;
+using System.Windows;
 
 namespace InternationalVillage_Admin.ViewModel
 {
@@ -18,17 +22,30 @@ namespace InternationalVillage_Admin.ViewModel
         public ICommand LoadTaken { get; set; }
         public ICommand LoadAvailable { get; set; }
         public ICommand LoadIncident { get; set; }
+        public ICommand LoadAll { get; set; }
+
+        public ICommand LoadNumber { get; set; }
+        public ICommand HandleRequest { get; set; }
+
+        List<Apartment> AvailableList = new List<Apartment>();
+        List<Apartment> TakenList = new List<Apartment>();
+        List<Apartment> IncidentList = new List<Apartment>();
 
         public ApartmentWindowViewModel()
         {
             LoadApartment = new RelayCommand<WrapPanel>((p) => { return true; }, (p) =>
             {
-                for (int i = 0; i < 30; i++)
-                {
-                    ApartmentUC apartmentUC = new ApartmentUC();
-                    apartmentUC.ContentOfApartment.Text = i.ToString();
-                    p.Children.Add(apartmentUC);
-                }
+
+                ChangeTypeApartment change = new ChangeTypeApartment();
+
+                AvailableList = ApartmentStore.Instance.GetAvailableList(change.ChangeTypeOfApartment(ApartmentRequestStore.Instance.ApartmentRequest.Type));
+                RenderAvailableList(p);
+
+                TakenList = ApartmentStore.Instance.GetTakenList(change.ChangeTypeOfApartment(ApartmentRequestStore.Instance.ApartmentRequest.Type));
+                RenderTakenList(p);
+
+                IncidentList = ApartmentStore.Instance.GetIncidentList(change.ChangeTypeOfApartment(ApartmentRequestStore.Instance.ApartmentRequest.Type));
+                RenderIncidentList(p);
             });
 
             SelectedItem = new RelayCommand<ListBoxItem>((p) => { return true; }, (p) =>
@@ -45,39 +62,95 @@ namespace InternationalVillage_Admin.ViewModel
             LoadTaken = new RelayCommand<WrapPanel>((p) => { return true; }, (p) =>
             {
                 p.Children.Clear();
-                for (int i = 0; i < 10; i++)
-                {
-                    ApartmentUC apartmentUC = new ApartmentUC();
-                    apartmentUC.ContentOfApartment.Text = i.ToString();
-                    apartmentUC.StatusBg.Background = System.Windows.Media.Brushes.Red;
-                    apartmentUC.Status.Text = "Taken";
-                    p.Children.Add(apartmentUC);
-                }
+                RenderTakenList(p);
             });
 
             LoadAvailable = new RelayCommand<WrapPanel>((p) => { return true; }, (p) =>
             {
                 p.Children.Clear();
-                for (int i = 0; i < 20; i++)
-                {
-                    ApartmentUC apartmentUC = new ApartmentUC();
-                    apartmentUC.ContentOfApartment.Text = i.ToString();
-                    p.Children.Add(apartmentUC);
-                }
+                RenderAvailableList(p);
             });
 
             LoadIncident = new RelayCommand<WrapPanel>((p) => { return true; }, (p) =>
             {
                 p.Children.Clear();
-                for (int i = 0; i < 5; i++)
+                RenderIncidentList(p);
+            });
+
+            LoadAll = new RelayCommand<WrapPanel>((p) => { return true; }, (p) =>
+            {
+                p.Children.Clear();
+                RenderAvailableList(p);
+                RenderTakenList(p);
+                RenderIncidentList(p);
+            });
+
+            LoadNumber = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
+            {
+                p.Text = ApartmentRequestStore.Instance.ApartmentRequest.Quantity.ToString();
+            });
+
+            HandleRequest = new RelayCommand<Window>((p) => { 
+                if (ApartmentStore.Instance.ApartmentSlectedList.Count == 0 || 
+                ApartmentStore.Instance.ApartmentSlectedList.Count != ApartmentRequestStore.Instance.ApartmentRequest.Quantity) 
+                { 
+                    return false; 
+                } else 
+                    return true; 
+            }, (p) =>
+            {
+
+                if(PaymentStore.Instance.CreateBill())
                 {
-                    ApartmentUC apartmentUC = new ApartmentUC();
-                    apartmentUC.ContentOfApartment.Text = i.ToString();
-                    apartmentUC.StatusBg.Background = System.Windows.Media.Brushes.Brown;
-                    apartmentUC.Status.Text = "Incident";
-                    p.Children.Add(apartmentUC);
+                    string idBill = PaymentStore.Instance.IdBill;
+                    ChangeTypeApartment change = new ChangeTypeApartment();
+                    foreach (ApartmentUC uc in ApartmentStore.Instance.ApartmentSlectedList)
+                    {
+                        PaymentStore.Instance.InsertDetailApartmentBill(uc.ContentOfApartment.Text, idBill, change.ChangeTypeToPrice(ApartmentRequestStore.Instance.ApartmentRequest.Type));
+                    }
+                    ApartmentRequestStore.Instance.UpdateState();
+                    PaymentStore.Instance.UpdateToTal(idBill);
                 }
+
+                PaymentStore.Instance.isFinished = true;
+                p.Close();
             });
         }
+
+        void RenderAvailableList(WrapPanel p)
+        {
+            foreach (Apartment a in AvailableList)
+            {
+                ApartmentUC apartmentUC = new ApartmentUC();
+                apartmentUC.ContentOfApartment.Text = a.Id;
+                p.Children.Add(apartmentUC);
+            }
+        }
+        void RenderTakenList(WrapPanel p)
+        {
+            foreach (Apartment a in TakenList)
+            {
+                ApartmentUC apartmentUC = new ApartmentUC();
+                apartmentUC.ContentOfApartment.Text = a.Id;
+                apartmentUC.StatusBg.Background = System.Windows.Media.Brushes.Red;
+                apartmentUC.Status.Text = "Taken";
+                apartmentUC.Toggle.IsEnabled = false;
+                p.Children.Add(apartmentUC);
+            }
+        }
+
+        void RenderIncidentList(WrapPanel p)
+        {
+            foreach (Apartment a in IncidentList)
+            {
+                ApartmentUC apartmentUC = new ApartmentUC();
+                apartmentUC.ContentOfApartment.Text = a.Id;
+                apartmentUC.StatusBg.Background = System.Windows.Media.Brushes.Brown;
+                apartmentUC.Status.Text = "Taken";
+                apartmentUC.Toggle.IsEnabled = false;
+                p.Children.Add(apartmentUC);
+            }
+        }
+
     }
 }
