@@ -65,7 +65,7 @@
                                 <i:InvokeCommandAction Command="{Binding SelectedItem}" CommandParameter="{Binding ElementName=All}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Selected">
-                                <i:InvokeCommandAction Command="{Binding LoadApartment}" CommandParameter="{Binding ElementName=ApartmentPanel}"/>
+                                <i:InvokeCommandAction Command="{Binding LoadAll}" CommandParameter="{Binding ElementName=ApartmentPanel}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ListBoxItem>
@@ -104,20 +104,17 @@
                     </ListBoxItem>
 
                 </ListBox>
-                <ComboBox Grid.Column="1"                      
-                        Style="{StaticResource MaterialDesignFilledComboBox}"
-                        materialDesign:HintAssist.Hint="Type of Apartment"                        
-                        Height="45"
-                        Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-12,0,0">
-                    <ComboBoxItem
-                                Content="Luxury" />
-                    <ComboBoxItem
-                                Content="High standard" />
-                    <ComboBoxItem
-                                Content="Normal" />
-                </ComboBox>
+                <Grid Grid.Column="1">
+                    <TextBlock x:Name="Number">Number:
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadNumber}" CommandParameter="{Binding ElementName=Number}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBlock>
+                </Grid>
 
-                <Button Grid.Column="2" Height="45" Width="80" Content="DONE" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-12,0,0">
+                <Button x:Name="Done" Command="{Binding HandleRequest}" CommandParameter="{Binding ElementName=ApartmentWD}" Grid.Column="2" Height="45" Width="80" Content="DONE" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-12,0,0">
                     
                 </Button>
             

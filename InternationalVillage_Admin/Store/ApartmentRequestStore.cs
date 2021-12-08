@@ -36,11 +36,19 @@ namespace InternationalVillage_Admin.Store
             return null;
         }
 
+        public bool UpdateState()
+        {
+            string query = "Update BookingApartmentTemp set State = 'Accepted' where Id_Customer = '" + ApartmentRequest.IdCustomer + "'";
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
         public List<ApartmentRequest> GetBookingList()
         {
             List<ApartmentRequest> list = new List<ApartmentRequest>();
 
-            string query = "select FullName,Description,CheckInDate,CheckOutDate,Quantity,State,BookingTime from BookingApartmentTemp, Customer, DetailApartment where BookingApartmentTemp.Id_Customer = Customer.Id_Customer and BookingApartmentTemp.TypeOfApartment = DetailApartment.TypeOfApartment and State = 'No Accept'; ";
+            string query = "select Customer.Id_Customer,FullName,Description,CheckInDate,CheckOutDate,Quantity,State,BookingTime from BookingApartmentTemp, Customer, DetailApartment where BookingApartmentTemp.Id_Customer = Customer.Id_Customer and BookingApartmentTemp.TypeOfApartment = DetailApartment.TypeOfApartment and State = 'No Accept'; ";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
             int id = 1;

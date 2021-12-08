@@ -19,11 +19,8 @@ namespace InternationalVillage_Admin.FakeData
         {
             List<ApartmentRequest> list = new List<ApartmentRequest>();
 
-            ApartmentRequest book1 = new ApartmentRequest(1, "Minh Cuong", "Normal", "19/10/2021", "23/10/2021");
-            ApartmentRequest book2 = new ApartmentRequest(2, "Thanh Tam", "Luxury", "19/10/2021", "23/10/2021");
-
-            list.Add(book1);
-            list.Add(book2);
+            /*ApartmentRequest book1 = new ApartmentRequest(1, "Minh Cuong", "Normal", "19/10/2021", "23/10/2021");
+            ApartmentRequest book2 = new ApartmentRequest(2, "Thanh Tam", "Luxury", "19/10/2021", "23/10/2021");*/
             
 
             return list;

@@ -9,7 +9,7 @@ namespace InternationalVillage_Admin.Model
 {
     class ApartmentRequest
     {
-        public ApartmentRequest(int id, string idB, string idA, string checkin, string checkout)
+        public ApartmentRequest(int id, string idB, string idA, DateTime checkin, DateTime checkout)
         {
             ID = id;
             Fullname = idB;
@@ -24,31 +24,34 @@ namespace InternationalVillage_Admin.Model
             ID = id;
             Fullname = row["FullName"].ToString();
             Type = row["Description"].ToString();
-            CheckIn = row["CheckInDate"].ToString();
-            CheckOut = row["CheckOutDate"].ToString();
+            CheckIn = (DateTime)row["CheckInDate"];
+            CheckOut = (DateTime)row["CheckOutDate"];
             Quantity = (int)row["Quantity"];
             State = row["State"].ToString();
             BookingTime = row["BookingTime"].ToString();
+            IdCustomer = row["Id_Customer"].ToString();
         }
 
         private int iD;
         private string type;
         private string fullname;
-        private string checkIn;
-        private string checkOut;
+        private DateTime checkIn;
+        private DateTime checkOut;
         private int quantity;
         private string state;
         private string bookingTime;
+        private string idCustomer;
 
         
         public string Type { get => type; set => type = value; }
         public string Fullname { get => fullname; set => fullname = value; }
-        public string CheckIn { get => checkIn; set => checkIn = value; }
-        public string CheckOut { get => checkOut; set => checkOut = value; }
+        public DateTime CheckIn { get => checkIn; set => checkIn = value; }
+        public DateTime CheckOut { get => checkOut; set => checkOut = value; }
         public int ID { get => iD; set => iD = value; }
         public int Quantity { get => quantity; set => quantity = value; }
         public string State { get => state; set => state = value; }
         public string BookingTime { get => bookingTime; set => bookingTime = value; }
+        public string IdCustomer { get => idCustomer; set => idCustomer = value; }
     }
 }
 

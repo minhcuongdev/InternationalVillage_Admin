@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using InternationalVillage_Admin.ViewModel;
+
 namespace InternationalVillage_Admin.Component
 {
     /// <summary>
@@ -20,9 +22,12 @@ namespace InternationalVillage_Admin.Component
     /// </summary>
     public partial class ApartmentUC : UserControl
     {
+        public ApartmentUCViewModel Apartment { get; set; }
+
         public ApartmentUC()
         {
             InitializeComponent();
+            this.DataContext = Apartment = new ApartmentUCViewModel();
         }
     }
 }

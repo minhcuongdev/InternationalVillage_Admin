@@ -26,17 +26,17 @@ namespace InternationalVillage_Admin.ViewModel
         private string fullname = "";
         public string Fullname { get => fullname; set => fullname = value; }
 
-        bool isFullNameCorrect = false;
+        
 
         private string idNumber = "";
         public string IdNumber { get => idNumber; set => idNumber = value; }
-        bool isIdNumberCorrect = false;
+        
 
         private string visa = "";
         public string Visa { get => visa; set => visa = value; }
         public object NavigationService { get; private set; }
 
-        bool isVisaCorrect = false;
+        
 
         public HandleRequestViewModel()
         {

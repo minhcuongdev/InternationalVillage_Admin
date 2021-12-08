@@ -88,6 +88,7 @@
       <DependentUpon>MenuWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\Apartment.cs" />
     <Compile Include="Model\ApartmentRequest.cs" />
     <Compile Include="Model\DetailBooking.cs" />
     <Compile Include="Model\ExchangeRate.cs" />
@@ -153,11 +154,14 @@
     </Compile>
     <Compile Include="Store\AccountStore.cs" />
     <Compile Include="Store\ApartmentRequestStore.cs" />
+    <Compile Include="Store\ApartmentStore.cs" />
     <Compile Include="Store\DataProvider.cs" />
     <Compile Include="Store\ExchangeRateStore.cs" />
     <Compile Include="Store\PaymentStore.cs" />
+    <Compile Include="Utilties\ChangeTypeApartment.cs" />
     <Compile Include="Utilties\ConnectDB.cs" />
     <Compile Include="ViewModel\ApartmentRequestDetailViewModel.cs" />
+    <Compile Include="ViewModel\ApartmentUCViewModel.cs" />
     <Compile Include="ViewModel\ApartmentWindowViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\BookApartmentServicePageViewModel.cs" />

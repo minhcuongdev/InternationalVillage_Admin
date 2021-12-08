@@ -30,7 +30,11 @@ namespace InternationalVillage_Admin.ViewModel
             {
                 ApartmentWindow chooseapartmentform = new ApartmentWindow();
                 chooseapartmentform.ShowDialog();
-                
+                if(PaymentStore.Instance.isFinished)
+                {
+                    p.NavigationService.Navigate(new Uri("Pages/HandleRequest.xaml", UriKind.RelativeOrAbsolute));
+                    PaymentStore.Instance.isFinished = false;
+                }
             });
 
             LoadCustomer = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
@@ -50,12 +54,12 @@ namespace InternationalVillage_Admin.ViewModel
 
             LoadCheckInDate = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
-                p.Text = ApartmentRequestStore.Instance.ApartmentRequest.CheckIn;
+                p.Text = ApartmentRequestStore.Instance.ApartmentRequest.CheckIn.ToString();
             });
 
             LoadCheckOutDate = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
-                p.Text = ApartmentRequestStore.Instance.ApartmentRequest.CheckOut;
+                p.Text = ApartmentRequestStore.Instance.ApartmentRequest.CheckOut.ToString();
             });
 
             LoadTypeOfApartment = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>

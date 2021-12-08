@@ -179,7 +179,8 @@ namespace InternationalVillage_Admin.ViewModel
                     }
                     catch (FormatException e)
                     {
-                        MessageBox.Show("Paid money must be number!");
+                        
+                        MessageBox.Show("Paid money must be number!" + e.Message);
                     }
                 }
             });

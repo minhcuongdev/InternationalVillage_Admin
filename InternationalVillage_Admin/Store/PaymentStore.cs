@@ -13,6 +13,7 @@ namespace InternationalVillage_Admin.Store
         private static PaymentStore instance;
         internal static PaymentStore Instance { get { if (instance == null) instance = new PaymentStore(); return instance; } set => instance = value; }
 
+        public bool isFinished = false;
 
         private PaymentStore() { }
         string idCustomer;
@@ -34,6 +35,46 @@ namespace InternationalVillage_Admin.Store
         public string TotalMoney { get => totalMoney; set => totalMoney = value; }
         public string Status { get => status; set => status = value; }
         internal List<DetailBooking> ListDetailBookings { get => listDetailBookings; set => listDetailBookings = value; }
+
+        public bool CreateBill()
+        {
+            IdBill = CreateIDBill();
+            string query = string.Format("insert into Bill (Id_Bill,Id_Customer,TotalMoney,CheckInDate,CheckOutDate) values ('{0}','{1}',{2},'{3}','{4}')", IdBill, ApartmentRequestStore.Instance.ApartmentRequest.IdCustomer, 0, ApartmentRequestStore.Instance.ApartmentRequest.CheckIn.ToString("yyyy-MM-dd H:mm:ss"), ApartmentRequestStore.Instance.ApartmentRequest.CheckOut.ToString("yyyy-MM-dd H:mm:ss"));
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+
+            return result > 0;
+        }
+
+        public bool UpdateToTal(string IdBill)
+        {
+            string query = "update Bill as b, ( select sum(Price) as sum,Id_Bill from DetailApartmentBill where Id_Bill = '"+IdBill+"' group by Id_Bill) as a set b.TotalMoney = a.sum where b.Id_Bill = '"+IdBill+"'";
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool InsertDetailApartmentBill(string idApartment, string idBill, int price)
+        {
+            string query = string.Format("insert into DetailApartmentBill (Id_Apartment,Id_Bill,Price,CheckInDate,CheckOutDate) values ('{0}','{1}',{2},'{3}','{4}')", idApartment, idBill, price, ApartmentRequestStore.Instance.ApartmentRequest.CheckIn.ToString("yyyy-MM-dd H:mm:ss"), ApartmentRequestStore.Instance.ApartmentRequest.CheckOut.ToString("yyyy-MM-dd H:mm:ss"));
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        string CreateIDBill()
+        {
+            string query = "select * from Bill";
+            DataTable dt = DataProvider.Instance.ExecuteQuery(query);
+
+            int count = 1;
+            foreach(DataRow r in dt.Rows)
+            {
+                count++;
+            }
+
+            return "B_" + count.ToString();
+        }
 
         public bool FindBill(string idNumber, string visa)
         {
