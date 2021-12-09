@@ -22,6 +22,14 @@ namespace InternationalVillage_Admin.Store
         private List<ApartmentUC> apartmentSlectedList = new List<ApartmentUC>();
         public List<ApartmentUC> ApartmentSlectedList { get => apartmentSlectedList; set => apartmentSlectedList = value; }
 
+        public bool InsertBookingApartmentTable(string idApartment,int price)
+        {
+            string query = string.Format("insert into BookingApartmentTable values ('{0}','{1}','{2}','{3}',{4});", ApartmentRequestStore.Instance.ApartmentRequest.IdCustomer, idApartment, ApartmentRequestStore.Instance.ApartmentRequest.CheckIn.ToString("yyyy-MM-dd H:mm:ss"), ApartmentRequestStore.Instance.ApartmentRequest.CheckOut.ToString("yyyy-MM-dd H:mm:ss"), price);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
         public List<Apartment> GetAvailableList(string typeOfApartment)
         {
             List<Apartment> list = new List<Apartment>();

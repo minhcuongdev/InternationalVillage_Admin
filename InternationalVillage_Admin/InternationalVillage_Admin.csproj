@@ -92,6 +92,7 @@
     <Compile Include="Model\ApartmentRequest.cs" />
     <Compile Include="Model\DetailBooking.cs" />
     <Compile Include="Model\ExchangeRate.cs" />
+    <Compile Include="Model\ServiceRequest.cs" />
     <Compile Include="MsgBoxOK.xaml.cs">
       <DependentUpon>MsgBoxOK.xaml</DependentUpon>
     </Compile>
@@ -158,6 +159,7 @@
     <Compile Include="Store\DataProvider.cs" />
     <Compile Include="Store\ExchangeRateStore.cs" />
     <Compile Include="Store\PaymentStore.cs" />
+    <Compile Include="Store\ServiceRequestStore.cs" />
     <Compile Include="Utilties\ChangeTypeApartment.cs" />
     <Compile Include="Utilties\ConnectDB.cs" />
     <Compile Include="ViewModel\ApartmentRequestDetailViewModel.cs" />
@@ -175,6 +177,7 @@
     <Compile Include="ViewModel\NotificationUCViewModel.cs" />
     <Compile Include="ViewModel\OverviewPageViewModel.cs" />
     <Compile Include="ViewModel\PaymentDetailViewModel.cs" />
+    <Compile Include="ViewModel\ServiceRequestViewModel.cs" />
     <Page Include="ApartmentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

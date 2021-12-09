@@ -13,4 +13,5 @@
     <viewmodel:ApartmentWindowViewModel x:Key="ApartmentVM"></viewmodel:ApartmentWindowViewModel>
     <viewmodel:HandleRequestViewModel x:Key="ApartmentRequestPageVM"></viewmodel:HandleRequestViewModel>
     <viewmodel:ExchangeRatePageViewModel x:Key="ExchangeRatePageVM"></viewmodel:ExchangeRatePageViewModel>
+    <viewmodel:ServiceRequestViewModel x:Key="ServiceRequestPageVM"></viewmodel:ServiceRequestViewModel>
 </ResourceDictionary>
