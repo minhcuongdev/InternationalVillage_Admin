@@ -3,8 +3,11 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:InternationalVillage_Admin.Pages"
+      xmlns:local="clr-namespace:InternationalVillage_Admin.Pages" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
+      
+      DataContext="{StaticResource ServiceRequestPageVM}"
+      
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ServiceRequest">
 
@@ -95,32 +98,47 @@
         <Grid Grid.Row="4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Service requests"  HorizontalAlignment="Left"  Foreground="#2f9cfa" FontSize="19"  FontWeight="Bold" Margin="40,35,0,34" Padding="0,0,0,5" VerticalAlignment="Center"/>
 
             <!--Start DataGrid-->
-            <DataGrid x:Name="DataGridService" AlternatingRowBackground="AliceBlue" Grid.Row="1" Margin="40,0,0,0" ColumnWidth="140"  VerticalAlignment="Top" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" Height="auto" IsReadOnly="True" >
+            <DataGrid x:Name="DataGridService" AutoGenerateColumns="False" AlternatingRowBackground="AliceBlue" Grid.Row="1" Margin="40,0,0,0" ColumnWidth="140"  VerticalAlignment="Top" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" Height="auto" IsReadOnly="True" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Full Name" />
-                    <DataGridTextColumn Header="Type" />
-                    <DataGridTextColumn Header="Quantity" />
-                    <DataGridTextColumn Header="Check-in" />
-                    <DataGridTextColumn Header="Check-out" />
-                    <DataGridTemplateColumn Header="Validation">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Appove" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    
+                    <DataGridTextColumn Header="Full Name" Binding="{Binding CustomerName}" />
+                    <DataGridTextColumn Header="Type" Binding="{Binding ServiceName}" />
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
+                    <DataGridTextColumn Header="People" Binding="{Binding NumberPeople}" />
+                    <DataGridTextColumn Header="Check-in" Binding="{Binding CheckIn}" />
+                    <DataGridTextColumn Header="Check-out" Binding="{Binding CheckOut}" />
+                    <DataGridTextColumn Header="Apartment" Binding="{Binding IdApartment}" />
                 </DataGrid.Columns>
-
-
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding LoadTable}" CommandParameter="{Binding ElementName=DataGridService}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectedItem}" CommandParameter="{Binding ElementName=DataGridService}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </DataGrid>
 
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
+                <Grid Grid.Column="1">
+                    <Button Width="150" Background="Red" HorizontalAlignment="Right">Reject</Button>
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <Button Width="150" Command="{Binding Approved}" CommandParameter="{Binding ElementName=DataGridService}">Approved</Button>
+                </Grid>
+            </Grid>
 
             <!--End DataGrid-->
 

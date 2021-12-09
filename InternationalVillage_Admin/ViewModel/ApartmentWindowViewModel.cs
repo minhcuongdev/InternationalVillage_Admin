@@ -107,6 +107,7 @@ namespace InternationalVillage_Admin.ViewModel
                     foreach (ApartmentUC uc in ApartmentStore.Instance.ApartmentSlectedList)
                     {
                         PaymentStore.Instance.InsertDetailApartmentBill(uc.ContentOfApartment.Text, idBill, change.ChangeTypeToPrice(ApartmentRequestStore.Instance.ApartmentRequest.Type));
+                        ApartmentStore.Instance.InsertBookingApartmentTable(uc.ContentOfApartment.Text, change.ChangeTypeToPrice(ApartmentRequestStore.Instance.ApartmentRequest.Type));
                     }
                     ApartmentRequestStore.Instance.UpdateState();
                     PaymentStore.Instance.UpdateToTal(idBill);

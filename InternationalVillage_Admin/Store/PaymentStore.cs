@@ -46,6 +46,14 @@ namespace InternationalVillage_Admin.Store
             return result > 0;
         }
 
+        public string GetIdBill(string idApartment,DateTime checkIn,DateTime checkOut)
+        {
+            string query = string.Format("select Id_Bill from DetailApartmentBill where Id_Apartment = '{0}' and CheckInDate = '{1}' and CheckOutDate = '{2}';", idApartment, checkIn.ToString("yyyy-MM-dd H:mm:ss"), checkOut.ToString("yyyy-MM-dd H:mm:ss"));
+            DataTable dt = DataProvider.Instance.ExecuteQuery(query);
+
+            return dt.Rows[0]["Id_Bill"].ToString();
+        }
+
         public bool UpdateToTal(string IdBill)
         {
             string query = "update Bill as b, ( select sum(Price) as sum,Id_Bill from DetailApartmentBill where Id_Bill = '"+IdBill+"' group by Id_Bill) as a set b.TotalMoney = a.sum where b.Id_Bill = '"+IdBill+"'";
@@ -54,9 +62,25 @@ namespace InternationalVillage_Admin.Store
             return result > 0;
         }
 
+        public bool UpdateToTalService(string IdBill)
+        {
+            string query = "update Bill as b, ( select sum(Price) as sum,Id_Bill from DetailServiceBill where Id_Bill = '" + IdBill + "' group by Id_Bill) as a set b.TotalMoney = a.sum where b.Id_Bill = '" + IdBill + "'";
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
         public bool InsertDetailApartmentBill(string idApartment, string idBill, int price)
         {
             string query = string.Format("insert into DetailApartmentBill (Id_Apartment,Id_Bill,Price,CheckInDate,CheckOutDate) values ('{0}','{1}',{2},'{3}','{4}')", idApartment, idBill, price, ApartmentRequestStore.Instance.ApartmentRequest.CheckIn.ToString("yyyy-MM-dd H:mm:ss"), ApartmentRequestStore.Instance.ApartmentRequest.CheckOut.ToString("yyyy-MM-dd H:mm:ss"));
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool InsertDetailServiceBill(ServiceRequest r,string idBill,int price)
+        {
+            string query = string.Format("insert into DetailServiceBill values ('{0}','{1}',{2},'{3}','{4}',{5})",r.IdService,idBill,r.Quantity,r.CheckIn.ToString("yyyy-MM-dd H:mm:ss"),r.CheckOut.ToString("yyyy-MM-dd H:mm:ss"),price);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
