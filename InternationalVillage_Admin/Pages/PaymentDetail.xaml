@@ -36,6 +36,7 @@
             <i:InvokeCommandAction Command="{Binding HiddenCheckCard}" CommandParameter="{Binding ElementName=CheckBoxCard}"/>
             <i:InvokeCommandAction Command="{Binding HiddenPaidMoney}" CommandParameter="{Binding ElementName=Paid}"/>
             <i:InvokeCommandAction Command="{Binding HiddenChangeMoney}" CommandParameter="{Binding ElementName=Change}"/>
+            <i:InvokeCommandAction Command="{Binding LoadPayDate}" CommandParameter="{Binding ElementName=Date}"/>
 
         </i:EventTrigger>
     </i:Interaction.Triggers>
@@ -358,7 +359,7 @@
                                 <ColumnDefinition Width="250*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0" Content="Export Bill" Width="120" Height="auto" FontSize="14" FontWeight="Normal"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,0,0,0" Grid.ColumnSpan="2"/>
-                            <Button x:Name="Payment" Grid.Column="2" Content="Payment" Width="120" Height="auto" FontSize="14" FontWeight="Normal"   VerticalAlignment="Top" HorizontalAlignment="Left" Margin="34.6,0,0,0">
+                            <Button x:Name="Payment" Grid.Column="2" Content="Payment" Width="120" Height="auto" FontSize="14" FontWeight="Normal"   VerticalAlignment="Top" HorizontalAlignment="Left" Margin="34.6,0,0,0"  Command="{Binding Payment}" CommandParameter="{Binding ElementName=Payment}" >
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding Payment}" CommandParameter="{Binding ElementName=Payment}"/>
@@ -368,7 +369,7 @@
                                         <i:InvokeCommandAction Command="{Binding HiddenCBBank}" CommandParameter="{Binding ElementName=CBBank}"/>
                                         <i:InvokeCommandAction Command="{Binding HiddenPaidMoney}" CommandParameter="{Binding ElementName=Paid}"/>
                                         <i:InvokeCommandAction Command="{Binding HiddenChangeMoney}" CommandParameter="{Binding ElementName=Change}"/>
-
+                                        <i:InvokeCommandAction Command="{Binding LoadPayDate}" CommandParameter="{Binding ElementName=Date}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
