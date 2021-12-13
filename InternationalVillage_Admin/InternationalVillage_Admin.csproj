@@ -90,6 +90,7 @@
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Apartment.cs" />
     <Compile Include="Model\ApartmentRequest.cs" />
+    <Compile Include="Model\Bill.cs" />
     <Compile Include="Model\DetailBooking.cs" />
     <Compile Include="Model\ExchangeRate.cs" />
     <Compile Include="Model\ServiceRequest.cs" />
