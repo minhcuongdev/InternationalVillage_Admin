@@ -90,11 +90,8 @@
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Apartment.cs" />
     <Compile Include="Model\ApartmentRequest.cs" />
-<<<<<<< HEAD
     <Compile Include="Model\Customer.cs" />
-=======
     <Compile Include="Model\Bill.cs" />
->>>>>>> 0f55520e52a2d6e96db7857a2ea0897fe5deefc7
     <Compile Include="Model\DetailBooking.cs" />
     <Compile Include="Model\ExchangeRate.cs" />
     <Compile Include="Model\Incident.cs" />
