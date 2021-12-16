@@ -25,6 +25,7 @@ namespace InternationalVillage_Admin.ViewModel
         public ICommand LoadReceptionist { get; set; }
         public ICommand LoadCheckInDate { get; set; }
         public ICommand LoadCheckOutDate { get; set; }
+        public ICommand LoadPayDate { get; set; }
         public ICommand LoadTotalMoney { get; set; }
         public ICommand LoadStatus { get; set; }
         public ICommand HiddenCheckCard { get; set; }
@@ -100,14 +101,20 @@ namespace InternationalVillage_Admin.ViewModel
             });
             LoadCheckInDate = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
-                p.Text = DateTime.Parse(PaymentStore.Instance.Checkin).ToShortDateString();
+                p.Text = DateTime.Parse(PaymentStore.Instance.Checkin).ToString("dd/MM/yyyy");
 
 
             });
             LoadCheckOutDate = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
-                p.Text = DateTime.Parse(PaymentStore.Instance.Checkout).ToShortDateString();
+                p.Text = DateTime.Parse(PaymentStore.Instance.Checkout).ToString("dd/MM/yyyy");
 
+
+            });
+            LoadPayDate = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
+            {
+                if (PaymentStore.Instance.PaydDate.Equals("")) p.Text = "";
+                else  p.Text = DateTime.Parse(PaymentStore.Instance.PaydDate).ToString("dd/MM/yyyy H:mm:ss");
 
             });
             LoadTotalMoney = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
@@ -153,15 +160,17 @@ namespace InternationalVillage_Admin.ViewModel
                     p.Visibility = Visibility.Hidden;
 
             });
-            Payment = new RelayCommand<Button>((p) => { return (paid >= total); }, (p) =>
+            Payment = new RelayCommand<Button>((p) => { return (paid >= total) && (PaymentStore.Instance.Status.Equals("Not accepted yet")); }, (p) =>
             {
+                string paydate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss");
                 
-                    string query = "Update Bill set Status= '"+TypePay+"' , Id_Receptionist = '"+AccountStore.Instance.IdUser+"' where ID_Bill = '"+PaymentStore.Instance.IdBill+"'";
+                    string query = "Update Bill set Status= '"+TypePay+"',PayDate = '"+paydate+"' , Id_Receptionist = '"+AccountStore.Instance.IdUser+"' where ID_Bill = '"+PaymentStore.Instance.IdBill+"'";
                     int result = DataProvider.Instance.ExecuteNonQuery(query);
                     if (result != 0)
                     {
                         MessageBox.Show("Payment success!");
                         PaymentStore.Instance.Status = TypePay;
+                        PaymentStore.Instance.PaydDate = paydate;
                     }
                     else
                     {

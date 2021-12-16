@@ -24,6 +24,7 @@ namespace InternationalVillage_Admin.Store
         string checkout;
         string totalMoney;
         string status;
+        string paydDate;
         List<DetailBooking> listDetailBookings;
 
         public string IdCustomer { get => idCustomer; set => idCustomer = value; }
@@ -35,6 +36,7 @@ namespace InternationalVillage_Admin.Store
         public string TotalMoney { get => totalMoney; set => totalMoney = value; }
         public string Status { get => status; set => status = value; }
         internal List<DetailBooking> ListDetailBookings { get => listDetailBookings; set => listDetailBookings = value; }
+        public string PaydDate { get => paydDate; set => paydDate = value; }
 
         public bool CreateBill(string idCustoemr,DateTime CheckIn,DateTime CheckOut)
         {
@@ -100,11 +102,11 @@ namespace InternationalVillage_Admin.Store
             return "B_" + count.ToString();
         }
 
-        public bool FindBill(string idNumber, string visa)
+        public void FindDetailBill(string id_Bill)
         {
-            string query = "select * from Customer,Bill where Bill.Id_Customer = Customer.Id_Customer and (Identification = '" + idNumber + "' or Visa = '" + visa + "')";
+            string query = "select * from Customer,Bill where Bill.Id_Customer = Customer.Id_Customer and Id_Bill = '"+id_Bill+"'";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
-            if (data.Rows.Count == 0) return false;
+            
             foreach (DataRow item in data.Rows)
             {
                 idCustomer = item["Id_Customer"].ToString();
@@ -115,6 +117,8 @@ namespace InternationalVillage_Admin.Store
                 checkout = item["CheckOutDate"].ToString();
                 totalMoney = item["TotalMoney"].ToString();
                 status = item["Status"].ToString();
+                if (item["PayDate"] == null) paydDate = "";
+                else paydDate = item["PayDate"].ToString();
 
             }
 
@@ -135,10 +139,33 @@ namespace InternationalVillage_Admin.Store
                 ListDetailBookings.Add(detailBooking);
             }
 
-            return true;
+            
 
         }
-       
+
+        public List<Bill> GetListBill(string idNumber, string visa)
+        {
+            List<Bill> list = new List<Bill>();
+            string query = "select Id_Bill, CheckinDate, CheckOutDate, Status from Bill,Customer " +
+                "where Bill.Id_Customer = Customer.Id_Customer and (Identification = '" + idNumber + "' or Visa = '" + visa + "')";
+
+            ;
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                Bill bill = new Bill(item["Id_Bill"].ToString(), DateTime.Parse(item["CheckInDate"].ToString()).ToString("dd/MM/yyyy"), DateTime.Parse(item["CheckOutDate"].ToString()).ToString("dd/MM/yyyy"), item["Status"].ToString());
+                list.Add(bill);
+            }
+
+            return list;
+        }
+
+        public bool CheckID(string id, string visa)
+        {
+            string query = "select * from Customer where  (Identification = '" + id + "' or Visa = '" + visa + "')";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            return (data.Rows.Count > 0);
+        }
 
 
     }
