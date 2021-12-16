@@ -30,11 +30,11 @@ namespace InternationalVillage_Admin.Store
             return result > 0;
         }
 
-        public List<Apartment> GetAvailableList(string typeOfApartment)
+        public List<Apartment> GetAvailableList(string typeOfApartment, DateTime CheckIn)
         {
             List<Apartment> list = new List<Apartment>();
 
-            string query = string.Format("select * from Apartment where Id_Apartment not in (SELECT Id_Apartment FROM DetailApartmentBill where CheckInDate = '{0}') and Status != 'incident' and TypeOfApartment = '{1}';",ApartmentRequestStore.Instance.ApartmentRequest.CheckIn.ToString("yyyy-MM-dd H:mm:ss") ,typeOfApartment);
+            string query = string.Format("select * from Apartment where Id_Apartment not in (SELECT Id_Apartment FROM DetailApartmentBill where CheckInDate = '{0}') and Status != 'incident' and TypeOfApartment = '{1}';",CheckIn.ToString("yyyy-MM-dd H:mm:ss") ,typeOfApartment);
             DataTable dt = DataProvider.Instance.ExecuteQuery(query);
 
             foreach(DataRow row in dt.Rows)

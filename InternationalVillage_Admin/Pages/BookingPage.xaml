@@ -15,10 +15,10 @@
       TextOptions.TextRenderingMode="Auto"
       FontFamily="{DynamicResource MaterialDesignFont}"
       
-      
+      DataContext="{StaticResource BookingPageVM}"
       
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="1000"
       Title="BookingPage">
 
     <Grid Background="white">
@@ -52,17 +52,69 @@
 
         <Grid Grid.Row="1" Margin="0,10,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" CornerRadius="15" Margin="10,0,0,10">
+            <Grid Grid.Column="0" Margin="0,30,0,0" VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <TextBlock Text="Find information customer" Margin="10,0,0,0"></TextBlock>
+                </Grid>
+                
+                <Grid Grid.Row="1" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <TextBox x:Name="info" BorderBrush="Black" Margin="10,10,10,10" BorderThickness="1">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding TextChange}" CommandParameter="{Binding ElementName=info}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Button Command="{Binding FindCustomer}" CommandParameter="{Binding ElementName=DataGridCustomer}" >Find</Button>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <DataGrid x:Name="DataGridCustomer" Margin="10,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Height="auto" IsReadOnly="True" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="1*" Header="Full Name" Binding="{Binding FullName}"/>
+                            <DataGridTextColumn Width="1*" Header="Identification" Binding="{Binding Identification}" />
+                            <DataGridTextColumn Width="1*" Header="Visa " Binding="{Binding Visa}" />
+                        </DataGrid.Columns>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectItem}" CommandParameter="{Binding ElementName=DataGridCustomer}"/>
+                                <i:InvokeCommandAction Command="{Binding FillFullName}" CommandParameter="{Binding ElementName=FullName}"/>
+                                <i:InvokeCommandAction Command="{Binding FillId}" CommandParameter="{Binding ElementName=Identification}"/>
+                                <i:InvokeCommandAction Command="{Binding FillVisa}" CommandParameter="{Binding ElementName=VISA}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </DataGrid>
+                </Grid>
+                
+            </Grid>
+            
+            <!--<Border Grid.Column="0" CornerRadius="15" Margin="10,0,0,10">
                 <Border.Background>
                     <ImageBrush  Stretch="UniformToFill" ImageSource="/Image/resort.jpg" />
                 </Border.Background>
-            </Border>
+            </Border>-->
 
-            <Grid Grid.Column="1" VerticalAlignment="Center">
+            <Grid Grid.Column="1" Margin="0,30,0,0" VerticalAlignment="Stretch">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
@@ -85,7 +137,7 @@
                     materialDesign:HintAssist.Hint="FullName"
                     Width="200"
                     x:Name="FullName"
-                    IsEnabled="True" Margin="30,0,0,0" HorizontalAlignment="Left"   >
+                    IsEnabled="True" Margin="30,0,0,0" HorizontalAlignment="Left" >
                 </TextBox>
                 <TextBlock x:Name="FullNameError" Grid.Row="2" Text="Example: VictoryA " FontSize="10" Visibility="Visible"  Margin="35,50,0,0" />
 
@@ -105,7 +157,7 @@
                         materialDesign:HintAssist.Hint="ID Number"
                         Width="200"
                         x:Name="Identification"
-                        IsEnabled="True" Margin="30,0,0,0" HorizontalAlignment="Left"   >
+                        IsEnabled="True" Margin="30,0,0,0" HorizontalAlignment="Left" >
                     </TextBox>
                     <TextBlock  Grid.Column="0" Text="Example: 123456789 " FontSize="10"  Visibility="Visible"  Margin="35,50,0,0" />
 
@@ -119,9 +171,9 @@
                         materialDesign:HintAssist.Hint="VISA Number"
                         Width="200"
                         x:Name="VISA"
-                        IsEnabled="True" Margin="30,0,0,0" HorizontalAlignment="Left"   >
+                        IsEnabled="True" Margin="30,0,0,0" HorizontalAlignment="Left" >
                     </TextBox>
-                    <TextBlock  Grid.Column="1" Text="Example: 1234ABC " FontSize="10"  Visibility="Visible"  Margin="35,50,0,0" />
+                    <TextBlock  Grid.Column="1" Text="Example: 1234ABC " FontSize="10"  Visibility="Visible"  Margin="35,50,0,0"  />
                 </Grid>
 
                 <Grid Grid.Row="4">
@@ -136,6 +188,11 @@
                         FontSize="15"
                         materialDesign:HintAssist.Hint="Check-in Date"
                         Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30,0,0,0" FirstDayOfWeek="Monday"  >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedDateChanged">
+                                <i:InvokeCommandAction Command="{Binding CheckInDateChange}" CommandParameter="{Binding ElementName=CheckinDate}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </DatePicker>
                     <TextBlock x:Name="CheckinDateError"  Grid.Column="0"  FontSize="10" Foreground="Black" Visibility="Visible" Margin="30,50,0,0" />
 
@@ -145,6 +202,11 @@
                         FontSize="15"
                         materialDesign:HintAssist.Hint="Check-out Date"
                         Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30,0,0,0" FirstDayOfWeek="Monday"  >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedDateChanged">
+                                <i:InvokeCommandAction Command="{Binding CheckOutDateChange}" CommandParameter="{Binding ElementName=CheckoutDate}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </DatePicker>
                     <TextBlock x:Name="CheckoutDateError" Grid.Column="1"  FontSize="10" Foreground="Black" Visibility="Visible"  Margin="30,50,0,0" />
                 </Grid>
@@ -165,7 +227,7 @@
                     Height="40"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left"
-                    Margin="30,0,0,0">
+                    Margin="30,0,0,0" x:Name="Next" Command="{Binding Next}" CommandParameter="{Binding ElementName=Next}">
                         <Hyperlink NavigateUri="BookApartmentService.xaml">NEXT</Hyperlink>
 
                     </Button>

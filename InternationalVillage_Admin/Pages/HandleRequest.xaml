@@ -10,6 +10,7 @@
       
       DataContext="{StaticResource ApartmentRequestPageVM}"
       
+      x:Name="Page"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HandleRequest">
@@ -119,10 +120,8 @@
                     <DataGridTextColumn Header="Check-out" Binding="{Binding CheckOut}"/>
                     <DataGridTemplateColumn Header="More">
                         <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate x:Name="DataT">
-                                <Button Click="ShowDetail_Click">
-                                    <Hyperlink NavigateUri="ApartmentRequestDetail.xaml">Show Detail</Hyperlink>
-                                </Button>
+                            <DataTemplate>
+                                <Button Click="ShowDetail_Click" Content="Show Detail" />
                             </DataTemplate>
                             
                         </DataGridTemplateColumn.CellTemplate>

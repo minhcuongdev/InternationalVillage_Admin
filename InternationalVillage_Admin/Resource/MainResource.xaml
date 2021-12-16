@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:viewmodel="clr-namespace:InternationalVillage_Admin.ViewModel">
-    <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
     <viewmodel:MenuViewModel x:Key="MenuVM"></viewmodel:MenuViewModel>
     <viewmodel:PaymentDetailViewModel x:Key="PaymentDetailVM"></viewmodel:PaymentDetailViewModel>
@@ -14,4 +13,7 @@
     <viewmodel:HandleRequestViewModel x:Key="ApartmentRequestPageVM"></viewmodel:HandleRequestViewModel>
     <viewmodel:ExchangeRatePageViewModel x:Key="ExchangeRatePageVM"></viewmodel:ExchangeRatePageViewModel>
     <viewmodel:ServiceRequestViewModel x:Key="ServiceRequestPageVM"></viewmodel:ServiceRequestViewModel>
+    <viewmodel:IncidentRequestViewModel x:Key="IncidentRequestPageVM"></viewmodel:IncidentRequestViewModel>
+    <viewmodel:IncidentDetailViewModel x:Key="IncidentDetailVM"></viewmodel:IncidentDetailViewModel>
+    <viewmodel:BookingPageViewModel x:Key="BookingPageVM"></viewmodel:BookingPageViewModel>
 </ResourceDictionary>

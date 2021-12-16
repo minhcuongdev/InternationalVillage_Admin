@@ -46,9 +46,9 @@ namespace InternationalVillage_Admin.Store
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 adapter.Fill(data);
             }
-            catch
+            catch (Exception e)
             {
-                MessageBox.Show("Failed connection");
+                MessageBox.Show(e.Message);
             }
             finally
             {
@@ -83,7 +83,10 @@ namespace InternationalVillage_Admin.Store
 
                 data = command.ExecuteNonQuery();
             }
-            catch { MessageBox.Show("Failed connection"); }
+            catch (Exception e)
+            { 
+                MessageBox.Show(e.Message); 
+            }
             finally
             {
                 connection.Close();

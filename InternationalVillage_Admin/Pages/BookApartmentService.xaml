@@ -82,7 +82,7 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <ComboBox Grid.Column="0"                        
+                    <ComboBox x:Name="Type" SelectedIndex="0" Grid.Column="0"                        
                         Style="{StaticResource MaterialDesignFilledComboBox}"
                         materialDesign:HintAssist.Hint="Type of Apartment"
                         Margin="30,10,0,0"
@@ -94,24 +94,29 @@
                                 Content="High standard" />
                         <ComboBoxItem
                                 Content="Normal" />
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectionChanged}" CommandParameter="{Binding ElementName=Type}"/>
+                                <i:InvokeCommandAction Command="{Binding Render}" CommandParameter="{Binding ElementName=ApartmentPanel}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </ComboBox>
 
                     <Grid Grid.Column="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="200"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
-
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="Number of selected apartment:" FontSize="13" Foreground="#176ec6" FontWeight="Bold" Margin="0,25,0,0" />
-                        <TextBlock  Grid.Column="1" VerticalAlignment="Center" Text="2" Foreground="#176ec6" FontSize="13" FontWeight="DemiBold"  HorizontalAlignment="Left" Margin="0,25,0,0">
-
+                        <TextBlock Grid.Column="0" VerticalAlignment="Top" Text="Number of selected apartment:" FontSize="13" Foreground="#176ec6" FontWeight="Bold" Margin="0,25,0,0" />
+                        <TextBlock x:Name="Number"  Grid.Column="1" VerticalAlignment="Top" Text="0" Foreground="#176ec6" FontSize="13" FontWeight="DemiBold"  HorizontalAlignment="Left" Margin="0,25,0,0">
+                            
                         </TextBlock>
                     </Grid>
 
                 </Grid>
                 <ScrollViewer Grid.Row="2" Margin="30,0" Height="auto"  HorizontalScrollBarVisibility="Visible"  ScrollViewer.VerticalScrollBarVisibility="Auto" >
                     <WrapPanel x:Name="ApartmentPanel"   Width="620" HorizontalAlignment="Left">
-
+                        
                     </WrapPanel>
                 </ScrollViewer>
             </Grid>

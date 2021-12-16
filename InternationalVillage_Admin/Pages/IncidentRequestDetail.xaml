@@ -3,8 +3,12 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:InternationalVillage_Admin.Pages"
-      mc:Ignorable="d" 
+      xmlns:local="clr-namespace:InternationalVillage_Admin.Pages" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      mc:Ignorable="d"
+      
+      DataContext="{StaticResource IncidentDetailVM}"
+      
+      x:Name="IncidentDetail"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="IncidentRequestDetail">
 
@@ -82,7 +86,13 @@
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="AAA" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                                <TextBlock x:Name="id" Grid.Column="0" Text="AAA" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding LoadId}" CommandParameter="{Binding ElementName=id}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TextBlock>
 
                             </Grid>
                         </Grid>
@@ -98,8 +108,14 @@
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Minh Cuong" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
-                                 
+                                <TextBlock x:Name="FullName" Grid.Column="0" Text="Minh Cuong" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding LoadFullName}" CommandParameter="{Binding ElementName=FullName}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TextBlock>
+
                             </Grid>
                         </Grid>
 
@@ -110,7 +126,13 @@
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="Receptionist" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
                             <Grid Grid.Row="1">
-                                <TextBlock Text="Khanh Quynh" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                                <TextBlock x:Name="Receptionist" Text="Khanh Quynh" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding LoadReceptionist}" CommandParameter="{Binding ElementName=Receptionist}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TextBlock>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -129,7 +151,13 @@
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="Number of Apartment" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
                             <Grid Grid.Row="1">
-                                <TextBlock Grid.Column="0" Text="2A01" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                                <TextBlock x:Name="idApartment" Grid.Column="0" Text="2A01" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding LoadApartment}" CommandParameter="{Binding ElementName=idApartment}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TextBlock>
                             </Grid>
                         </Grid>
 
@@ -144,7 +172,13 @@
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="Type of Incident" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,-0.333,0.333" Grid.ColumnSpan="2"/>
                             <Grid Grid.ColumnSpan="2" Margin="0,37,-0.333,-0.333" Grid.RowSpan="2">
-                                <TextBlock Grid.Column="0" Text="Other" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                                <TextBlock x:Name="type" Grid.Column="0" Text="Other" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding LoadType}" CommandParameter="{Binding ElementName=type}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TextBlock>
                             </Grid>
                         </Grid>
 
@@ -159,25 +193,37 @@
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="High" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
-                                
+                                <TextBlock x:Name="level" Grid.Column="0" Text="High" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding LoadLevel}" CommandParameter="{Binding ElementName=level}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TextBlock>
+
                             </Grid>
                         </Grid>
                     </Grid>
 
                 </Grid>
                 <Grid Grid.Row="2" Margin="0,20,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="169"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Description" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
+                    <TextBlock x:Name="Desc" Grid.Row="1" Text="" Foreground="Gray" TextWrapping="Wrap" Margin="35,0,35,0" VerticalAlignment="Top">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadDescription}" CommandParameter="{Binding ElementName=Desc}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBlock>
 
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Description" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock Grid.Column="1" Text="" Foreground="Gray" TextWrapping="Wrap" Margin="0,0,30,0"/>
                 </Grid>
 
                 <Grid Grid.Row="3" Margin="0,10,0,0">
-                    <Button Content="Confirm" Width="120" FontSize="15" FontWeight="Normal" Margin="0,0,30,0" HorizontalAlignment="Right"/>
+                    <Button Command="{Binding Confirm}" CommandParameter="{Binding ElementName=IncidentDetail}" Content="Confirm" Width="120" FontSize="15" FontWeight="Normal" Margin="0,0,30,0" HorizontalAlignment="Right"/>
                     
                 </Grid>
             </Grid>

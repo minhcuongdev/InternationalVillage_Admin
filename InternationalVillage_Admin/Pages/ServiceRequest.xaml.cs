@@ -23,21 +23,7 @@ namespace InternationalVillage_Admin.Pages
         public ServiceRequest()
         {
             InitializeComponent();
-            //List<Service> services = new List<Service>();
-            //services.Add(new Service() { FullName = "KhanhQuynh", Type = "Pool", Quantity = 3, Checkin="10/11/2021", Checkout="13/11/2021"});
-            
-            //DataGridService.ItemsSource = services;
         }
         
     }
-    //public class Service
-    //{
-    //    public string FullName { get; set; }
-    //    public string Type { get; set; }
-    //    public int Quantity { get; set; }
-    //    public string Checkin { get; set; }
-    //    public string Checkout { get; set; }
-
-        
-    //}
 }

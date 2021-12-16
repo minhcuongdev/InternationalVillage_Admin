@@ -27,12 +27,27 @@ namespace InternationalVillage_Admin.ViewModel
                 {
                     g.Background = System.Windows.Media.Brushes.DarkBlue;
                     ApartmentStore.Instance.ApartmentSlectedList.Add(p as ApartmentUC);
+                    RenderNumber(p);
                 } else
                 {
                     g.Background = (Brush)bc.ConvertFrom("#2f9cfa");
                     ApartmentStore.Instance.ApartmentSlectedList.Remove(p as ApartmentUC);
+                    RenderNumber(p);
                 }
             });
+        }
+
+        void RenderNumber(UserControl p)
+        {
+            FrameworkElement grid = p;
+            for (int i = 0; i < 3; i++)
+                grid = grid.Parent as FrameworkElement;
+            if((grid as Grid) != null)
+            {
+                Grid g = grid as Grid;
+                TextBlock text = g.FindName("Number") as TextBlock;
+                text.Text = ApartmentStore.Instance.ApartmentSlectedList.Count.ToString();
+            }
         }
     }
 }

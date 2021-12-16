@@ -38,10 +38,10 @@ namespace InternationalVillage_Admin.Store
         internal List<DetailBooking> ListDetailBookings { get => listDetailBookings; set => listDetailBookings = value; }
         public string PaydDate { get => paydDate; set => paydDate = value; }
 
-        public bool CreateBill()
+        public bool CreateBill(string idCustoemr,DateTime CheckIn,DateTime CheckOut)
         {
             IdBill = CreateIDBill();
-            string query = string.Format("insert into Bill (Id_Bill,Id_Customer,TotalMoney,CheckInDate,CheckOutDate) values ('{0}','{1}',{2},'{3}','{4}')", IdBill, ApartmentRequestStore.Instance.ApartmentRequest.IdCustomer, 0, ApartmentRequestStore.Instance.ApartmentRequest.CheckIn.ToString("yyyy-MM-dd H:mm:ss"), ApartmentRequestStore.Instance.ApartmentRequest.CheckOut.ToString("yyyy-MM-dd H:mm:ss"));
+            string query = string.Format("insert into Bill (Id_Bill,Id_Customer,TotalMoney,CheckInDate,CheckOutDate,Status) values ('{0}','{1}',{2},'{3}','{4}','{5}')", IdBill, IdCustomer, 0, CheckIn.ToString("yyyy-MM-dd H:mm:ss"), CheckOut.ToString("yyyy-MM-dd H:mm:ss"),"Not accepted yet");
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
 
@@ -72,9 +72,9 @@ namespace InternationalVillage_Admin.Store
             return result > 0;
         }
 
-        public bool InsertDetailApartmentBill(string idApartment, string idBill, int price)
+        public bool InsertDetailApartmentBill(string idApartment, string idBill, int price,DateTime CheckIn, DateTime CheckOut)
         {
-            string query = string.Format("insert into DetailApartmentBill (Id_Apartment,Id_Bill,Price,CheckInDate,CheckOutDate) values ('{0}','{1}',{2},'{3}','{4}')", idApartment, idBill, price, ApartmentRequestStore.Instance.ApartmentRequest.CheckIn.ToString("yyyy-MM-dd H:mm:ss"), ApartmentRequestStore.Instance.ApartmentRequest.CheckOut.ToString("yyyy-MM-dd H:mm:ss"));
+            string query = string.Format("insert into DetailApartmentBill (Id_Apartment,Id_Bill,Price,CheckInDate,CheckOutDate) values ('{0}','{1}',{2},'{3}','{4}')", idApartment, idBill, price,CheckIn.ToString("yyyy-MM-dd H:mm:ss"),CheckOut.ToString("yyyy-MM-dd H:mm:ss"));
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
