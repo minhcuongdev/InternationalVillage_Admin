@@ -38,7 +38,7 @@ namespace InternationalVillage_Admin.ViewModel
 
                 ChangeTypeApartment change = new ChangeTypeApartment();
 
-                AvailableList = ApartmentStore.Instance.GetAvailableList(change.ChangeTypeOfApartment(ApartmentRequestStore.Instance.ApartmentRequest.Type));
+                AvailableList = ApartmentStore.Instance.GetAvailableList(change.ChangeTypeOfApartment(ApartmentRequestStore.Instance.ApartmentRequest.Type), ApartmentRequestStore.Instance.ApartmentRequest.CheckIn);
                 RenderAvailableList(p);
 
                 TakenList = ApartmentStore.Instance.GetTakenList(change.ChangeTypeOfApartment(ApartmentRequestStore.Instance.ApartmentRequest.Type));
@@ -100,13 +100,13 @@ namespace InternationalVillage_Admin.ViewModel
             }, (p) =>
             {
 
-                if(PaymentStore.Instance.CreateBill())
+                if(PaymentStore.Instance.CreateBill(ApartmentRequestStore.Instance.ApartmentRequest.IdCustomer, ApartmentRequestStore.Instance.ApartmentRequest.CheckIn, ApartmentRequestStore.Instance.ApartmentRequest.CheckOut))
                 {
                     string idBill = PaymentStore.Instance.IdBill;
                     ChangeTypeApartment change = new ChangeTypeApartment();
                     foreach (ApartmentUC uc in ApartmentStore.Instance.ApartmentSlectedList)
                     {
-                        PaymentStore.Instance.InsertDetailApartmentBill(uc.ContentOfApartment.Text, idBill, change.ChangeTypeToPrice(ApartmentRequestStore.Instance.ApartmentRequest.Type));
+                        PaymentStore.Instance.InsertDetailApartmentBill(uc.ContentOfApartment.Text, idBill, change.ChangeTypeToPrice(ApartmentRequestStore.Instance.ApartmentRequest.Type), ApartmentRequestStore.Instance.ApartmentRequest.CheckIn, ApartmentRequestStore.Instance.ApartmentRequest.CheckOut);
                         ApartmentStore.Instance.InsertBookingApartmentTable(uc.ContentOfApartment.Text, change.ChangeTypeToPrice(ApartmentRequestStore.Instance.ApartmentRequest.Type));
                     }
                     ApartmentRequestStore.Instance.UpdateState();

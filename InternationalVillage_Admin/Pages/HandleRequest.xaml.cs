@@ -33,6 +33,8 @@ namespace InternationalVillage_Admin.Pages
         {
             ApartmentRequest a = DataGridApartment.SelectedItem as ApartmentRequest;            
             ApartmentRequestStore.Instance.ApartmentRequest = ApartmentRequestStore.Instance.GetApartmentById(int.Parse(a.ID.ToString()));
+            Page.NavigationService.Navigate(new Uri("/Pages/ApartmentRequestDetail.xaml", UriKind.RelativeOrAbsolute));
+
         }
     }
     

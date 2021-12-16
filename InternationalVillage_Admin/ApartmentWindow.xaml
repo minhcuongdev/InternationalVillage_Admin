@@ -105,10 +105,10 @@
 
                 </ListBox>
                 <Grid Grid.Column="1">
-                    <TextBlock x:Name="Number">Number:
+                    <TextBlock x:Name="NumberAllow">Number:
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Loaded">
-                                <i:InvokeCommandAction Command="{Binding LoadNumber}" CommandParameter="{Binding ElementName=Number}"/>
+                                <i:InvokeCommandAction Command="{Binding LoadNumber}" CommandParameter="{Binding ElementName=NumberAllow}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </TextBlock>

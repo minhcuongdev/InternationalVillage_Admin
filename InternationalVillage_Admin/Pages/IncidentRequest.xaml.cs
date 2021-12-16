@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using InternationalVillage_Admin.Model;
+using InternationalVillage_Admin.Store;
+
 namespace InternationalVillage_Admin.Pages
 {
     /// <summary>
@@ -24,6 +27,13 @@ namespace InternationalVillage_Admin.Pages
         {
             InitializeComponent();
             
+        }
+
+        private void SeeMore(object sender, RoutedEventArgs e)
+        {
+            Incident incident = DataGridIncident.SelectedItem as Incident;
+            IncidentStore.Instance.IncidentSelected = IncidentStore.Instance.GetIncidentById(incident.IdIncident);
+            Page.NavigationService.Navigate(new Uri("/Pages/IncidentRequestDetail.xaml", UriKind.RelativeOrAbsolute));
         }
     }
     
