@@ -143,11 +143,11 @@ namespace InternationalVillage_Admin.Store
 
         }
 
-        public List<Bill> GetListBill(string idNumber, string visa)
+        public List<Bill> GetListBill(string infor)
         {
             List<Bill> list = new List<Bill>();
-            string query = "select Id_Bill, CheckinDate, CheckOutDate, Status from Bill,Customer " +
-                "where Bill.Id_Customer = Customer.Id_Customer and (Identification = '" + idNumber + "' or Visa = '" + visa + "')";
+            string query = string.Format("select Id_Bill, CheckinDate, CheckOutDate, Status from Bill,Customer " +
+                "where Bill.Id_Customer = Customer.Id_Customer and (Identification like '%{0}%' or Visa like '%{0}%' or FullName like '%{0}%');", infor);
 
             ;
             DataTable data = DataProvider.Instance.ExecuteQuery(query);

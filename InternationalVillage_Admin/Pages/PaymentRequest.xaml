@@ -113,19 +113,6 @@
                     
                 </Grid.RowDefinitions>
 
-                <TextBox Grid.Row="0"
-                Style="{StaticResource MaterialDesignFilledTextBox}"
-                VerticalAlignment="Top"
-                AcceptsReturn="True"
-                TextWrapping="Wrap"
-                MaxWidth="400"
-                materialDesign:HintAssist.Hint="FullName"
-                Width="240"
-                x:Name="FullName"
-                IsEnabled="True" Margin="40,10,0,0" HorizontalAlignment="Left"   >
-                </TextBox>
-                <TextBlock x:Name="FullNameError" Grid.Column="0" Text="Example: VictoryA " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
-
                 <Grid Grid.Row="1" Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="300"></ColumnDefinition>
@@ -138,37 +125,18 @@
                         AcceptsReturn="True"
                         TextWrapping="Wrap"
                         MaxWidth="400"
-                        materialDesign:HintAssist.Hint="ID Number"
+                        materialDesign:HintAssist.Hint="Information"
                         Width="240"
-                        x:Name="Identification"
+                        x:Name="Information"
                         IsEnabled="True" Margin="40,0,0,0" HorizontalAlignment="Left"   >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="TextChanged">
-                                <i:InvokeCommandAction Command="{Binding IDNumberChanged}" CommandParameter="{Binding ElementName=Identification}"/>
+                                    <i:InvokeCommandAction Command="{Binding InformationChanged}" CommandParameter="{Binding ElementName=Information}"/>
                             </i:EventTrigger>
                             
                         </i:Interaction.Triggers>
                     </TextBox>
-                    <TextBlock Grid.Column="0" Text="Example: 123456789 " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
                     
-                    <TextBox Grid.Column="1"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        TextWrapping="Wrap"
-                        MaxWidth="400"
-                        materialDesign:HintAssist.Hint="VISA Number"
-                        Width="240"
-                        x:Name="VISA"
-                        IsEnabled="True" Margin="40,0,0,0" HorizontalAlignment="Left"   >
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="TextChanged">
-                                <i:InvokeCommandAction Command="{Binding VisaChanged}" CommandParameter="{Binding ElementName=VISA}"/>
-                            </i:EventTrigger>
-
-                        </i:Interaction.Triggers>
-                    </TextBox>
-                    <TextBlock Grid.Column="1" Text="Example: 1234ABC " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
                         <Button Grid.Column="2" x:Name="FindBill"  Width="80" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top" 
                         Command="{Binding FindBill}" CommandParameter="{Binding ElementName=DataGridBill}">
                             Find Bill

@@ -167,6 +167,7 @@
     <Compile Include="Store\ServiceRequestStore.cs" />
     <Compile Include="Utilties\ChangeTypeApartment.cs" />
     <Compile Include="Utilties\ConnectDB.cs" />
+    <Compile Include="Utilties\Validate.cs" />
     <Compile Include="ViewModel\ApartmentRequestDetailViewModel.cs" />
     <Compile Include="ViewModel\ApartmentUCViewModel.cs" />
     <Compile Include="ViewModel\ApartmentWindowViewModel.cs" />
