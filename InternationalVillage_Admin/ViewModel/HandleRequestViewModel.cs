@@ -20,7 +20,7 @@ namespace InternationalVillage_Admin.ViewModel
         public ICommand SelectedTable { get; set; }
         public ICommand Next { get; set; }
         public ICommand EnableButton { get; set; }
-        public ICommand IDNumberChanged { get; set; }
+        public ICommand InformationChanged { get; set; }
         public ICommand VisaChanged { get; set; }
         public ICommand NextPage { get; set; }
         public ICommand FindBill { get; set; }
@@ -31,8 +31,8 @@ namespace InternationalVillage_Admin.ViewModel
 
         
 
-        private string idNumber = "";
-        public string IdNumber { get => idNumber; set => idNumber = value; }
+        private string information = "";
+        public string Information { get => information; set => information = value; }
         
 
         private string visa = "";
@@ -55,9 +55,9 @@ namespace InternationalVillage_Admin.ViewModel
 
             });
 
-            IDNumberChanged = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
+            InformationChanged = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
             {
-                idNumber = p.Text;
+                information = p.Text;
 
             });
             VisaChanged = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
@@ -66,14 +66,14 @@ namespace InternationalVillage_Admin.ViewModel
 
             });
 
-            EnableButton = new RelayCommand<Button>((p) => { return ((!idNumber.Equals("")) | (!visa.Equals(""))); }, (p) =>
+            EnableButton = new RelayCommand<Button>((p) => { return ((!information.Equals("")) | (!visa.Equals(""))); }, (p) =>
             {
-               // PaymentStore.Instance.FindBill(IdNumber, visa);
+               // PaymentStore.Instance.FindBill(information, visa);
 
             });
-            Next = new RelayCommand<Button>((p) => { return ((!idNumber.Equals("")) | (!visa.Equals(""))); }, (p) =>
+            Next = new RelayCommand<Button>((p) => { return ((!information.Equals("")) | (!visa.Equals(""))); }, (p) =>
             {
-              //  PaymentStore.Instance.FindBill(IdNumber, visa);
+              //  PaymentStore.Instance.FindBill(information, visa);
                
             });
             NextPage = new RelayCommand<Page>((p) => { return (selectedtale != null); }, (p) =>
@@ -84,22 +84,14 @@ namespace InternationalVillage_Admin.ViewModel
                 
             });
 
-            FindBill = new RelayCommand<DataGrid>((p) => { return ((!idNumber.Equals("")) | (!visa.Equals(""))); }, (p) =>
+            FindBill = new RelayCommand<DataGrid>((p) => { return ((!information.Equals(""))); }, (p) =>
             {
-                bool checkId = false;
-                if (visa.Equals("")) checkId = PaymentStore.Instance.CheckID(idNumber,"error");
-                else if (idNumber.Equals("")) checkId = PaymentStore.Instance.CheckID("error",visa);
-                else checkId = PaymentStore.Instance.CheckID(idNumber, visa);
-                if (checkId)
-                {
-                    List<Bill> list = PaymentStore.Instance.GetListBill(idNumber, visa);
+                
+                    List<Bill> list = PaymentStore.Instance.GetListBill(information);
                     p.ItemsSource = list;
                     selectedtale = null;
-                }
-                else
-                {
-                    MessageBox.Show("Id number or visa is not exist");
-                }
+                    if (list.Count == 0) MessageBox.Show("Information not found");
+                
 
             });
 
