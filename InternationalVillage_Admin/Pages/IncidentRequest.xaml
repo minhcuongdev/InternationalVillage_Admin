@@ -6,6 +6,14 @@
       xmlns:local="clr-namespace:InternationalVillage_Admin.Pages" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d"
       
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      
       DataContext="{StaticResource IncidentRequestPageVM}"
       
       x:Name="Page"
@@ -66,7 +74,8 @@
                         </Style.Triggers>
                     </Style>
                 </Grid.Resources>
-                <Button Background="white" Width="100" FontSize="11" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
+                    materialDesign:ButtonAssist.CornerRadius="20" Background="white" Width="100" FontSize="11" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
 
                     <Hyperlink NavigateUri="HandleRequest.xaml">Apartment</Hyperlink>
                 </Button>
@@ -84,13 +93,15 @@
                         </Style.Triggers>
                     </Style>
                 </Grid.Resources>
-                <Button Background="white" Width="100" FontSize="11" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
+                    materialDesign:ButtonAssist.CornerRadius="20" Background="white" Width="100" FontSize="11" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Hyperlink NavigateUri="ServiceRequest.xaml">Service</Hyperlink>
                 </Button>
             </Grid>
 
             <Grid Grid.Column="2" Margin="0">
-                <Button Content="Incident" Foreground="#2f9cfa" Background="white" Width="100" FontSize="11" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
+                    materialDesign:ButtonAssist.CornerRadius="20" Content="Incident" Foreground="#2f9cfa" Background="white" Width="100" FontSize="11" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </Grid>
         </Grid>
 
@@ -109,11 +120,22 @@
 
             <!--Start DataGrid-->
             <DataGrid AutoGenerateColumns="False" Grid.Row="1" Margin="40,0,0,0" Name="DataGridIncident" VerticalAlignment="Top" HorizontalAlignment="Left" ColumnWidth="150" VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="2" IsReadOnly="True">
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
+                        <Setter Property="Background" Value="White" />
+                        <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
+                        <Setter Property="FontWeight" Value="Bold"/>
+
+                    </Style>
+                </DataGrid.Resources>
+                
+                
+                
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Full Name"  Binding="{Binding CustomerName}"/>
-                    <DataGridTextColumn Header="Apartment Number"  Binding="{Binding IdApartment}"/>
+                    <DataGridTextColumn Width="1*" Header="Full Name"  Binding="{Binding CustomerName}"/>
+                    <DataGridTextColumn Header="Apartment No"  Binding="{Binding IdApartment}"/>
                     <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
-                    <DataGridTextColumn Header="Level of affection" Binding="{Binding Level}"/>
+                    <DataGridTextColumn Width="1*" Header="Level of affection" Binding="{Binding Level}"/>
                     <DataGridTemplateColumn Header="More">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

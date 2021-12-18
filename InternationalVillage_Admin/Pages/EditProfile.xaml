@@ -1,0 +1,235 @@
+﻿<Page x:Class="InternationalVillage_Admin.Pages.EditProfile"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:InternationalVillage_Admin.Pages"
+      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"             
+      Background="{DynamicResource MaterialDesignPaper}"
+      
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EditProfile">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                       Style="{StaticResource MaterialDesignBody1TextBlock}"
+                       HorizontalAlignment="Left"  FontSize="25" FontWeight="Bold" Margin="80,10,0,0">
+                       EDIT PROFILE
+        </TextBlock>
+        <Grid Grid.Row="1">
+            <StackPanel  Orientation="Horizontal">
+                <Ellipse Width="80" Height="80" Margin="80 0 0 0">
+                    <Ellipse.Fill>
+                        <ImageBrush  ImageSource="/Assets/Avatar/avatar.jpg"  Stretch="Fill"/>
+                    </Ellipse.Fill>
+
+                </Ellipse>
+
+                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" 
+                        HorizontalAlignment="Left"  
+                        Margin="-22,30,0,0"
+                        Command="{Binding SelectProfilePicCommand}"
+                        Width="30" Height="30"
+                        BorderBrush="#2f9cfa"
+                        Background="#2f9cfa"
+                        ToolTip="Click to select picture">
+                    <materialDesign:PackIcon Kind="Pencil" Width="15" Height="15" Foreground="White"/>
+                </Button>
+
+                <StackPanel Orientation="Vertical" Margin="40 30 0 0">
+                    <Label Content="QuynhTon" Foreground="#020F16" FontSize="16" FontWeight="SemiBold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
+                    <Label Content="ID: 19520244" Foreground="gray" FontSize="12" FontWeight="Regular" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="0, -5, 0, 0"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <TextBox 
+                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                    VerticalAlignment="Top"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap"
+                    MaxWidth="400"
+                    materialDesign:HintAssist.Hint="FullName"
+                    Width="240"
+                    x:Name="FullName"
+                    IsEnabled="True" Margin="80,0,0,0" HorizontalAlignment="Left"   >
+                    </TextBox>
+                    <TextBlock x:Name="FullNameError" Grid.Column="0" Text="Example: VictoryA " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="80,0,0,0" />
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBox 
+            Style="{StaticResource MaterialDesignFilledTextBox}"
+            VerticalAlignment="Top"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            MaxWidth="400"
+            materialDesign:HintAssist.Hint="Username"
+            Width="240"
+            x:Name="Username"
+            IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left"   >
+
+                    </TextBox>
+                    <TextBlock x:Name="UsernameError" Grid.Column="0" Text="Example: VictoryA " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <TextBox 
+                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                    VerticalAlignment="Top"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap"
+                    MaxWidth="400"
+                    materialDesign:HintAssist.Hint="ID Number"
+                    Width="240"
+                    x:Name="ID"
+                    IsEnabled="True" Margin="80,0,0,0" HorizontalAlignment="Left"   >
+                    </TextBox>
+                    <TextBlock x:Name="IDError" Grid.Column="0" Text="Example: 123456789 " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="80,0,0,0" />
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBox 
+            Style="{StaticResource MaterialDesignFilledTextBox}"
+            VerticalAlignment="Top"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            MaxWidth="400"
+            materialDesign:HintAssist.Hint="VISA"
+            Width="240"
+            x:Name="VISA"
+            IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left"   >
+
+                    </TextBox>
+                    <TextBlock x:Name="VISAError" Grid.Column="0" Text="Example: ABC12345 " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <TextBox 
+                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                    VerticalAlignment="Top"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap"
+                    MaxWidth="400"
+                    materialDesign:HintAssist.Hint="Phone No"
+                    Width="240"
+                    x:Name="PhoneNumber"
+                    IsEnabled="True" Margin="80,0,0,0" HorizontalAlignment="Left"   >
+                    </TextBox>
+                    <TextBlock x:Name="PhoneNo" Grid.Column="0" Text="Example: 123456789 " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="80,0,0,0" />
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBox 
+                        Style="{StaticResource MaterialDesignFilledTextBox}"
+                        VerticalAlignment="Top"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        MaxWidth="400"
+                        materialDesign:HintAssist.Hint="Location"
+                        Width="240"
+                        x:Name="Email"
+                        IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left"   >
+
+                    </TextBox>
+                    <TextBlock x:Name="LocationError" Grid.Column="0" Text="Example: ABC12345 " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="5">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <TextBox 
+                        Style="{StaticResource MaterialDesignFilledTextBox}"
+                        VerticalAlignment="Top"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        MaxWidth="400"
+                        materialDesign:HintAssist.Hint="Current Password"
+                        Width="150"
+                        x:Name="CurrentPass"
+                        IsEnabled="True" Margin="80,0,0,0" HorizontalAlignment="Left"   >
+
+                    </TextBox>
+                    <TextBlock x:Name="CurrentPassError" Grid.Column="0" Text="Example: ABC12345 " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="80,0,0,0" />
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBox 
+                        Style="{StaticResource MaterialDesignFilledTextBox}"
+                        VerticalAlignment="Top"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        MaxWidth="400"
+                        materialDesign:HintAssist.Hint="New Password"
+                        Width="150"
+                        x:Name="NewPass"
+                        IsEnabled="True" Margin="40,0,0,0" HorizontalAlignment="Left"   >
+
+                    </TextBox>
+                    <TextBlock x:Name="NewPassError" Grid.Column="0" Text="Example: ABC12345 " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="40,0,0,0" />
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBox 
+                        Style="{StaticResource MaterialDesignFilledTextBox}"
+                        VerticalAlignment="Top"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        MaxWidth="400"
+                        materialDesign:HintAssist.Hint="Confirm Password"
+                        Width="150"
+                        x:Name="ConfirmPass"
+                        IsEnabled="True" Margin="40,0,0,0" HorizontalAlignment="Left"   >
+
+                    </TextBox>
+                    <TextBlock x:Name="ConfirmPassError" Grid.Column="0" Text="Example: ABC12345 " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="40,0,0,0" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="6">
+            <Button 
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
+                    materialDesign:ButtonAssist.CornerRadius="25"
+                    BorderBrush="#2f9cfa"
+                    Background="#2f9cfa"
+                    Width="200"
+                    Height="45"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="240,10,0,0" >
+                SAVE CHANGES
+            </Button>
+        </Grid>
+
+    </Grid>
+</Page>

@@ -43,11 +43,11 @@ namespace InternationalVillage_Admin.ViewModel
 
         public HandleRequestViewModel()
         {
-           // LoadTable = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
-           // {
-           //    List<ApartmentRequest> detailBookings =ApartmentRequestStore.Instance.GetBookingList();
-           //     p.ItemsSource = detailBookings;
-           // });
+            LoadTable = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
+            {
+                List<ApartmentRequest> detailBookings = ApartmentRequestStore.Instance.GetBookingList();
+                p.ItemsSource = detailBookings;
+            });
 
             SelectedTable = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
             {

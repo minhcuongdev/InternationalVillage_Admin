@@ -34,6 +34,7 @@
     <Grid Background="white">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
@@ -60,7 +61,9 @@
             </TextBlock>
         </Grid>
 
-        <Grid Grid.Row="1" Margin="0,10,0,0">
+        <TextBlock Grid.Row="1" Text="Booking Form" FontSize="30" FontWeight="Bold" VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+
+        <Grid Grid.Row="2" Margin="0,10,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -74,17 +77,19 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
-                    <TextBlock Text="Find information customer" Margin="10,0,0,0"></TextBlock>
+                    <TextBlock Text="Find customer information" Margin="35,0,0,0" Foreground="gray" FontSize="13"></TextBlock>
                 </Grid>
+
                 
+
                 <Grid Grid.Row="1" Margin="0,0,0,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="7*"></ColumnDefinition>
-                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="8*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
-                        <TextBox x:Name="info" BorderBrush="Black" Margin="10,10,10,10" BorderThickness="1">
+                        <TextBox x:Name="info" BorderBrush="Black" Margin="35,10,10,10" BorderThickness="1">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding TextChange}" CommandParameter="{Binding ElementName=info}"/>
@@ -94,12 +99,29 @@
                     </Grid>
 
                     <Grid Grid.Column="1">
-                        <Button Command="{Binding FindCustomer}" CommandParameter="{Binding ElementName=DataGridCustomer}" >Find</Button>
+                        <Button Background="#2f9cfa" BorderBrush="#2f9cfa" Opacity="0.8" Grid.Column="2"  
+                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" 
+                        HorizontalAlignment="Left"  
+                        Margin="0,5,0,0"
+                        Command="{Binding FindCustomer}" CommandParameter="{Binding ElementName=DataGridCustomer}">
+                            <materialDesign:PackIcon Kind="Search" Width="20" Height="20" Foreground="White"/>
+
+                        </Button>
+
                     </Grid>
                 </Grid>
 
                 <Grid Grid.Row="2">
-                    <DataGrid x:Name="DataGridCustomer" Margin="10,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Height="auto" IsReadOnly="True" AutoGenerateColumns="False">
+                    <DataGrid x:Name="DataGridCustomer" Margin="35,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Height="auto" IsReadOnly="True" AutoGenerateColumns="False">
+                        <DataGrid.Resources>
+                            <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
+                                <Setter Property="Background" Value="White" />
+                                <Setter Property="Foreground" Value="Black" />
+                                <Setter Property="FontWeight" Value="Bold"/>
+
+                            </Style>
+                        </DataGrid.Resources>
+
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="1*" Header="Full Name" Binding="{Binding FullName}"/>
                             <DataGridTextColumn Width="1*" Header="Identification" Binding="{Binding Identification}" />
@@ -126,18 +148,17 @@
 
             <Grid Grid.Column="1" Margin="0,30,0,0" VerticalAlignment="Stretch">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
                     <RowDefinition Height="80"></RowDefinition>
                     <RowDefinition Height="80"></RowDefinition>
                     <RowDefinition Height="80"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Text="Booking Form" FontSize="30" FontWeight="Bold" VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                <TextBlock Grid.Row="1" Text="Please enter this information to complete booking proceduce" FontSize="12" Foreground="gray" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                
+                <TextBlock Grid.Row="0" Text="Please enter this information to complete booking proceduce" FontSize="13" Foreground="gray" VerticalAlignment="Top" Margin="35,0,0,0"/>
 
-                <TextBox Grid.Row="2"
+                <TextBox Grid.Row="1"
                     Style="{StaticResource MaterialDesignFilledTextBox}"
                     VerticalAlignment="Top"
                     AcceptsReturn="True"
@@ -159,7 +180,7 @@
                 </TextBox>
                 <TextBlock x:Name="FullNameError" Grid.Row="2"  FontSize="10" Visibility="Visible"  Margin="35,50,0,0" />
 
-                <Grid Grid.Row="3">
+                <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -210,7 +231,7 @@
                     <TextBlock x:Name="VisaError" Grid.Column="1"  FontSize="10"  Visibility="Visible"  Margin="35,50,0,0"  />
                 </Grid>
 
-                <Grid Grid.Row="4">
+                <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -262,12 +283,8 @@
 
 
 
-                <Grid Grid.Row="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="1"
+                <Grid Grid.Row="4">
+                    <Button 
                     Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
                     materialDesign:ButtonAssist.CornerRadius="25"
                     BorderBrush="#2f9cfa"
@@ -276,7 +293,7 @@
                     Height="40"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left"
-                    Margin="30,0,0,0" x:Name="Next" Command="{Binding Next}" CommandParameter="{Binding ElementName=BookingFormPage}">
+                    Margin="150,0,0,0" x:Name="Next" Command="{Binding Next}" CommandParameter="{Binding ElementName=BookingFormPage}">
                        <!-- <Hyperlink NavigateUri="BookApartmentService.xaml">NEXT</Hyperlink> -->
                       Next
                     </Button>

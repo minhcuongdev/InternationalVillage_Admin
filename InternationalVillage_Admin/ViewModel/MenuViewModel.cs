@@ -15,7 +15,9 @@ namespace InternationalVillage_Admin.ViewModel
     {
         public ICommand OpenHomePage { get; set; }
         public ICommand OpenActivityReceptionistPage { get; set; }
-        public ICommand OpenSettingPage { get; set; }
+        public ICommand OpenChatPage { get; set; }
+
+        public ICommand OpenProfilePage { get; set; }
 
         public ICommand Signout { get; set; }
 
@@ -47,9 +49,14 @@ namespace InternationalVillage_Admin.ViewModel
                 
             });
             
-            OpenSettingPage = new RelayCommand<Frame>((p) => { return true; }, (p) =>
+            OpenChatPage = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
-                p.Navigate(new System.Uri("Pages/SettingPage.xaml", UriKind.RelativeOrAbsolute));
+                p.Navigate(new System.Uri("Pages/ChatPage.xaml", UriKind.RelativeOrAbsolute));
+            });
+
+            OpenProfilePage = new RelayCommand<Frame>((p) => { return true; }, (p) =>
+            {
+                p.Navigate(new System.Uri("Pages/EditProfile.xaml", UriKind.RelativeOrAbsolute));
             });
 
             Signout = new RelayCommand<Window>((p) => { return true; }, (p) =>

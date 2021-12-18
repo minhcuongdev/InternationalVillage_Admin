@@ -3,8 +3,17 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:InternationalVillage_Admin.Pages" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:local="clr-namespace:InternationalVillage_Admin.Pages" 
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
+      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      FontFamily="{DynamicResource MaterialDesignFont}"
       
       DataContext="{StaticResource ServiceRequestPageVM}"
       
@@ -65,14 +74,16 @@
                         </Style.Triggers>
                     </Style>
                 </Grid.Resources>
-                <Button Background="white" Width="100" FontSize="11" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
+                    materialDesign:ButtonAssist.CornerRadius="20" Background="white" Width="100" FontSize="11" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
 
                     <Hyperlink NavigateUri="HandleRequest.xaml">Apartment</Hyperlink>
                 </Button>
             </Grid>
 
             <Grid Grid.Column="1" Margin="0">
-                <Button Content="Service" Foreground="#2f9cfa" Background="white" Width="100" FontSize="11" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
+                    materialDesign:ButtonAssist.CornerRadius="20" Content="Service" Foreground="#2f9cfa" Background="white" Width="100" FontSize="11" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </Grid>
 
             <Grid Grid.Column="2" Margin="0">
@@ -87,7 +98,8 @@
                         </Style.Triggers>
                     </Style>
                 </Grid.Resources>
-                <Button Background="white" Width="100" FontSize="11" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
+                    materialDesign:ButtonAssist.CornerRadius="20" Background="white" Width="100" FontSize="11" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Hyperlink NavigateUri="IncidentRequest.xaml">Incident</Hyperlink>
                 </Button>
             </Grid>
@@ -105,13 +117,22 @@
 
             <!--Start DataGrid-->
             <DataGrid x:Name="DataGridService" AutoGenerateColumns="False" AlternatingRowBackground="AliceBlue" Grid.Row="1" Margin="40,0,0,0" ColumnWidth="140"  VerticalAlignment="Top" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" Height="auto" IsReadOnly="True" >
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
+                        <Setter Property="Background" Value="White" />
+                        <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
+                        <Setter Property="FontWeight" Value="Bold"/>
+
+                    </Style>
+                </DataGrid.Resources>
+                
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Full Name" Binding="{Binding CustomerName}" />
+                    <DataGridTextColumn Width="1*" Header="Full Name" Binding="{Binding CustomerName}" />
                     <DataGridTextColumn Header="Type" Binding="{Binding ServiceName}" />
                     <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
                     <DataGridTextColumn Header="People" Binding="{Binding NumberPeople}" />
-                    <DataGridTextColumn Header="Check-in" Binding="{Binding CheckIn}" />
-                    <DataGridTextColumn Header="Check-out" Binding="{Binding CheckOut}" />
+                    <DataGridTextColumn Width="1*" Header="Check-in" Binding="{Binding CheckIn}" />
+                    <DataGridTextColumn Width="1*" Header="Check-out" Binding="{Binding CheckOut}" />
                     <DataGridTextColumn Header="Apartment" Binding="{Binding IdApartment}" />
                 </DataGrid.Columns>
                 <i:Interaction.Triggers>
@@ -126,17 +147,19 @@
 
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
+                    
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Grid Grid.Column="1">
-                    <Button Width="150" Background="Red" HorizontalAlignment="Right">Reject</Button>
+                <Grid Grid.Column="0">
+                    <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
+                    materialDesign:ButtonAssist.CornerRadius="20" Width="150" FontWeight="Bold" Background="Red" BorderBrush="Transparent" HorizontalAlignment="Right">Reject</Button>
                 </Grid>
 
-                <Grid Grid.Column="2">
-                    <Button Width="150" Command="{Binding Approved}" CommandParameter="{Binding ElementName=DataGridService}">Approved</Button>
+                <Grid Grid.Column="1">
+                    <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
+                    materialDesign:ButtonAssist.CornerRadius="20" Width="150" HorizontalAlignment="Left" Margin="10,0,0,0" Command="{Binding Approved}" CommandParameter="{Binding ElementName=DataGridService}">Approved</Button>
                 </Grid>
             </Grid>
 
