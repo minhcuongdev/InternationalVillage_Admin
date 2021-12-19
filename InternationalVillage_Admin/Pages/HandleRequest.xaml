@@ -25,7 +25,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HandleRequest">
 
-    <Grid Background="white" Margin="0,0,-238,-0.4">
+    <Grid Background="white" Margin="0,0,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="70"/>
@@ -124,7 +124,7 @@
             <!--End DataGrid-->
 
             <!--Start DataGrid-->
-            <DataGrid x:Name="DataGridApartment" Grid.Row="1" ColumnWidth="140"  Margin="40,0,40,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" Height="auto" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid x:Name="DataGridApartment" Grid.Row="1" ColumnWidth="140"  Margin="40,0,40,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Height="auto" IsReadOnly="True" AutoGenerateColumns="False">
                 <DataGrid.Resources>
                     <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
                         <Setter Property="Background" Value="White" />
@@ -135,7 +135,7 @@
                 </DataGrid.Resources>
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn  Header="ID" Binding="{Binding ID}" />
+                    <DataGridTextColumn Width="50" Header="ID" Binding="{Binding ID}" />
                     <DataGridTextColumn Width="1*" Header="Full Name" Binding="{Binding Fullname}"/>
                     <DataGridTextColumn Header="Type " Binding="{Binding Type}" />
                     <DataGridTextColumn Width="1*" Header="Check-in" Binding="{Binding CheckIn}" />

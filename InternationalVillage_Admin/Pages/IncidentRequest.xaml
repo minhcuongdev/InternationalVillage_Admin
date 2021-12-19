@@ -108,10 +108,6 @@
         <Rectangle Grid.Row="3" Margin="40,0,40,0" Height="0.8" VerticalAlignment="Top" Fill="#C8C8C8"/>
 
         <Grid Grid.Row="4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="53*"/>
-                <ColumnDefinition Width="147*"/>
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -119,7 +115,7 @@
             <TextBlock Grid.Row="0" Text="Incident requests"  HorizontalAlignment="Left"  Foreground="#2f9cfa" FontSize="19"  FontWeight="Bold" Margin="40,35,0,34" Padding="0,0,0,5" VerticalAlignment="Center"/>
 
             <!--Start DataGrid-->
-            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Margin="40,0,0,0" Name="DataGridIncident" VerticalAlignment="Top" HorizontalAlignment="Left" ColumnWidth="150" VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="2" IsReadOnly="True">
+            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Margin="40,0,40,0" Name="DataGridIncident" VerticalAlignment="Top" HorizontalAlignment="Left" ColumnWidth="150" VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="2" IsReadOnly="True">
                 <DataGrid.Resources>
                     <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
                         <Setter Property="Background" Value="White" />

@@ -116,7 +116,7 @@
             <TextBlock Grid.Row="0" Text="Service requests"  HorizontalAlignment="Left"  Foreground="#2f9cfa" FontSize="19"  FontWeight="Bold" Margin="40,35,0,34" Padding="0,0,0,5" VerticalAlignment="Center"/>
 
             <!--Start DataGrid-->
-            <DataGrid x:Name="DataGridService" AutoGenerateColumns="False" AlternatingRowBackground="AliceBlue" Grid.Row="1" Margin="40,0,0,0" ColumnWidth="140"  VerticalAlignment="Top" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" Height="auto" IsReadOnly="True" >
+            <DataGrid x:Name="DataGridService" AutoGenerateColumns="False" AlternatingRowBackground="AliceBlue" Grid.Row="1" Margin="40,0,40,0" ColumnWidth="140"  VerticalAlignment="Top" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" Height="auto" IsReadOnly="True" >
                 <DataGrid.Resources>
                     <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
                         <Setter Property="Background" Value="White" />
@@ -129,11 +129,11 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="1*" Header="Full Name" Binding="{Binding CustomerName}" />
                     <DataGridTextColumn Header="Type" Binding="{Binding ServiceName}" />
-                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
-                    <DataGridTextColumn Header="People" Binding="{Binding NumberPeople}" />
+                    <DataGridTextColumn Width="100" Header="Quantity" Binding="{Binding Quantity}" />
+                    <DataGridTextColumn Width="100" Header="People" Binding="{Binding NumberPeople}" />
                     <DataGridTextColumn Width="1*" Header="Check-in" Binding="{Binding CheckIn}" />
                     <DataGridTextColumn Width="1*" Header="Check-out" Binding="{Binding CheckOut}" />
-                    <DataGridTextColumn Header="Apartment" Binding="{Binding IdApartment}" />
+                    <DataGridTextColumn Width="100" Header="Apartment" Binding="{Binding IdApartment}" />
                 </DataGrid.Columns>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
