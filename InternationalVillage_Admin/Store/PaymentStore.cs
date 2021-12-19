@@ -23,6 +23,8 @@ namespace InternationalVillage_Admin.Store
         string checkin;
         string checkout;
         string totalMoney;
+        string paidMoney;
+        string change;
         string status;
         string paydDate;
         List<DetailBooking> listDetailBookings;
@@ -37,6 +39,8 @@ namespace InternationalVillage_Admin.Store
         public string Status { get => status; set => status = value; }
         internal List<DetailBooking> ListDetailBookings { get => listDetailBookings; set => listDetailBookings = value; }
         public string PaydDate { get => paydDate; set => paydDate = value; }
+        public string PaidMoney { get => paidMoney; set => paidMoney = value; }
+        public string Change { get => change; set => change = value; }
 
         public bool CreateBill(string idCustoemr,DateTime CheckIn,DateTime CheckOut)
         {
@@ -116,6 +120,10 @@ namespace InternationalVillage_Admin.Store
                 checkin = item["CheckInDate"].ToString();
                 checkout = item["CheckOutDate"].ToString();
                 totalMoney = item["TotalMoney"].ToString();
+                if (item["Paid"] == null) paidMoney = "";
+                else paidMoney = item["Paid"].ToString();
+                if (item["Changes"] == null) change = "";
+                else change = item["Changes"].ToString();
                 status = item["Status"].ToString();
                 if (item["PayDate"] == null) paydDate = "";
                 else paydDate = item["PayDate"].ToString();
