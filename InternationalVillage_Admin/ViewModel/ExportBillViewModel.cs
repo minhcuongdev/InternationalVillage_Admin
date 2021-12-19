@@ -14,7 +14,7 @@ using System.Windows;
 
 namespace InternationalVillage_Admin.ViewModel
 {
-    class PaymentDetailViewModel : BaseViewModel
+    class ExportBillViewModel : BaseViewModel
     {
         public ICommand ShowBank { get; set; }
         public ICommand ChooseBankChanged { get; set; }
@@ -52,7 +52,7 @@ namespace InternationalVillage_Admin.ViewModel
         int total = Int32.Parse(PaymentStore.Instance.TotalMoney);
         string TypePay = "Cash";
         bool isChooseBank = false;
-        public PaymentDetailViewModel()
+        public ExportBillViewModel()
         {
             ShowBank = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
             {
@@ -88,7 +88,7 @@ namespace InternationalVillage_Admin.ViewModel
             LoadIDBill = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 p.Text = PaymentStore.Instance.IdBill;
-                
+
 
             });
             LoadCustomer = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
@@ -118,7 +118,7 @@ namespace InternationalVillage_Admin.ViewModel
             LoadPayDate = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 if (PaymentStore.Instance.PaydDate.Equals("")) p.Text = "";
-                else  p.Text = DateTime.Parse(PaymentStore.Instance.PaydDate).ToString("dd/MM/yyyy H:mm:ss");
+                else p.Text = DateTime.Parse(PaymentStore.Instance.PaydDate).ToString("dd/MM/yyyy H:mm:ss");
 
             });
             LoadTotalMoney = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
@@ -128,21 +128,21 @@ namespace InternationalVillage_Admin.ViewModel
 
 
             });
-            LoadPaidMoney = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
+            LoadPaidMoney = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 p.Text = PaymentStore.Instance.PaidMoney;
-               
+
             });
             LoadChange = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
-                p.Text = PaymentStore.Instance.Change ;
-         
+                p.Text = PaymentStore.Instance.Change;
+
 
             });
             LoadStatus = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 if (!PaymentStore.Instance.Status.Equals("Not accepted yet"))
-                    p.Text = "Paid by "+PaymentStore.Instance.Status;
+                    p.Text = "Paid by " + PaymentStore.Instance.Status;
                 else p.Text = PaymentStore.Instance.Status;
 
             });
@@ -160,10 +160,10 @@ namespace InternationalVillage_Admin.ViewModel
             });
             HiddenCBBank = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
             {
-                    p.Visibility = Visibility.Hidden;
+                p.Visibility = Visibility.Hidden;
 
             });
-            HiddenPaidMoney = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
+            HiddenPaidMoney = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 if (!PaymentStore.Instance.Status.Equals("Not accepted yet"))
                     p.Visibility = Visibility.Hidden;
@@ -175,28 +175,7 @@ namespace InternationalVillage_Admin.ViewModel
                     p.Visibility = Visibility.Hidden;
 
             });
-            Payment = new RelayCommand<Button>((p) => { return (paid >= total) && (PaymentStore.Instance.Status.Equals("Not accepted yet")); }, (p) =>
-            {
-                string paydate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss");
-                
-                    string query = "Update Bill set Paid = "+paid+",Changes = "+change+", Status= '"+TypePay+"',PayDate = '"+paydate+"' , Id_Receptionist = '"+AccountStore.Instance.IdUser+"' where ID_Bill = '"+PaymentStore.Instance.IdBill+"'";
-                    int result = DataProvider.Instance.ExecuteNonQuery(query);
-                    if (result != 0)
-                    {
-                        MessageBox.Show("Payment success!");
-                        PaymentStore.Instance.Status = TypePay;
-                        PaymentStore.Instance.PaydDate = paydate;
-                        PaymentStore.Instance.PaidMoney  = paid+"";
-                        PaymentStore.Instance.Change = change+"";
-
-                }
-                    else
-                    {
-                        MessageBox.Show("Payment fail!");
-                    }
-                
-            });
-            PaidChanged = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
+            PaidChanged = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 if (!p.Text.Equals(""))
                 {
@@ -206,29 +185,10 @@ namespace InternationalVillage_Admin.ViewModel
                     }
                     catch (FormatException e)
                     {
-                        
+
                         MessageBox.Show("Paid money must be number!" + e.Message);
                     }
                 }
-            });
-            CheckPaidByCard = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
-            {
-                if (TypePay.Equals("Card"))
-                {
-                    if (isChooseBank)
-                    {
-                        paid = total;
-                        p.Text = paid.ToString();
-                    }
-                    p.IsReadOnly = true;
-                }
-                else
-                {
-                    paid = 0;
-                    p.Text = "";
-                    p.IsReadOnly = false;
-                }
-                
             });
             CheckChangeByCard = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
@@ -254,15 +214,25 @@ namespace InternationalVillage_Admin.ViewModel
                 else
                 {
                     p.Text = "Paid money must be greater than or equal to total money!";
-                    
+
                 }
             });
 
-            ExportBill = new RelayCommand<Button>((p) => { return !PaymentStore.Instance.Status.Equals("Not accepted yet"); }, (p) =>
+            ExportBill = new RelayCommand<Grid>((p) => { return true; }, (p) =>
             {
-                ExportBillWindow form = new ExportBillWindow();
-                form.Show();
-                
+                try
+                {
+                    PrintDialog printDialog = new PrintDialog();
+                    if (printDialog.ShowDialog() == true)
+                    {
+                        printDialog.PrintVisual(p, "Bill");
+                    }
+                }
+                finally
+                {
+
+                }
+
             });
 
         }

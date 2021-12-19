@@ -16,4 +16,5 @@
     <viewmodel:IncidentRequestViewModel x:Key="IncidentRequestPageVM"></viewmodel:IncidentRequestViewModel>
     <viewmodel:IncidentDetailViewModel x:Key="IncidentDetailVM"></viewmodel:IncidentDetailViewModel>
     <viewmodel:BookingPageViewModel x:Key="BookingPageVM"></viewmodel:BookingPageViewModel>
+    <viewmodel:ExportBillViewModel x:Key="ExportBillVM"></viewmodel:ExportBillViewModel>
 </ResourceDictionary>

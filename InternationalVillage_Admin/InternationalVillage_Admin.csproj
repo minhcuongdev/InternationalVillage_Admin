@@ -82,6 +82,9 @@
     <Compile Include="Component\NotificationUC.xaml.cs">
       <DependentUpon>NotificationUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExportBillWindow.xaml.cs">
+      <DependentUpon>ExportBillWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FakeData\ApartmentRequestData.cs" />
     <Compile Include="FakeData\ExchangeRateData.cs" />
     <Compile Include="MenuWindow.xaml.cs">
@@ -181,6 +184,7 @@
     <Compile Include="ViewModel\BookApartmentServicePageViewModel.cs" />
     <Compile Include="ViewModel\BookingPageViewModel.cs" />
     <Compile Include="ViewModel\ExchangeRatePageViewModel.cs" />
+    <Compile Include="ViewModel\ExportBillViewModel.cs" />
     <Compile Include="ViewModel\HandleRequestViewModel.cs" />
     <Compile Include="ViewModel\IncidentDetailViewModel.cs" />
     <Compile Include="ViewModel\IncidentRequestViewModel.cs" />
@@ -205,6 +209,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Component\NotificationUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExportBillWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
