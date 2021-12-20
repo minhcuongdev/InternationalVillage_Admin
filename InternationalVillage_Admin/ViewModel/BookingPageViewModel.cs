@@ -41,6 +41,8 @@ namespace InternationalVillage_Admin.ViewModel
         public ICommand CheckOutDateSetUp { get; set; }
         public ICommand CheckInDateSetUp { get; set; }
 
+        public ICommand newCustomer { get; set; }
+
         public ICommand Next { get; set; }
 
         //Validate data
@@ -76,6 +78,8 @@ namespace InternationalVillage_Admin.ViewModel
         public Customer cus = new Customer();
 
         string info = "";
+
+        bool isNewCustomer = false;
 
         public BookingPageViewModel()
         {
@@ -210,13 +214,23 @@ namespace InternationalVillage_Admin.ViewModel
                 }
             });
 
-
+            newCustomer = new RelayCommand<CheckBox>((p) => { return true; }, (p) =>
+            {
+                isNewCustomer = p.IsChecked.Value;
+            });
 
             Next = new RelayCommand<Page>((p) => { return isFullNameCorrect  && isCheckinDateCorrect && isCheckoutDateCorrect
                                                             && (isIdCorrect || isVisaCorrect);
             }, (p) =>
             {
-                BookingStore.Instance.IdCustomer = cus.IdCustomer;
+                if(isNewCustomer)
+                {
+                    BookingStore.Instance.InsertCustomer(Fullname, Id, Visa, "");
+                }
+                else
+                {
+                    BookingStore.Instance.IdCustomer = cus.IdCustomer;
+                }
                 p.NavigationService.Navigate(new Uri("Pages/BookApartmentService.xaml", UriKind.RelativeOrAbsolute));
             });
         }

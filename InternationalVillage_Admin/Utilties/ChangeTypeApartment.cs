@@ -13,6 +13,17 @@ namespace InternationalVillage_Admin.Utilties
 
         }
 
+        public string ChangeIdApartmentToType(string id)
+        {
+            if (id.Contains("2A"))
+                return "Normal";
+            if (id.Contains("3A"))
+                return "Luxury";
+            if (id.Contains("3B"))
+                return "Standard";
+            return "";
+        }
+
         public int ChangeTypeToPrice(string type)
         {
             switch (type)
