@@ -42,10 +42,10 @@ namespace InternationalVillage_Admin.Store
         public string PaidMoney { get => paidMoney; set => paidMoney = value; }
         public string Change { get => change; set => change = value; }
 
-        public bool CreateBill(string idCustoemr,DateTime CheckIn,DateTime CheckOut)
+        public bool CreateBill(string idCustomer,DateTime CheckIn,DateTime CheckOut)
         {
             IdBill = CreateIDBill();
-            string query = string.Format("insert into Bill (Id_Bill,Id_Customer,TotalMoney,CheckInDate,CheckOutDate,Status) values ('{0}','{1}',{2},'{3}','{4}','{5}')", IdBill, IdCustomer, 0, CheckIn.ToString("yyyy-MM-dd H:mm:ss"), CheckOut.ToString("yyyy-MM-dd H:mm:ss"),"Not accepted yet");
+            string query = string.Format("insert into Bill (Id_Bill,Id_Customer,TotalMoney,CheckInDate,CheckOutDate,Status) values ('{0}','{1}',{2},'{3}','{4}','{5}')", IdBill, idCustomer, 0, CheckIn.ToString("yyyy-MM-dd H:mm:ss"), CheckOut.ToString("yyyy-MM-dd H:mm:ss"),"Not accepted yet");
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
 

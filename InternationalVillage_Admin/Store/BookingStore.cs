@@ -35,5 +35,21 @@ namespace InternationalVillage_Admin.Store
 
             return list;
         }
+
+        public int InsertCustomer(string fullname, string iden, string visa, string avar)
+        {
+            IdCustomer = CreateIDCustomer();
+            string query = string.Format("insert into Customer values ('{0}','{1}','{2}','{3}','{4}');", IdCustomer, fullname, iden, visa, avar);
+            return DataProvider.Instance.ExecuteNonQuery(query);
+        }
+
+        public string CreateIDCustomer()
+        {
+            string query = string.Format("select * from Customer;");
+            DataTable dt = DataProvider.Instance.ExecuteQuery(query);
+            int count = dt.Rows.Count;
+
+            return "C_" + (count + 1).ToString();
+        }
     }
 }

@@ -107,12 +107,13 @@ namespace InternationalVillage_Admin.ViewModel
                     foreach (ApartmentUC uc in ApartmentStore.Instance.ApartmentSlectedList)
                     {
                         PaymentStore.Instance.InsertDetailApartmentBill(uc.ContentOfApartment.Text, idBill, change.ChangeTypeToPrice(ApartmentRequestStore.Instance.ApartmentRequest.Type), ApartmentRequestStore.Instance.ApartmentRequest.CheckIn, ApartmentRequestStore.Instance.ApartmentRequest.CheckOut);
-                        ApartmentStore.Instance.InsertBookingApartmentTable(uc.ContentOfApartment.Text, change.ChangeTypeToPrice(ApartmentRequestStore.Instance.ApartmentRequest.Type));
+                        ApartmentStore.Instance.InsertBookingApartmentTable(ApartmentRequestStore.Instance.ApartmentRequest.IdCustomer, uc.ContentOfApartment.Text, change.ChangeTypeToPrice(ApartmentRequestStore.Instance.ApartmentRequest.Type), ApartmentRequestStore.Instance.ApartmentRequest.CheckIn, ApartmentRequestStore.Instance.ApartmentRequest.CheckOut);
                     }
                     ApartmentRequestStore.Instance.UpdateState();
                     PaymentStore.Instance.UpdateToTal(idBill);
                 }
 
+                ApartmentStore.Instance.ApartmentSlectedList.Clear();
                 PaymentStore.Instance.isFinished = true;
                 p.Close();
             });

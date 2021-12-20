@@ -9,7 +9,13 @@ namespace InternationalVillage_Admin.Model
 {
     class ServiceRequest
     {
-        public ServiceRequest() { }
+        public ServiceRequest(string idService,int quantity,DateTime checkIn, DateTime checkOut) 
+        {
+            IdService = idService;
+            Quantity = quantity;
+            CheckIn = checkIn;
+            CheckOut = checkOut;
+        }
 
         public ServiceRequest(DataRow row)
         {

@@ -8,11 +8,11 @@ using System.Windows.Controls;
 
 namespace InternationalVillage_Admin.Utilities
 {
-    class Validate
+    public class Validate
     {
         private static Validate instance;
         internal static Validate Instance { get { if (instance == null) instance = new Validate(); return instance; } set => instance = value; }
-        Validate() { }
+        public Validate() { }
 
         public string TextChanged(TextBox p, int minimumLength = 0, int maximumLength = 50)
         {
@@ -191,7 +191,7 @@ namespace InternationalVillage_Admin.Utilities
         }
 
 
-        bool isNumber(string data)
+        public bool isNumber(string data)
         {
             bool isNumeric = true;
             foreach (char c in data)

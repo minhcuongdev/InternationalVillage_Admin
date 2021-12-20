@@ -20,6 +20,7 @@
       
       DataContext="{StaticResource BookApartmentServicePageVM}"
       
+      x:Name="BookingApartmentAndService"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="900"
       Title="BookApartmentService">
@@ -61,9 +62,9 @@
         
         <Grid Grid.Row="1" Margin="0,10,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="680"></ColumnDefinition>
-                <ColumnDefinition Width="4"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="5.75*"></ColumnDefinition>
+                <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                <ColumnDefinition Width="4*" ></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
             <Rectangle Grid.Column="1"  Width="2"  Fill="#C8C8C8"/>
@@ -109,13 +110,13 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" VerticalAlignment="Top" Text="Number of selected apartment:" FontSize="13" Foreground="#176ec6" FontWeight="Bold" Margin="0,25,0,0" />
                         <TextBlock x:Name="Number"  Grid.Column="1" VerticalAlignment="Top" Text="0" Foreground="#176ec6" FontSize="13" FontWeight="DemiBold"  HorizontalAlignment="Left" Margin="0,25,0,0">
-                            
+
                         </TextBlock>
                     </Grid>
 
                 </Grid>
                 <ScrollViewer Grid.Row="2" Margin="30,0" Height="auto"  HorizontalScrollBarVisibility="Visible"  ScrollViewer.VerticalScrollBarVisibility="Auto" >
-                    <WrapPanel x:Name="ApartmentPanel"   Width="620" HorizontalAlignment="Left">
+                    <WrapPanel x:Name="ApartmentPanel" Width="500" HorizontalAlignment="Stretch">
                         
                     </WrapPanel>
                 </ScrollViewer>
@@ -123,98 +124,210 @@
 
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="65"></RowDefinition>
-                    <RowDefinition Height="35" ></RowDefinition>
-                    <RowDefinition Height="35"></RowDefinition>
-                    <RowDefinition Height="35"></RowDefinition>
-                    <RowDefinition Height="35"></RowDefinition>
-                    <RowDefinition Height="35"></RowDefinition>
-                    <RowDefinition Height="35"></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="1.5*"></RowDefinition>
+                    <RowDefinition Height="6*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="Service" Foreground="#2f9cfa" HorizontalAlignment="Left"  FontSize="25"  FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Top"/>
-                <TextBlock Grid.Row="1" Text="Select/Skip." Foreground="gray" HorizontalAlignment="Left"  FontSize="13"  Margin="30,0,0,0" VerticalAlignment="Top"/>
+
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock Grid.Row="0" Text="Service" Foreground="#2f9cfa" HorizontalAlignment="Left"  FontSize="25"  FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Top"/>
+                    <TextBlock Grid.Row="1" Text="Select/Skip." Foreground="gray" HorizontalAlignment="Left"  FontSize="13"  Margin="30,0,0,0" VerticalAlignment="Top"/>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="1">
+                            <TextBlock Text="Usage Time" FontSize="13" Foreground="#176ec6" FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Column="2">
+                            <TextBlock Text="People" FontSize="13" Foreground="#176ec6" FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Pool" FontSize="14" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center" Height="20"/>
+                        <TextBox x:Name="UsageTime_Pool" Grid.Column="1" HorizontalAlignment="Stretch" Width="60" FontSize="14" VerticalAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding UsageTime_Pool}" CommandParameter="{Binding ElementName=UsageTime_Pool}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                        <TextBox x:Name="People_Pool" Grid.Column="2" HorizontalAlignment="Stretch" Width="60" FontSize="14" VerticalAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding People_Pool}" CommandParameter="{Binding ElementName=People_Pool}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Restaurant" FontSize="14" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="UsageTime_Restaurant" Grid.Column="1" HorizontalAlignment="Stretch" Width="60" FontSize="14" VerticalAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding UsageTime_Restaurant}" CommandParameter="{Binding ElementName=UsageTime_Restaurant}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                        <TextBox x:Name="People_Restaurant" Grid.Column="2" HorizontalAlignment="Stretch" Width="60" FontSize="14" VerticalAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding People_Restaurant}" CommandParameter="{Binding ElementName=People_Restaurant}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Gym" FontSize="14" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="UsageTime_Gym" Grid.Column="1" HorizontalAlignment="Center"  Width="60" FontSize="14" VerticalAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding UsageTime_Gym}" CommandParameter="{Binding ElementName=UsageTime_Gym}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                        <TextBox x:Name="People_Gym" Grid.Column="2" HorizontalAlignment="Center"  Width="60" FontSize="14" VerticalAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding People_Gym}" CommandParameter="{Binding ElementName=People_Gym}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Tennis" FontSize="14" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="UsageTime_Tennis" Grid.Column="1" HorizontalAlignment="Stretch" Width="60" FontSize="14" VerticalAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding UsageTime_Tennis}" CommandParameter="{Binding ElementName=UsageTime_Tennis}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                        <TextBox x:Name="People_Tennis" Grid.Column="2" HorizontalAlignment="Stretch"  Width="60" FontSize="14" VerticalAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding People_Tennis}" CommandParameter="{Binding ElementName=People_Tennis}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Golf" FontSize="14" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="UsageTime_Golf" Grid.Column="1" HorizontalAlignment="Stretch"  Width="60" FontSize="14" VerticalAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding UsageTime_Golf}" CommandParameter="{Binding ElementName=UsageTime_Golf}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                        <TextBox x:Name="People_Golf" Grid.Column="2" HorizontalAlignment="Stretch"  Width="60" FontSize="14" VerticalAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding People_Golf}" CommandParameter="{Binding ElementName=People_Golf}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Bar" FontSize="14" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="UsageTime_Bar" Grid.Column="1" HorizontalAlignment="Stretch" Width="60" FontSize="14" VerticalAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding UsageTime_Bar}" CommandParameter="{Binding ElementName=UsageTime_Bar}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                        <TextBox x:Name="People_Bar" Grid.Column="2" HorizontalAlignment="Stretch" Width="60" FontSize="14" VerticalAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding People_Bar}" CommandParameter="{Binding ElementName=People_Bar}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </Grid>
+                    
+                </Grid>
 
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="110"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Column="0" Text="Pool" FontSize="13" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
-                    <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="20" Width="50" FontSize="10" VerticalAlignment="Top"/>
+                    <Button Grid.Column="1"
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
+                        materialDesign:ButtonAssist.CornerRadius="25"
+                        BorderBrush="#2f9cfa"
+                        Background="#2f9cfa"
+                        Width="150"
+                        Height="40"
+                        Content="SUBMIT"
+                        FontWeight="Bold"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="0,0,0,0"
+                        Command="{Binding Submit}" CommandParameter="{Binding ElementName=BookingApartmentAndService}">
+                    </Button>
 
                 </Grid>
-
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="110"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Grid.Column="0" Text="Restaurant" FontSize="13" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
-                    <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="20" Width="50" FontSize="10" VerticalAlignment="Top"/>
-
-                </Grid>
-
-                <Grid Grid.Row="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="110"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Grid.Column="0" Text="Gym" FontSize="13" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
-                    <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="20" Width="50" FontSize="10" VerticalAlignment="Top"/>
-
-                </Grid>
-
-                <Grid Grid.Row="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="110"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Grid.Column="0" Text="Tennis" FontSize="13" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
-                    <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="20" Width="50" FontSize="10" VerticalAlignment="Top"/>
-
-                </Grid>
-
-                <Grid Grid.Row="6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="110"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Grid.Column="0" Text="Golf" FontSize="13" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
-                    <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="20" Width="50" FontSize="10" VerticalAlignment="Top"/>
-
-                </Grid>
-
-                <Grid Grid.Row="7">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="110"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Grid.Column="0" Text="Bar" FontSize="13" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
-                    <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="20" Width="50" FontSize="10" VerticalAlignment="Top"/>
-
-                </Grid>
-                <Button Grid.Row="8"
-                    Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
-                    materialDesign:ButtonAssist.CornerRadius="25"
-                    BorderBrush="#2f9cfa"
-                    Background="#2f9cfa"
-                    Width="150"
-                    Height="40"
-                    Content="SUBMIT"
-                    FontWeight="Bold"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Left"
-                    Margin="30,30,0,0"></Button>
-                    
-
             </Grid>
             
         </Grid>

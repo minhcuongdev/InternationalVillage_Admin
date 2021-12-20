@@ -36,7 +36,7 @@
             <TextBlock Grid.Row="1" Text="Click each of cards below to complete your business tasks." Foreground="gray" HorizontalAlignment="Left"  FontSize="14"  FontWeight="Normal" Margin="40,0,0,0" Padding="0,0,0,5" VerticalAlignment="Top"/>
         </Grid>
 
-        <Grid Grid.Row="1" Height="130" HorizontalAlignment="Center" Margin="40,0,0,0">
+        <Grid Grid.Row="1" Height="130" HorizontalAlignment="Center" Margin="0,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -117,7 +117,7 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="2" Height="130" HorizontalAlignment="Center" Margin="40,0,0,0">
+        <Grid Grid.Row="2" Height="130" HorizontalAlignment="Center" Margin="0,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
