@@ -12,7 +12,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
-        TextElement.FontSize="13"
+        TextElement.FontSize="14"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         FontFamily="{DynamicResource MaterialDesignFont}"
@@ -63,6 +63,7 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
                     
                 </Grid.RowDefinitions>
 
@@ -82,17 +83,23 @@
                 </StackPanel>
 
                 <materialDesign:Card Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="100">
-                    <Image  Margin="0,-40,20,0"  Stretch="Fill" Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Image/sunflower.png"     />
+                    <Image  Margin="0,-45,20,0"  Stretch="Fill" Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Image/sunflower.png"     />
                 </materialDesign:Card>
 
                 <TextBlock Grid.Row="2"
                            Style="{StaticResource MaterialDesignBody1TextBlock}"
-                           HorizontalAlignment="Center" Margin="0,-10,0,0" FontSize="20" FontWeight="Bold"
+                           HorizontalAlignment="Center" Margin="0,-10,0,0" FontSize="24" FontWeight="Bold" TextWrapping="WrapWithOverflow"
                            >
-                 Sunflower Internation Village ST
+                 Sunflower Internation Village 
+                </TextBlock>
+                <TextBlock Grid.Row="3"
+                           Style="{StaticResource MaterialDesignBody1TextBlock}"
+                           HorizontalAlignment="Center" Margin="0,-10,0,0" FontSize="24" FontWeight="Bold" TextWrapping="WrapWithOverflow"
+                           >
+                 Management System
                 </TextBlock>
 
-                <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Left" Margin="90,20,0,0">
+                <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Left" Margin="90,20,0,0">
                     <materialDesign:PackIcon 
                          Kind="AccountCircleOutline" 
                          VerticalAlignment="Center" Margin="0,5,10,0">
@@ -111,7 +118,7 @@
                     </TextBox>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="90,20,0,0" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal" Grid.Row="5" Margin="90,20,0,0" HorizontalAlignment="Left">
                     <materialDesign:PackIcon Kind="Key"
                                              Margin="0,5,10,0"
                                              Foreground="{Binding ElementName=PasswordBox, Path=BorderBrush}" VerticalAlignment="Center">
@@ -132,19 +139,17 @@
                     </PasswordBox>
                 </StackPanel>
 
-                <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Left" Margin="90,20,0,0">
+                <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Left" Margin="90,20,0,0">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
+
+                            <ColumnDefinition Width="230"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <Grid Grid.Column="0" HorizontalAlignment="Left">
-                            <CheckBox Content="Remember Me" Margin="-1,0,0,0" Padding="2,2,0,0"></CheckBox>
-                        </Grid>
+
 
                         <Grid Grid.Column="1" HorizontalAlignment="Right">
-                            <Label Style="{StaticResource MaterialDesignLabel}" Margin="0,0,-10.667,0.333" FontSize="13" FontWeight="Bold"
+                            <Label Style="{StaticResource MaterialDesignLabel}" Margin="0,0,-10.667,0.333" FontWeight="Bold"
                                        Content="? Forgot password" HorizontalAlignment="Right" Padding="0,4,7,4" FlowDirection="RightToLeft" Width="140"
                                        Foreground="#176ec6"
                                        />
@@ -154,16 +159,16 @@
 
                 </StackPanel>
 
-                <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,0">
+                <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="0,20,0,0">
                     <Button Style="{StaticResource MaterialDesignRaisedButton}"
-                            materialDesign:ButtonAssist.CornerRadius="20"
-                            Height="35"
-                            Width="250"
-                            Margin="87,0,0,0"
+                            materialDesign:ButtonAssist.CornerRadius="25"
+                            Height="42"
+                            Width="260"
+                            Margin="70,0,0,0"
                             Content="Sign in"
                             IsEnabled="True"
                             Command="{Binding SignIn}"
-                            CommandParameter="{Binding ElementName=LoginWD}" HorizontalAlignment="Left"
+                            CommandParameter="{Binding ElementName=LoginWD}" 
                             >
                     </Button>
                 </StackPanel>

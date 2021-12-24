@@ -6,6 +6,13 @@
       xmlns:local="clr-namespace:InternationalVillage_Admin.Pages"
       
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="15"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      FontFamily="{DynamicResource MaterialDesignFont}"
       
       DataContext="{StaticResource ApartmentRequestDetailVM}"
       
@@ -16,8 +23,8 @@
 
     <Grid Background="white">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.Resources>
@@ -38,7 +45,7 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Resources>
-            <TextBlock x:Name="Back" Foreground="Black" Margin="10,10,0,0" FontWeight="Bold">
+            <TextBlock x:Name="Back" Foreground="Black" Margin="20,0,0,0" VerticalAlignment="Center" FontWeight="Bold">
                 <Hyperlink NavigateUri="HandleRequest.xaml">BACK</Hyperlink>
             </TextBlock>
         </Grid>
@@ -70,15 +77,15 @@
                     <RowDefinition></RowDefinition>
 
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="Booking Details" FontSize="40" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                <TextBlock Grid.Row="0" Text="Booking Details" FontSize="40" Foreground="#1261a0" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
 
                 <Grid Grid.Row="1"  >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="200"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="ID" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock x:Name="ID" Grid.Column="1" Text="A19520244" FontSize="13" Foreground="Black">
+                    <TextBlock Grid.Column="0" Text="ID"  Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
+                    <TextBlock x:Name="ID" Grid.Column="1" Text="A19520244"  Foreground="Black">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Loaded">
                                 <i:InvokeCommandAction Command="{Binding LoadID}" CommandParameter="{Binding ElementName=ID}"/>
@@ -94,8 +101,8 @@
                         <ColumnDefinition Width="23*"></ColumnDefinition>
                         <ColumnDefinition Width="77*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Customer" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,-0.2" Grid.ColumnSpan="2"/>
-                    <TextBlock x:Name="Customer" Grid.Column="2" Text="Le Thanh Tam" FontSize="13" Foreground="Black" Margin="0,0,0,-0.2" Grid.ColumnSpan="2">
+                    <TextBlock Grid.Column="0" Text="Customer"  Foreground="Black" FontWeight="Bold" Margin="35,0,0,-0.2" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="Customer" Grid.Column="2" Text="Le Thanh Tam"  Foreground="Black" Margin="0,0,0,-0.2" Grid.ColumnSpan="2">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Loaded">
                                 <i:InvokeCommandAction Command="{Binding LoadCustomer}" CommandParameter="{Binding ElementName=Customer}"/>
@@ -109,8 +116,8 @@
                         <ColumnDefinition Width="200"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Booking Time" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock x:Name="BookingTime" Grid.Column="1" FontSize="13" Foreground="Black">
+                    <TextBlock Grid.Column="0" Text="Booking Time"  Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
+                    <TextBlock x:Name="BookingTime" Grid.Column="1"  Foreground="Black">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Loaded">
                                 <i:InvokeCommandAction Command="{Binding LoadBookingTime}" CommandParameter="{Binding ElementName=BookingTime}"/>
@@ -126,8 +133,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
 
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Check_in Date" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0" VerticalAlignment="Center"/>
-                    <TextBlock x:Name="CheckInDate" Grid.Column="1" Text="20/10/2021" FontSize="13" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0">
+                    <TextBlock Grid.Column="0" Text="Check_in Date"  Foreground="Black" FontWeight="Bold" Margin="35,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="CheckInDate" Grid.Column="1" Text="20/10/2021"  Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Loaded">
                                 <i:InvokeCommandAction Command="{Binding LoadCheckInDate}" CommandParameter="{Binding ElementName=CheckInDate}"/>
@@ -142,8 +149,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
 
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Check_out Date" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0" VerticalAlignment="Center"/>
-                    <TextBlock x:Name="CheckOutDate" Grid.Column="1" Text="23/10/2021" FontSize="13" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0">
+                    <TextBlock Grid.Column="0" Text="Check_out Date"  Foreground="Black" FontWeight="Bold" Margin="35,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="CheckOutDate" Grid.Column="1" Text="23/10/2021"  Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Loaded">
                                 <i:InvokeCommandAction Command="{Binding LoadCheckOutDate}" CommandParameter="{Binding ElementName=CheckOutDate}"/>
@@ -157,8 +164,8 @@
                         <ColumnDefinition Width="200"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" FontSize="13" Text="Type of Apartment" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock x:Name="Type" Grid.Column="1" FontSize="13" Text="Luxury" Foreground="Black">
+                    <TextBlock Grid.Column="0" Text="Type of Apartment" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
+                    <TextBlock x:Name="Type" Grid.Column="1" Text="Luxury" Foreground="Black">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Loaded">
                                 <i:InvokeCommandAction Command="{Binding LoadTypeOfApartment}" CommandParameter="{Binding ElementName=Type}"/>
@@ -174,8 +181,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
 
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" FontSize="13" Text="Quantity" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0" VerticalAlignment="Center"/>
-                    <TextBlock x:Name="Quantity" Grid.Column="1" FontSize="13" Text="2" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0">
+                    <TextBlock Grid.Column="0"  Text="Quantity" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="Quantity" Grid.Column="1"  Text="2" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Loaded">
                                 <i:InvokeCommandAction Command="{Binding LoadQuantity}" CommandParameter="{Binding ElementName=Quantity}"/>
@@ -192,8 +199,8 @@
                         <ColumnDefinition Width="200"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Status" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock x:Name="Status" Grid.Column="1" Text="Approved" FontSize="13" Foreground="Black"  Margin="0,0,0,0" HorizontalAlignment="Left">
+                    <TextBlock Grid.Column="0" Text="Status" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
+                    <TextBlock x:Name="Status" Grid.Column="1" Text="Approved"  Foreground="Black"  Margin="0,0,0,0" HorizontalAlignment="Left">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Loaded">
                                 <i:InvokeCommandAction Command="{Binding LoadStatus}" CommandParameter="{Binding ElementName=Status}"/>
@@ -211,8 +218,10 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0" Content="Reject" Background="White" Width="120" FontSize="15" FontWeight="Normal" Foreground="#2f9cfa" Margin="-10,0,0,0"/>
-                    <Button Grid.Column="1" Content="Accept" Width="120" FontSize="15" FontWeight="Normal" Margin="0" HorizontalAlignment="Left">
+                    <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
+                    materialDesign:ButtonAssist.CornerRadius="20" Grid.Column="0" Content="Reject" Background="#FF8247" Width="120" FontSize="15" FontWeight="DemiBold" Foreground="White" BorderBrush="#FF8247" Margin="-10,0,0,0"/>
+                    <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
+                    materialDesign:ButtonAssist.CornerRadius="20" Grid.Column="1" Background="#2f9cfa" Content="Accept" Width="120" FontSize="15" FontWeight="DemiBold" Margin="0" HorizontalAlignment="Left">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding ShowApartmentForm}" CommandParameter="{Binding ElementName=ApartmentDetail}"/>

@@ -37,6 +37,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=2.0.3.2, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.2.0.3\lib\net452\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -75,6 +81,9 @@
     </ApplicationDefinition>
     <Compile Include="ApartmentWindow.xaml.cs">
       <DependentUpon>ApartmentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePasswordWindow.xaml.cs">
+      <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Component\ApartmentUC.xaml.cs">
       <DependentUpon>ApartmentUC.xaml</DependentUpon>
@@ -156,6 +165,12 @@
     <Compile Include="Pages\ReceptionistPage.xaml.cs">
       <DependentUpon>ReceptionistPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ReportPage.xaml.cs">
+      <DependentUpon>ReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ReportPageAccountant.xaml.cs">
+      <DependentUpon>ReportPageAccountant.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RequestReportPage.xaml.cs">
       <DependentUpon>RequestReportPage.xaml</DependentUpon>
     </Compile>
@@ -183,6 +198,8 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\BookApartmentServicePageViewModel.cs" />
     <Compile Include="ViewModel\BookingPageViewModel.cs" />
+    <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModel\EditProfileViewModel.cs" />
     <Compile Include="ViewModel\ExchangeRatePageViewModel.cs" />
     <Compile Include="ViewModel\ExportBillViewModel.cs" />
     <Compile Include="ViewModel\HandleRequestViewModel.cs" />
@@ -197,6 +214,10 @@
     <Compile Include="ViewModel\PaymentDetailViewModel.cs" />
     <Compile Include="ViewModel\ServiceRequestViewModel.cs" />
     <Page Include="ApartmentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangePasswordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -307,6 +328,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ReceptionistPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ReportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ReportPageAccountant.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -471,6 +500,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\chat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\money.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\cash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.2.1\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.2.1\build\MaterialDesignThemes.targets')" />

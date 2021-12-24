@@ -19,7 +19,7 @@
              
              x:Name="apartmentUC"
              mc:Ignorable="d" 
-             d:DesignWidth="100" Height="80" Width="100" Margin="5,5,10,10">
+             d:DesignWidth="100" Height="100" Width="150" Margin="5,5,10,10">
     
     <Grid >
         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2">

@@ -11,7 +11,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       TextElement.FontWeight="Regular"
-      TextElement.FontSize="13"
+      TextElement.FontSize="15"
       TextOptions.TextFormattingMode="Ideal"
       TextOptions.TextRenderingMode="Auto"
       FontFamily="{DynamicResource MaterialDesignFont}"
@@ -22,15 +22,14 @@
 
     <Grid Background="White" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition Height="60"></RowDefinition>
-            <RowDefinition Height="65"></RowDefinition>
-            <RowDefinition></RowDefinition>
-
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+           
         </Grid.RowDefinitions>
+        
+        
+        
+        
         <Grid Grid.Row="0">
             <Grid.Resources>
                 <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
@@ -49,100 +48,147 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Resources>
-            <TextBlock Foreground="Black" Margin="20,10,0,0" FontWeight="Bold" VerticalAlignment="Bottom">
+            <TextBlock Foreground="Black" Margin="20,0,0,0" FontWeight="Bold" VerticalAlignment="Center">
                 <Hyperlink NavigateUri="DirectorPage.xaml">BACK</Hyperlink>
             </TextBlock>
         </Grid>
 
-        <Grid Grid.Row="1" VerticalAlignment="Stretch"  Margin="0,0,0,-30">
-            <Image  Stretch="Fill" Width="60" Height="60" VerticalAlignment="Center" Source="/Image/sunflower.png" Margin="50,0,0,0" HorizontalAlignment="Left"     />
-        </Grid>
-        <TextBlock Grid.Row="2"
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"></RowDefinition>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" VerticalAlignment="Stretch"  >
+                    <Image  Stretch="Fill" Width="60" Height="60" VerticalAlignment="Center" Source="/Image/sunflower.png" Margin="50,0,0,0" HorizontalAlignment="Left"     />
+                </Grid>
+                <TextBlock Grid.Row="1"
                        Style="{StaticResource MaterialDesignBody1TextBlock}"
-                       HorizontalAlignment="Left"  FontSize="25" FontWeight="Bold" Margin="50,0,0,0">
+                       HorizontalAlignment="Left"  FontSize="25" FontWeight="Bold" Foreground="#1261a0" Margin="50,0,0,0">
                        REQUEST REVENUE REPORT
-        </TextBlock>
+                </TextBlock>
 
-        <TextBlock Grid.Row="3"
+                <TextBlock Grid.Row="2"
                        Style="{StaticResource MaterialDesignBody1TextBlock}"
-                       HorizontalAlignment="Left" Margin="50,-10,0,0" FontSize="14" >
+                       HorizontalAlignment="Left" Margin="50,-10,0,0" FontSize="15" >
                        International Village Management System
-        </TextBlock>
+                </TextBlock>
 
-        <Grid Grid.Row="4" Margin="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="350"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+            </Grid>
 
-            <TextBox Grid.Column="0"
-            Style="{StaticResource MaterialDesignFilledTextBox}"
-            VerticalAlignment="Top"
-            AcceptsReturn="True"
-            TextWrapping="Wrap"
-            MaxWidth="400"
-            materialDesign:HintAssist.Hint="FullName"
-            Width="240"
-            x:Name="FullName"
-            IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left"   >
-                
-            </TextBox>
-            <TextBlock x:Name="FullNameError" Grid.Column="0" Text="Example: VictoryA " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
 
-            <ComboBox Grid.Column="1"
-            x:Name="TypeOfReport"
-            Style="{StaticResource MaterialDesignFilledComboBox}"
-            IsEnabled="True"
-            materialDesign:HintAssist.Hint="Type of Report"
-            Width="240" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,14"
-            >
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-                <ComboBoxItem Content="By week" />
-                <ComboBoxItem Content="By month" />
-                <ComboBoxItem Content="By year" />
-            </ComboBox>
-            <TextBlock x:Name="TypeIncidentError" Grid.Column="0"  FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBox Grid.Row="0"
+                                Style="{StaticResource MaterialDesignFilledTextBox}"
+                                VerticalAlignment="Stretch"
+                                AcceptsReturn="True"
+                                TextWrapping="Wrap"
+                                materialDesign:HintAssist.Hint="FullName" 
+                                x:Name="FullName"
+                                IsEnabled="True" Margin="50,0,25,0" HorizontalAlignment="Stretch"   >
+                        </TextBox>
+                        <TextBlock x:Name="FullNameError" Grid.Row="1" Text="Example: VictoryA " FontSize="15" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="50,0,25,0" TextWrapping="WrapWithOverflow" />
+
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <ComboBox Grid.Row="0"
+                            x:Name="TypeOfReport"
+                            Style="{StaticResource MaterialDesignFilledComboBox}"
+                            IsEnabled="True"
+                            materialDesign:HintAssist.Hint="Type of Report"
+                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="25,0,50,0">
+
+                            <ComboBoxItem Content="By week" />
+                            <ComboBoxItem Content="By month" />
+                            <ComboBoxItem Content="By year" />
+                        </ComboBox>
+                        <TextBlock x:Name="TypeIncidentError" Grid.Row="1"  FontSize="15" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="25,0,50,0" TextWrapping="WrapWithOverflow" />
+
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <DatePicker Grid.Row="0"
+                            x:Name="StartDate"  
+                            materialDesign:HintAssist.Hint="Start date"
+                            Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50,0,25,0" FirstDayOfWeek="Monday" />
+
+                        <TextBlock  Grid.Row="1"  FontSize="15" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="50,0,25,0" TextWrapping="WrapWithOverflow" />
+
+
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <DatePicker Grid.Row="0"
+                            x:Name="DueDate"
+                            materialDesign:HintAssist.Hint="Due date"
+                            Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="25,0,50,0" >
+
+                        </DatePicker>
+                        <TextBlock x:Name="CheckoutDateError" Grid.Row="1"  FontSize="15" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="25,0,50,0" TextWrapping="WrapWithOverflow" />
+
+                    </Grid>
+                </Grid>
+
+            </Grid>
+            <Grid Grid.Row="2" >
+                <Button
+                    x:Name="Book"
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    materialDesign:ButtonAssist.CornerRadius="20"           
+                    IsEnabled="True"  HorizontalAlignment="Center" Width="300" Height="45"  VerticalAlignment="Stretch"
+                    Command="{Binding Book}"
+                    CommandParameter="{Binding ElementName=Book}" >
+               <TextBlock Text="SEND" />
+                </Button>
+
+            </Grid>
         </Grid>
-
-        <Grid Grid.Row="5" Margin="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="350"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <DatePicker Grid.Column="0"
-                x:Name="StartDate"  
-                Width="240"
-                materialDesign:HintAssist.Hint="Start date"
-                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,14" FirstDayOfWeek="Monday" />
-
-            <TextBlock  Grid.Column="0"  FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
-
-            <DatePicker Grid.Column="1"
-                x:Name="DueDate"
-                Width="240"
-                materialDesign:HintAssist.Hint="Due date"
-                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,14" >
-               
-            </DatePicker>
-            <TextBlock x:Name="CheckoutDateError" Grid.Column="1"  FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
-        </Grid>
-      
-        <Grid Grid.Row="6" >
-            <Button
-            x:Name="Book"
-            Style="{StaticResource MaterialDesignRaisedDarkButton}"
-            materialDesign:ButtonAssist.CornerRadius="20"           
-            IsEnabled="True" Margin="50,25,0,0" HorizontalAlignment="Left" Width="600" VerticalAlignment="Top"
-             Command="{Binding Book}"
-             CommandParameter="{Binding ElementName=Book}" >
-
-                <TextBlock Text="SEND" />
-            </Button>
-
-        </Grid>
-
-
-
-        </Grid>
+    </Grid>
 </Page>
