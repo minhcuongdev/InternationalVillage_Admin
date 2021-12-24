@@ -82,7 +82,7 @@
                             </Grid.RowDefinitions>
 
 
-                            <Button Grid.Row="0" Background="Transparent" BorderThickness="0"  >
+                            <Button x:Name="Home" Grid.Row="0" Background="Transparent" BorderThickness="0"  >
                                 <Button.Resources>
 
                                     <Style TargetType="TextBlock" >
@@ -116,10 +116,17 @@
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding OpenHomePage}" CommandParameter="{Binding ElementName=PagesNavigation}"/>
                                     </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseEnter">
+                                        <i:InvokeCommandAction Command="{Binding MouseEnter}" CommandParameter="{Binding ElementName=Home}"/>
+                                    </i:EventTrigger>
+
+                                    <i:EventTrigger EventName="MouseLeave">
+                                        <i:InvokeCommandAction Command="{Binding MouseLeave}" CommandParameter="{Binding ElementName=Home}"/>
+                                    </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
 
-                            <Button Grid.Row="1" Background="Transparent" BorderThickness="0" Margin="0,15,0,0" >
+                            <Button x:Name="Activity" Grid.Row="1" Background="Transparent" BorderThickness="0" Margin="0,15,0,0" >
                                 <Button.Resources>
 
                                     <Style TargetType="TextBlock" >
@@ -152,10 +159,17 @@
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding OpenActivityReceptionistPage}" CommandParameter="{Binding ElementName=PagesNavigation}"/>
                                     </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseEnter">
+                                        <i:InvokeCommandAction Command="{Binding MouseEnter}" CommandParameter="{Binding ElementName=Activity}"/>
+                                    </i:EventTrigger>
+
+                                    <i:EventTrigger EventName="MouseLeave">
+                                        <i:InvokeCommandAction Command="{Binding MouseLeave}" CommandParameter="{Binding ElementName=Activity}"/>
+                                    </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
 
-                            <Button Grid.Row="2" Background="Transparent" BorderThickness="0" Margin="0,15,0,0" >
+                            <Button x:Name="Chat" Grid.Row="2" Background="Transparent" BorderThickness="0" Margin="0,15,0,0" >
                                 <Button.Resources>
 
                                     <Style TargetType="TextBlock" >
@@ -181,18 +195,25 @@
                                     <Rectangle  HorizontalAlignment="Left" Width="4" Height="40" VerticalAlignment="Center" RadiusX="2" RadiusY="2"/>
                                     <Image  Margin="0,0,21,0" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Image/chat.png" />
                                     <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12 0 0 0"
-                                                Grid.Column="1" Text="SETTING" 
+                                                Grid.Column="1" Text="CHAT" 
                                                 FontSize="14"/>
                                 </Grid>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding OpenChatPage}" CommandParameter="{Binding ElementName=PagesNavigation}"/>
                                     </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseEnter">
+                                        <i:InvokeCommandAction Command="{Binding MouseEnter}" CommandParameter="{Binding ElementName=Chat}"/>
+                                    </i:EventTrigger>
+
+                                    <i:EventTrigger EventName="MouseLeave">
+                                        <i:InvokeCommandAction Command="{Binding MouseLeave}" CommandParameter="{Binding ElementName=Chat}"/>
+                                    </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
                                                      
 
-                            <Button Grid.Row="3" Background="Transparent" BorderThickness="0" Margin="0,15,0,0" >
+                            <Button x:Name="LogOut" Grid.Row="3" Background="Transparent" BorderThickness="0" Margin="0,15,0,0" >
                                 <Button.Resources>
 
                                     <Style TargetType="TextBlock" >
@@ -224,6 +245,13 @@
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding Signout}" CommandParameter="{Binding ElementName=MenuWD}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseEnter">
+                                        <i:InvokeCommandAction Command="{Binding MouseEnter}" CommandParameter="{Binding ElementName=LogOut}"/>
+                                    </i:EventTrigger>
+
+                                    <i:EventTrigger EventName="MouseLeave">
+                                        <i:InvokeCommandAction Command="{Binding MouseLeave}" CommandParameter="{Binding ElementName=LogOut}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>

@@ -27,11 +27,11 @@
 
     <Grid Background="white" Margin="0,0,0,0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="45"/>
-            <RowDefinition Height="3"/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="6.75*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -53,21 +53,21 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Resources>
-            <TextBlock Foreground="Black" Margin="10,10,0,0" FontWeight="Bold"><Hyperlink NavigateUri="ReceptionistPage.xaml"><Run Text="BACK"/></Hyperlink></TextBlock>
+            <TextBlock Foreground="Black" Margin="20,0,0,0" VerticalAlignment="Center" FontSize="15" FontWeight="Bold"><Hyperlink NavigateUri="ReceptionistPage.xaml"><Run Text="BACK"/></Hyperlink></TextBlock>
         </Grid>
-        <TextBlock Grid.Row="1" Text="Handle Requests"  HorizontalAlignment="Left"  FontSize="30"  FontWeight="DemiBold" Margin="40,0,0,0" Padding="0,0,0,5" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Text="Handle Requests"  HorizontalAlignment="Left"  FontSize="30" Foreground="#1261a0"  FontWeight="Bold" Margin="40,0,0,0" Padding="0,0,0,5" VerticalAlignment="Center"/>
 
         <Grid Grid.Row="2" Margin="40,0,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="110"/>
-                <ColumnDefinition Width="110"/>
-                <ColumnDefinition Width="110"/>
-                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="130"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
-                    materialDesign:ButtonAssist.CornerRadius="20" Content="Apartment" Foreground="#2f9cfa" Background="white" Width="100" FontSize="11" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    materialDesign:ButtonAssist.CornerRadius="20" Content="Apartment" Foreground="#2f9cfa" Background="white" Width="120" FontSize="15" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </Grid>
 
             <Grid Grid.Column="1" Margin="0">
@@ -83,7 +83,7 @@
                     </Style>
                 </Grid.Resources>
                 <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
-                    materialDesign:ButtonAssist.CornerRadius="20" Background="white" Width="100" FontSize="11" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    materialDesign:ButtonAssist.CornerRadius="20" Background="white" Width="120" FontSize="15" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Hyperlink NavigateUri="ServiceRequest.xaml">
                         <Run Text="Service"/>
                     </Hyperlink>
@@ -103,7 +103,7 @@
                     </Style>
                 </Grid.Resources>
                 <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
-                    materialDesign:ButtonAssist.CornerRadius="20" Background="white" Width="100" FontSize="11" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    materialDesign:ButtonAssist.CornerRadius="20" Background="white" Width="120" FontSize="15" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Hyperlink NavigateUri="IncidentRequest.xaml">
                         <Run Text="Incident"/>
                     </Hyperlink>
@@ -116,15 +116,15 @@
 
         <Grid Grid.Row="4">
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="60"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Apartment requests"  HorizontalAlignment="Left"  Foreground="#2f9cfa" FontSize="19"  FontWeight="Bold" Margin="40,0,0,0" Padding="0,0,0,5" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Text="Apartment requests"  HorizontalAlignment="Left"  Foreground="#2f9cfa" FontSize="20"  FontWeight="Bold" Margin="40,0,0,0" Padding="0,0,0,5" VerticalAlignment="Center"/>
 
             <!--End DataGrid-->
 
             <!--Start DataGrid-->
-            <DataGrid x:Name="DataGridApartment" Grid.Row="1" ColumnWidth="140"  Margin="40,0,40,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Height="auto" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid x:Name="DataGridApartment" Grid.Row="1" ColumnWidth="140" FontSize="14" Margin="40,0,40,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Height="auto" IsReadOnly="True" AutoGenerateColumns="False">
                 <DataGrid.Resources>
                     <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
                         <Setter Property="Background" Value="White" />

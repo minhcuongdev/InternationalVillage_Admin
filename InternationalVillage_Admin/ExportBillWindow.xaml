@@ -18,8 +18,11 @@
       
       DataContext="{StaticResource ExportBillVM}"
       x:Name="ExportBillWD"
+      MinHeight="700"
+      MaxWidth="550" 
+      WindowStartupLocation="CenterScreen" 
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="550"
       Title="ExportBill">
 
     <i:Interaction.Triggers>
@@ -40,13 +43,15 @@
 
     <ScrollViewer x:Name="ScrollViewerBill" Background="white">
         <Grid>
+           
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.5*"></RowDefinition>
+                <RowDefinition Height="9.5*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Button Background="#2f9cfa" Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
-                                materialDesign:ButtonAssist.CornerRadius="20" Grid.Column="0" Content="Export Bill" Width="120" Height="40" FontSize="14" FontWeight="Normal"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,10,0,0" Grid.ColumnSpan="2">
+            <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="#2f9cfa" BorderBrush="#2f9cfa" Opacity="0.8"                   
+                                 HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2">
+                <materialDesign:PackIcon Kind="Printer" Width="30" Height="30" Foreground="White"/>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding ExportBill}" CommandParameter="{Binding ElementName=GridBill}"/>
@@ -54,200 +59,242 @@
                 </i:Interaction.Triggers>
             </Button>
 
+                          
 
-            <Grid x:Name="GridBill"  Grid.Row="1">
+            <Grid x:Name="GridBill"  Grid.Row="1" Margin="0,10,0,0">
                 <Grid >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"></RowDefinition>
+                        <RowDefinition Height="0.5*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="3*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="0.5*"></RowDefinition>
+                        <RowDefinition Height="0.5*"></RowDefinition>
+                        <RowDefinition Height="0.5*"></RowDefinition>
+                        <RowDefinition Height="1.25*"></RowDefinition>
 
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="45"></RowDefinition>
-                            <RowDefinition Height="120"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="45"></RowDefinition>
-                            <RowDefinition Height="45"></RowDefinition>
-                            <RowDefinition Height="45"></RowDefinition>
-                            <RowDefinition Height="40"></RowDefinition>
-                           
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="BILL" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0" HorizontalAlignment="Center"/>
+                    </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="1">
+                    <Grid Grid.Row="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition Width="7*"></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+
+
+                        <Grid Grid.Column="0">
+                            <Image  Margin="0,0,10,0"  Stretch="Fill" Width="90" Height="90" HorizontalAlignment="Right" VerticalAlignment="Top" Source="/Image/sunflower.png" />
+                        </Grid>
+
+                        <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="25" ></RowDefinition>
+                                <RowDefinition Height="25"></RowDefinition>
+                                <RowDefinition Height="25"></RowDefinition>
+
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,0" FontSize="17" FontWeight="Bold">
+                            Sunflower Internation Village
+                            </TextBlock>
 
-                                <Grid Grid.Column="0">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Grid.Row="0" Text="ID Bill" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                                    <TextBlock x:Name="IdBill" Grid.Row="1" Text="011111" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+                            <TextBlock Grid.Row="1" Text="35A Van Cao, Hai Phong, Vietnam" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="15" />
+                            <TextBlock Grid.Row="2" Text="Phone No: (0225) 3892000" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="15" Margin="0,0,0,0" />
+                        </Grid>
+                    </Grid>
 
-                                    </TextBlock>
 
-                                </Grid>
 
-                                <Grid Grid.Column="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Grid.Row="0" Text="Date" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                                    <TextBlock x:Name="Date" Grid.Row="1" Text="23/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+                    <TextBlock Grid.Row="1" Text="BILL" FontSize="26" FontWeight="Bold" Margin="0,10,0,0" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
 
-                                    </TextBlock>
+                    <Grid Grid.Row="2" Margin="0,10,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
 
-                                </Grid>
-                            </Grid>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="ID Bill" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                                <TextBlock x:Name="IdBill" Grid.Row="1" Text="011111" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
 
-                                <Grid Grid.Column="0">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Grid.Row="0" Text="Customer" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                                    <TextBlock x:Name="Customer" Grid.Row="1" Text="Khanh Quynh" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
-
-                                    </TextBlock>
-
-                                </Grid>
-
-                                <Grid Grid.Column="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Grid.Row="0" Text="Receptionist" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                                    <TextBlock x:Name="Receptionist" Grid.Row="1" Text="Minh Cuong" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
-
-                                    </TextBlock>
-
-                                </Grid>
+                                </TextBlock>
 
                             </Grid>
 
-                            <Grid Grid.Row="2">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="Date" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                                <TextBlock x:Name="Date" Grid.Row="1" Text="23/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
 
-                                <Grid Grid.Column="0">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Grid.Row="0" Text="Check-in date" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                                    <TextBlock x:Name="Checkin" Grid.Row="1" Text="19/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+                                </TextBlock>
 
-                                    </TextBlock>
+                            </Grid>
+                        </Grid>
 
-                                </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
 
-                                <Grid Grid.Column="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Grid.Row="0" Text="Check-out date" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                                    <TextBlock x:Name="Checkout" Grid.Row="1" Text="23/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="Customer" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                                <TextBlock x:Name="Customer" Grid.Row="1" Text="Khanh Quynh" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
 
-                                    </TextBlock>
+                                </TextBlock>
 
-                                </Grid>
+                            </Grid>
+
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="Receptionist" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                                <TextBlock x:Name="Receptionist" Grid.Row="1" Text="Minh Cuong" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+
+                                </TextBlock>
 
                             </Grid>
 
                         </Grid>
 
                         <Grid Grid.Row="2">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="45"></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Row="0" Text="DETAILS" FontSize="15" FontWeight="Bold" Foreground="#176EC6" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="Check-in date" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                                <TextBlock x:Name="Checkin" Grid.Row="1" Text="19/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
 
-                            <Grid Grid.Row="1">
-                          
-                                <DataGrid x:Name="BillTable" Height="auto" ColumnWidth="150" IsReadOnly="True" AlternatingRowBackground="AliceBlue"  VerticalAlignment="Top"  CanUserAddRows="False" AutoGenerateColumns="False" Margin="25,0,0,0">
-                                    <DataGrid.Resources>
-                                        <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
-                                            <Setter Property="Background" Value="White" />
-                                            <Setter Property="Foreground" Value="Black" />
-                                            <Setter Property="FontWeight" Value="Bold"/>
+                                </TextBlock>
 
-                                        </Style>
-                                    </DataGrid.Resources>
+                            </Grid>
 
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Width="1*" Header="A/S" Binding="{Binding Name}" />
-                                        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
-                                        <DataGridTextColumn Header="Price" Binding="{Binding Price}" />
-                                    </DataGrid.Columns>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="Check-out date" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                                <TextBlock x:Name="Checkout" Grid.Row="1" Text="23/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
 
-                                </DataGrid>
+                                </TextBlock>
+
                             </Grid>
 
                         </Grid>
-                        <Grid Grid.Row="3" Margin="0,5,0,0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="169"></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
 
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="Total money" FontSize="12" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                            <TextBlock x:Name="TotalMoney" Grid.Column="1" Text="2,650$" Foreground="Black" FontSize="18" FontWeight="DemiBold" Margin="0,0,90,0" HorizontalAlignment="Right">
+                    </Grid>
 
-                            </TextBlock>
-                        </Grid>
+                    <Grid Grid.Row="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
 
+                        <TextBlock Grid.Row="0" Text="DETAILS" FontSize="15" FontWeight="Bold" Foreground="#176EC6" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Center"/>
 
+                        <Grid Grid.Row="1">
 
-                        <Grid Grid.Row="4" Margin="0,0,0,0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="169"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            <DataGrid x:Name="BillTable" Height="auto" ColumnWidth="140" IsReadOnly="True" AlternatingRowBackground="AliceBlue"  VerticalAlignment="Top"  CanUserAddRows="False" AutoGenerateColumns="False" Margin="25,0,0,0">
+                                <DataGrid.Resources>
+                                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
+                                        <Setter Property="Background" Value="White" />
+                                        <Setter Property="Foreground" Value="Black" />
+                                        <Setter Property="FontWeight" Value="Bold"/>
 
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="Paid ($):" FontSize="12" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0" VerticalAlignment="Bottom"/>
-                            <TextBlock x:Name="Paid" Grid.Column="1" materialDesign:ValidationAssist.HorizontalAlignment="Left" Height="30" VerticalAlignment="Bottom" >
-                                
-                            </TextBlock>
+                                    </Style>
+                                </DataGrid.Resources>
 
-                        </Grid>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Width="1*" Header="A/S" Binding="{Binding Name}" />
+                                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
+                                    <DataGridTextColumn Width="1*" Header="Price" Binding="{Binding Price}" />
+                                </DataGrid.Columns>
 
-                        <Grid  Grid.Row="5" Margin="0,0,0,0" VerticalAlignment="Top">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="169"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="Change ($)" FontSize="12" Foreground="Black" FontWeight="Bold" Margin="35,5,0,0" VerticalAlignment="Top"/>
-                            <TextBlock x:Name="Change" Grid.Column="1"  Foreground="Black" FontSize="12" FontWeight="DemiBold"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0"  />
+                            </DataGrid>
                         </Grid>
 
                     </Grid>
+                    <Grid Grid.Row="4" Margin="0,5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="169"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Total money" FontSize="18" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
+                        <TextBlock x:Name="TotalMoney" Grid.Column="1" Text="2,650$" Foreground="Black" FontSize="18" FontWeight="DemiBold" Margin="0,0,120,0" HorizontalAlignment="Right">
+
+                        </TextBlock>
+                    </Grid>
+
+
+
+                    <Grid Grid.Row="5" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition ></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Paid ($):" FontSize="12" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0" VerticalAlignment="Bottom"/>
+                        <TextBlock x:Name="Paid" Grid.Column="1" HorizontalAlignment="Right" Foreground="Black" FontSize="15" FontWeight="DemiBold" Margin="0,0,120,0" VerticalAlignment="Bottom" >
+
+                        </TextBlock>
+
+                    </Grid>
+
+                    <Grid  Grid.Row="6"  VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition ></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Change ($)" FontSize="12" Foreground="Black" FontWeight="Bold" Margin="35,5,0,0" VerticalAlignment="Top"/>
+                        <TextBlock x:Name="Change" Grid.Column="1"  Foreground="Black" FontSize="15" FontWeight="DemiBold"  HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0"  />
+                    </Grid>
+
+                    <Grid Grid.Row="7">
+                        <TextBlock 
+                            Style="{StaticResource MaterialDesignBody1TextBlock}"
+                            HorizontalAlignment="Left" Margin="35,10,30,0" FontSize="12" FontStyle="Italic" Foreground="#176ec6" TextWrapping="Wrap">
+                            * If you have a need to export a red invoice, please contact our receptionist on the day you make a payment. Time to export the red invoice is 7 days.
+                        </TextBlock>
+                    </Grid>
+
+                    <TextBlock Grid.Row="8" Text="THANK YOU !" FontSize="20" FontWeight="Bold"  VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+
+
+
                 </Grid>
             </Grid>
+
 
         </Grid>
 

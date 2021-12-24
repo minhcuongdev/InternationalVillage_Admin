@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 using InternationalVillage_Admin.Store;
 
@@ -20,6 +25,8 @@ namespace InternationalVillage_Admin.ViewModel
         public ICommand OpenProfilePage { get; set; }
 
         public ICommand Signout { get; set; }
+        public ICommand MouseEnter { get; set; }
+        public ICommand MouseLeave { get; set; }
 
 
 
@@ -65,6 +72,19 @@ namespace InternationalVillage_Admin.ViewModel
                 LoginWindow loginform = new LoginWindow();
                 loginform.Show();
                 p.Close();
+            });
+
+            MouseEnter = new RelayCommand<Button>((p) => { return true; }, (p) =>
+            {
+                BrushConverter bc = new BrushConverter();
+                p.Background = (Brush)bc.ConvertFrom("#F0F8FF");
+                p.Foreground = (Brush)bc.ConvertFrom("#F0F8FF");
+            });
+
+            MouseLeave = new RelayCommand<Button>((p) => { return true; }, (p) =>
+            {
+
+                p.Background = Brushes.Transparent;
             });
         }
     }

@@ -21,28 +21,28 @@
 
     <Grid Background="#F5F5F5">
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="150"></RowDefinition>
-            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
             
         </Grid.RowDefinitions>
         
-        <Grid Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Hi Receptionist !" HorizontalAlignment="Left"  FontSize="25"  FontWeight="Bold" Margin="40,0,0,0" Padding="0,0,0,5" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Text="Hi Receptionist !" Foreground="#1261a0" HorizontalAlignment="Left"  FontSize="25"  FontWeight="Bold" Margin="40,0,0,0" Padding="0,0,0,5" VerticalAlignment="Center"/>
             <TextBlock Grid.Row="1" Text="Click each of cards below to complete your business tasks." Foreground="gray" HorizontalAlignment="Left"  FontSize="14"  FontWeight="Normal" Margin="40,0,0,0" Padding="0,0,0,5" VerticalAlignment="Top"/>
         </Grid>
 
-        <Grid Grid.Row="1" Height="130" HorizontalAlignment="Center" Margin="0,0,0,0">
+        <Grid Grid.Row="1" Height="150" HorizontalAlignment="Center" Margin="0,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <Border  CornerRadius="25" Background="white" materialDesign:ShadowAssist.ShadowDepth="Depth3"  Width="350">
+                <Border  CornerRadius="25" Background="white"  materialDesign:ShadowAssist.ShadowDepth="Depth3"  >
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
@@ -60,13 +60,13 @@
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="/Image/booking.png" Width="40" Margin="25,13,25,-13.667"/>
-                                <TextBlock Grid.Column="1" Text="BOOKING" FontWeight="Bold" FontSize="23" VerticalAlignment="Bottom" Margin="0,0,0,-6"/>
+                                <TextBlock Grid.Column="1" Text="BOOKING" FontWeight="Bold" FontSize="25" VerticalAlignment="Bottom" Margin="0,0,0,-6"/>
                             </Grid>
                             <Grid Grid.Row="1">
-                                <Border Width="120"  CornerRadius="25" Background="#F0F8FF" Margin="90,10,100,0"  >
+                                <Border Width="120" Height="40" CornerRadius="25" Background="#F0F8FF" HorizontalAlignment="Center" Margin="90,10,100,0"  >
                                     <Label HorizontalAlignment="center" VerticalAlignment="Center">
                                         <Hyperlink NavigateUri="BookingPage.xaml">
-                                            <Label Foreground="navy" FontWeight="Bold" HorizontalAlignment="Center">GO TO ACTIVITY</Label>
+                                            <Label Foreground="navy" FontWeight="Bold"  HorizontalAlignment="Center">GO TO ACTIVITY</Label>
                                         </Hyperlink>
                                     </Label>
                                 </Border>
@@ -79,7 +79,7 @@
             </Grid>
 
             <Grid Grid.Column="1">
-                <Border CornerRadius="25" Background="white" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="40,0,0,0" Width="350">
+                <Border CornerRadius="25" HorizontalAlignment="Stretch" Background="white" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="40,0,0,0" Width="350">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
@@ -97,13 +97,13 @@
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="/Image/analysis.png" Width="40" Height="40" Margin="25,13,25,-13.667"/>
-                                <TextBlock Grid.Column="1" Text="OVERVIEW" FontWeight="Bold" FontSize="23" VerticalAlignment="Bottom"/>
+                                <TextBlock Grid.Column="1" Text="OVERVIEW" FontWeight="Bold" FontSize="25" VerticalAlignment="Bottom"/>
                             </Grid>
                             <Grid Grid.Row="1">
                                 <Border Width="120" Height="40" CornerRadius="25" Background="#FFFFCC" Margin="90,10,100,0"  >
                                     <Label HorizontalAlignment="center" VerticalAlignment="Center">
                                         <Hyperlink NavigateUri="OverviewPage.xaml">
-                                            <Label Foreground="#FFCC00" FontWeight="Bold" HorizontalAlignment="Center">GO TO ACTIVITY</Label>
+                                            <Label Foreground="#FFCC00" FontWeight="Bold"  HorizontalAlignment="Center">GO TO ACTIVITY</Label>
                                         </Hyperlink>
                                     </Label>
                                 </Border>
@@ -117,7 +117,7 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="2" Height="130" HorizontalAlignment="Center" Margin="0,0,0,0">
+        <Grid Grid.Row="2" Height="140" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -144,7 +144,7 @@
                                 <TextBlock Grid.Column="1" Text="HANDLE REQUEST" FontWeight="Bold" FontSize="25" VerticalAlignment="Bottom"/>
                             </Grid>
                             <Grid Grid.Row="1">
-                                <Border Width="120" Height="40" CornerRadius="23" Background="#FFDAB9" Margin="90,10,100,10"  >
+                                <Border Width="120" Height="40" CornerRadius="25" Background="#FFDAB9" Margin="90,10,100,10"  >
                                     <Label HorizontalAlignment="center" VerticalAlignment="Center">
                                         <Hyperlink NavigateUri="HandleRequest.xaml">
                                             <Label Foreground="#FF6347" FontWeight="Bold" HorizontalAlignment="Center">GO TO ACTIVITY</Label>
@@ -178,13 +178,13 @@
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="/Image/credit-card.png" Width="40" Height="40" Margin="20,25,20,0.333"/>
-                                <TextBlock Grid.Column="1" Text="PAYMENT" FontWeight="Bold" FontSize="23" VerticalAlignment="Bottom"/>
+                                <TextBlock Grid.Column="1" Text="PAYMENT" FontWeight="Bold" FontSize="25" VerticalAlignment="Bottom"/>
                             </Grid>
                             <Grid Grid.Row="1">
                                 <Border Width="120" Height="40" CornerRadius="25" Background="AliceBlue" Margin="90,10,100,10"  >
                                     <Label HorizontalAlignment="center" VerticalAlignment="Center">
                                         <Hyperlink NavigateUri="PaymentRequest.xaml">
-                                            <Label Foreground="#2f9cfa" FontWeight="Bold" HorizontalAlignment="Center">GO TO ACTIVITY</Label>
+                                            <Label Foreground="#2f9cfa" FontWeight="Bold"  HorizontalAlignment="Center">GO TO ACTIVITY</Label>
                                         </Hyperlink>
                                     </Label>
                                 </Border>

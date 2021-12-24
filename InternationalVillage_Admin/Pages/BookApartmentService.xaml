@@ -13,7 +13,7 @@
              
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       TextElement.FontWeight="Regular"
-      TextElement.FontSize="13"
+      TextElement.FontSize="15"
       TextOptions.TextFormattingMode="Ideal"
       TextOptions.TextRenderingMode="Auto"
       FontFamily="{DynamicResource MaterialDesignFont}"
@@ -32,8 +32,8 @@
     </i:Interaction.Triggers>
     <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -55,7 +55,7 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Resources>
-            <TextBlock Foreground="Black" Margin="10,10,0,0" FontWeight="Bold">
+            <TextBlock Foreground="Black" Margin="20,0,0,0" VerticalAlignment="Center" FontSize="15" FontWeight="Bold">
                 <Hyperlink NavigateUri="BookingPage.xaml">BACK</Hyperlink>
             </TextBlock>
         </Grid>
@@ -76,7 +76,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Text="Choose Apartment" Foreground="#2f9cfa" HorizontalAlignment="Left"  FontSize="25"  FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="0" Text="Choose Apartment" Foreground="#1261a0" HorizontalAlignment="Left"  FontSize="25"  FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="260"></ColumnDefinition>
@@ -105,11 +105,11 @@
 
                     <Grid Grid.Column="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="8.5*"></ColumnDefinition>
+                            <ColumnDefinition Width="1.5*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" VerticalAlignment="Top" Text="Number of selected apartment:" FontSize="13" Foreground="#176ec6" FontWeight="Bold" Margin="0,25,0,0" />
-                        <TextBlock x:Name="Number"  Grid.Column="1" VerticalAlignment="Top" Text="0" Foreground="#176ec6" FontSize="13" FontWeight="DemiBold"  HorizontalAlignment="Left" Margin="0,25,0,0">
+                        <TextBlock Grid.Column="0" VerticalAlignment="Top" Text="Number of selected apartment:"  Foreground="#176ec6" FontWeight="Bold" Margin="0,25,0,0" />
+                        <TextBlock x:Name="Number"  Grid.Column="1" VerticalAlignment="Top" Text="0" Foreground="#176ec6"  FontWeight="DemiBold"  HorizontalAlignment="Left" Margin="20,25,0,0">
 
                         </TextBlock>
                     </Grid>
@@ -134,9 +134,9 @@
                         <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    
-                    <TextBlock Grid.Row="0" Text="Service" Foreground="#2f9cfa" HorizontalAlignment="Left"  FontSize="25"  FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Top"/>
-                    <TextBlock Grid.Row="1" Text="Select/Skip." Foreground="gray" HorizontalAlignment="Left"  FontSize="13"  Margin="30,0,0,0" VerticalAlignment="Top"/>
+
+                    <TextBlock Grid.Row="0" Text="Service" Foreground="#1261a0" HorizontalAlignment="Left"  FontSize="25"  FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Top"/>
+                    <TextBlock Grid.Row="1" Text="Select/Skip." Foreground="gray" HorizontalAlignment="Left"  FontSize="15"  Margin="30,0,0,0" VerticalAlignment="Top"/>
                 </Grid>
 
                 <Grid Grid.Row="1">
@@ -158,11 +158,11 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="1">
-                            <TextBlock Text="Usage Time" FontSize="13" Foreground="#176ec6" FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Usage Time" Foreground="#176ec6" FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Grid>
 
                         <Grid Grid.Column="2">
-                            <TextBlock Text="People" FontSize="13" Foreground="#176ec6" FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="People"  Foreground="#176ec6" FontWeight="Bold" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Grid>
                     </Grid>
 
@@ -172,15 +172,15 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Pool" FontSize="14" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center" Height="20"/>
-                        <TextBox x:Name="UsageTime_Pool" Grid.Column="1" HorizontalAlignment="Stretch" Width="60" FontSize="14" VerticalAlignment="Center">
+                        <TextBlock Grid.Column="0" Text="Pool"  Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center" Height="20"/>
+                        <TextBox x:Name="UsageTime_Pool" Grid.Column="1" HorizontalAlignment="Stretch" Width="60"  VerticalAlignment="Center">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding UsageTime_Pool}" CommandParameter="{Binding ElementName=UsageTime_Pool}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </TextBox>
-                        <TextBox x:Name="People_Pool" Grid.Column="2" HorizontalAlignment="Stretch" Width="60" FontSize="14" VerticalAlignment="Center">
+                        <TextBox x:Name="People_Pool" Grid.Column="2" HorizontalAlignment="Stretch" Width="60" VerticalAlignment="Center">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding People_Pool}" CommandParameter="{Binding ElementName=People_Pool}"/>
@@ -195,15 +195,15 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Restaurant" FontSize="14" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
-                        <TextBox x:Name="UsageTime_Restaurant" Grid.Column="1" HorizontalAlignment="Stretch" Width="60" FontSize="14" VerticalAlignment="Center">
+                        <TextBlock Grid.Column="0" Text="Restaurant" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="UsageTime_Restaurant" Grid.Column="1" HorizontalAlignment="Stretch" Width="60"  VerticalAlignment="Center">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding UsageTime_Restaurant}" CommandParameter="{Binding ElementName=UsageTime_Restaurant}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </TextBox>
-                        <TextBox x:Name="People_Restaurant" Grid.Column="2" HorizontalAlignment="Stretch" Width="60" FontSize="14" VerticalAlignment="Center">
+                        <TextBox x:Name="People_Restaurant" Grid.Column="2" HorizontalAlignment="Stretch" Width="60" VerticalAlignment="Center">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding People_Restaurant}" CommandParameter="{Binding ElementName=People_Restaurant}"/>
@@ -218,15 +218,15 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Gym" FontSize="14" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
-                        <TextBox x:Name="UsageTime_Gym" Grid.Column="1" HorizontalAlignment="Center"  Width="60" FontSize="14" VerticalAlignment="Center">
+                        <TextBlock Grid.Column="0" Text="Gym"  Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="UsageTime_Gym" Grid.Column="1" HorizontalAlignment="Center"  Width="60"  VerticalAlignment="Center">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding UsageTime_Gym}" CommandParameter="{Binding ElementName=UsageTime_Gym}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </TextBox>
-                        <TextBox x:Name="People_Gym" Grid.Column="2" HorizontalAlignment="Center"  Width="60" FontSize="14" VerticalAlignment="Center">
+                        <TextBox x:Name="People_Gym" Grid.Column="2" HorizontalAlignment="Center"  Width="60" VerticalAlignment="Center">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding People_Gym}" CommandParameter="{Binding ElementName=People_Gym}"/>
@@ -241,15 +241,15 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Tennis" FontSize="14" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
-                        <TextBox x:Name="UsageTime_Tennis" Grid.Column="1" HorizontalAlignment="Stretch" Width="60" FontSize="14" VerticalAlignment="Center">
+                        <TextBlock Grid.Column="0" Text="Tennis"  Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="UsageTime_Tennis" Grid.Column="1" HorizontalAlignment="Stretch" Width="60"  VerticalAlignment="Center">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding UsageTime_Tennis}" CommandParameter="{Binding ElementName=UsageTime_Tennis}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </TextBox>
-                        <TextBox x:Name="People_Tennis" Grid.Column="2" HorizontalAlignment="Stretch"  Width="60" FontSize="14" VerticalAlignment="Center">
+                        <TextBox x:Name="People_Tennis" Grid.Column="2" HorizontalAlignment="Stretch"  Width="60" VerticalAlignment="Center">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding People_Tennis}" CommandParameter="{Binding ElementName=People_Tennis}"/>
@@ -264,15 +264,15 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Golf" FontSize="14" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
-                        <TextBox x:Name="UsageTime_Golf" Grid.Column="1" HorizontalAlignment="Stretch"  Width="60" FontSize="14" VerticalAlignment="Center">
+                        <TextBlock Grid.Column="0" Text="Golf"  Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="UsageTime_Golf" Grid.Column="1" HorizontalAlignment="Stretch"  Width="60"  VerticalAlignment="Center">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding UsageTime_Golf}" CommandParameter="{Binding ElementName=UsageTime_Golf}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </TextBox>
-                        <TextBox x:Name="People_Golf" Grid.Column="2" HorizontalAlignment="Stretch"  Width="60" FontSize="14" VerticalAlignment="Center">
+                        <TextBox x:Name="People_Golf" Grid.Column="2" HorizontalAlignment="Stretch"  Width="60" VerticalAlignment="Center">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding People_Golf}" CommandParameter="{Binding ElementName=People_Golf}"/>
@@ -287,15 +287,15 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Bar" FontSize="14" Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
-                        <TextBox x:Name="UsageTime_Bar" Grid.Column="1" HorizontalAlignment="Stretch" Width="60" FontSize="14" VerticalAlignment="Center">
+                        <TextBlock Grid.Column="0" Text="Bar"  Foreground="#176ec6" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="UsageTime_Bar" Grid.Column="1" HorizontalAlignment="Stretch" Width="60"  VerticalAlignment="Center">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding UsageTime_Bar}" CommandParameter="{Binding ElementName=UsageTime_Bar}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </TextBox>
-                        <TextBox x:Name="People_Bar" Grid.Column="2" HorizontalAlignment="Stretch" Width="60" FontSize="14" VerticalAlignment="Center">
+                        <TextBox x:Name="People_Bar" Grid.Column="2" HorizontalAlignment="Stretch" Width="60" VerticalAlignment="Center">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding People_Bar}" CommandParameter="{Binding ElementName=People_Bar}"/>

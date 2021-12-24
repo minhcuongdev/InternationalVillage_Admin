@@ -82,6 +82,8 @@ namespace InternationalVillage_Admin.ViewModel
 
             LoadBillTable = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
             {
+                List<DetailBooking> list = PaymentStore.Instance.ListDetailBookings;
+                p.Height = list.Count() * 40 + 40 ;
                 p.ItemsSource = PaymentStore.Instance.ListDetailBookings;
 
             });
