@@ -64,6 +64,9 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
@@ -77,19 +80,36 @@
                     <TextBlock Grid.Row="1" Foreground="Gray" Margin="30,-5,0,0" Text="Welcome to International Village Report" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15" />
                 </Grid>
 
-                <ComboBox Grid.Column="1"                      
+                <DatePicker Grid.Column="1" 
+                            x:Name="dpStartDate"  
+                            materialDesign:HintAssist.Hint="Start date"
+                            Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50,0,25,0" FirstDayOfWeek="Monday" />
+
+                <DatePicker Grid.Column="2" 
+                            x:Name="dpDueDate"  
+                            materialDesign:HintAssist.Hint="Due date"
+                            Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50,0,25,0" FirstDayOfWeek="Monday" >
+                </DatePicker>
+                <ComboBox Grid.Column="3"                      
+                        Style="{StaticResource MaterialDesignFilledComboBox}"
+                        materialDesign:HintAssist.Hint="Year"                        
+                        HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="50,0,80,0" 
+                        x:Name="cbbYear">
+                </ComboBox>
+                <ComboBox Grid.Column="4"                      
                         Style="{StaticResource MaterialDesignFilledComboBox}"
                         materialDesign:HintAssist.Hint="Type of Report"                        
-                        HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="220,0,80,0" >
+                        HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="50,0,80,0" 
+                        x:Name="cbbTypeOfReport" SelectionChanged="cbbTypeOfReport_SelectionChanged">
                     <ComboBoxItem
-                                Content="By week" />
+                                Content="By day" />
                     <ComboBoxItem
                                 Content="By month" />
 
                 </ComboBox>
 
-                <Button Grid.Column="1" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="#2f9cfa" BorderBrush="#2f9cfa" Opacity="1"                   
-                                 HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.ColumnSpan="2">
+                <Button x:Name="btnViewReport" Grid.Column="4" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="#2f9cfa" BorderBrush="#2f9cfa" Opacity="1"                   
+                                 HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.ColumnSpan="2" Click="btnViewReport_Click">
                     <materialDesign:PackIcon Kind="Send" Width="25" Height="30" Foreground="White"/>
                 </Button>
 
@@ -103,8 +123,8 @@
                 </Grid.ColumnDefinitions>
 
                 <materialDesign:Card Margin="30,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth1" Padding="5" Grid.Column="0">
-                    <lvc:PieChart LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}">
-                        <lvc:PieChart.Series>
+                    <lvc:PieChart x:Name="pieChart" LegendLocation="Bottom"  Hoverable="False" DataTooltip="{x:Null}" DataClick="pieChart_DataClick" >
+                    <!--   <lvc:PieChart.Series >
                             <lvc:PieSeries Title="Luxury" Values="3" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
                             <lvc:PieSeries Title="High Standard" Values="4" DataLabels="True" 
@@ -112,19 +132,19 @@
                             <lvc:PieSeries Title="Standard" Values="6" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
 
-                        </lvc:PieChart.Series>
+                        </lvc:PieChart.Series>  -->
                     </lvc:PieChart>
                 </materialDesign:Card>
 
                 <materialDesign:Card Margin="15,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth1" Padding="5" Grid.Column="1">
-                    <lvc:CartesianChart Series="{Binding SeriesCollection_Bar}" >
+                    <lvc:CartesianChart x:Name="barChart"  >
                         <lvc:CartesianChart.AxisX>
-                            <lvc:Axis Title="Services" Labels="{Binding Labels}"></lvc:Axis>
+                            <lvc:Axis Title="Services" Labels="{Binding Label_Bar}"></lvc:Axis>
                         </lvc:CartesianChart.AxisX>
                         <lvc:CartesianChart.AxisY>
                             <lvc:Axis Title="Count" LabelFormatter="{Binding Formatter}"></lvc:Axis>
                         </lvc:CartesianChart.AxisY>
-                    </lvc:CartesianChart>
+                    </lvc:CartesianChart> 
                 </materialDesign:Card>
 
                 <Grid Grid.Column="2">
@@ -194,8 +214,8 @@
 
             </Grid>
 
-            <materialDesign:Card Margin="30,10,30,0" materialDesign:ShadowAssist.ShadowDepth="Depth1" Padding="10" Grid.Row="2">
-                <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Top" >
+            <materialDesign:Card  Margin="30,10,30,0" materialDesign:ShadowAssist.ShadowDepth="Depth1" Padding="10" Grid.Row="2">
+                <lvc:CartesianChart x:Name="lineChart" Series="{Binding SeriesCollection_Line}" LegendLocation="Top" >
                     <lvc:CartesianChart.AxisY>
                         <lvc:Axis Title="Sales" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
                     </lvc:CartesianChart.AxisY>
@@ -203,7 +223,7 @@
                         <lvc:Axis Title="Month" Labels="{Binding Labels}"></lvc:Axis>
                     </lvc:CartesianChart.AxisX>
 
-                </lvc:CartesianChart>
+                </lvc:CartesianChart> 
             </materialDesign:Card>
 
         </Grid>

@@ -188,6 +188,7 @@
     <Compile Include="Store\ExchangeRateStore.cs" />
     <Compile Include="Store\IncidentStore.cs" />
     <Compile Include="Store\PaymentStore.cs" />
+    <Compile Include="Store\ReportStore.cs" />
     <Compile Include="Store\ServiceRequestStore.cs" />
     <Compile Include="Utilties\ChangeTypeApartment.cs" />
     <Compile Include="Utilties\ConnectDB.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="ViewModel\NotificationUCViewModel.cs" />
     <Compile Include="ViewModel\OverviewPageViewModel.cs" />
     <Compile Include="ViewModel\PaymentDetailViewModel.cs" />
+    <Compile Include="ViewModel\ReportPageViewModel.cs" />
     <Compile Include="ViewModel\ServiceRequestViewModel.cs" />
     <Page Include="ApartmentWindow.xaml">
       <SubType>Designer</SubType>
