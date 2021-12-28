@@ -20,4 +20,5 @@
     <viewmodel:EditProfileViewModel x:Key="EditProfileVM"></viewmodel:EditProfileViewModel>
     <viewmodel:ChangePasswordViewModel x:Key="ChangePasswordVM"></viewmodel:ChangePasswordViewModel>
     <viewmodel:ReportPageViewModel x:Key="ReportPageVM"></viewmodel:ReportPageViewModel>
+    <viewmodel:ListofReportViewModel x:Key="ListofReportPageVM"></viewmodel:ListofReportViewModel>
 </ResourceDictionary>
