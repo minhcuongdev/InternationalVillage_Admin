@@ -62,11 +62,11 @@
 
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="3.25*"></ColumnDefinition>
+                    <ColumnDefinition Width="1.8*"></ColumnDefinition>
+                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="1.1*"></ColumnDefinition>
+                    <ColumnDefinition Width="2.5*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
@@ -83,23 +83,23 @@
                 <DatePicker Grid.Column="1" 
                             x:Name="dpStartDate"  
                             materialDesign:HintAssist.Hint="Start date"
-                            Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50,0,25,0" FirstDayOfWeek="Monday" />
+                            Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="40,15,0,15" FirstDayOfWeek="Monday" />
 
                 <DatePicker Grid.Column="2" 
                             x:Name="dpDueDate"  
                             materialDesign:HintAssist.Hint="Due date"
-                            Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50,0,25,0" FirstDayOfWeek="Monday" >
+                            Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10,15,0,15" FirstDayOfWeek="Monday" >
                 </DatePicker>
                 <ComboBox Grid.Column="3"                      
                         Style="{StaticResource MaterialDesignFilledComboBox}"
                         materialDesign:HintAssist.Hint="Year"                        
-                        HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="50,0,80,0" 
+                        HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20,15,20,15" 
                         x:Name="cbbYear">
                 </ComboBox>
                 <ComboBox Grid.Column="4"                      
                         Style="{StaticResource MaterialDesignFilledComboBox}"
                         materialDesign:HintAssist.Hint="Type of Report"                        
-                        HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="50,0,80,0" 
+                        HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,15,80,15" 
                         x:Name="cbbTypeOfReport" SelectionChanged="cbbTypeOfReport_SelectionChanged">
                     <ComboBoxItem
                                 Content="By day" />

@@ -19,7 +19,7 @@
              
              x:Name="NotiUC"
              mc:Ignorable="d" 
-             d:DesignWidth="300" Height="70" Margin="0,0,0,10">
+             d:DesignWidth="450" Height="100" Margin="0,0,0,10">
     <Grid >
         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2">
             <Grid>
@@ -33,9 +33,9 @@
                         <ColumnDefinition Width="150"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Source="flash.png" Height="18" Width="25" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" Text="REPORT REQUEST" FontSize="10" FontWeight="Bold" VerticalAlignment="Center" Foreground="Black" />
-                    <Image Grid.Column="2" Source="cancel (1).png" Stretch="UniformToFill" Width="18" Height="18" HorizontalAlignment="Right" Margin="0,0,10,0" Cursor="Hand">
+                    <Image Grid.Column="0" Source="/Image/flash.png" Height="25" Width="25" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="REPORT REQUEST" FontSize="17" FontWeight="Bold" VerticalAlignment="Center" Foreground="Black" />
+                    <Image Grid.Column="2" Source="/Image/cancel (1).png" Stretch="UniformToFill" Width="18" Height="18" HorizontalAlignment="Right" Margin="0,0,10,0" Cursor="Hand">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDown">
                                 <i:InvokeCommandAction Command="{Binding CloseNoti}" CommandParameter="{Binding ElementName=NotiUC}"/>
@@ -45,7 +45,7 @@
 
                 </Grid>
                 <TextBlock x:Name="ContentOfNotification" Grid.Row="1" Text="Director request to view monthly revenue report"
-                           FontSize="9" VerticalAlignment="Top" Padding="40,0,0,0" TextWrapping="Wrap">
+                           FontSize="15" VerticalAlignment="Top" Padding="40,0,0,0" TextWrapping="Wrap">
 
                 </TextBlock>
 

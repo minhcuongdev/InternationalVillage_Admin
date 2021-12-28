@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="InternationalVillage_Admin.Component.ReportUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:InternationalVillage_Admin.Component"
+             
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             
+             
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"            
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             
+             x:Name="ReportInformationUC"
+             mc:Ignorable="d" 
+             d:DesignHeight="140" d:DesignWidth="450" Height="140" Margin="0,0,0,15">
+
+
+
+    <Grid>
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"></ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Image Source="/Image/istockphoto-1322924601-170667a.jpg" Stretch="UniformToFill" Margin="8"/>
+                </Grid>
+
+                <Grid Grid.Column="1" Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"></RowDefinition>
+                        <RowDefinition Height="3*"></RowDefinition>
+                        <RowDefinition Height="4*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="/Image/analytics.png"  VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Text="Report Information" FontSize="16" FontWeight="ExtraBold" VerticalAlignment="Center" Foreground="Black" Margin="10,0,0,0" HorizontalAlignment="Left" />
+                    </Grid>
+                    <TextBlock x:Name="Type" Grid.Row="1" Text="By day"  Foreground="Black" FontWeight="Bold"
+                           FontSize="14" VerticalAlignment="Center"  TextWrapping="Wrap"/>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Start Date" FontSize="14" Foreground="gray" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="1" Text="End Date" FontSize="14" Foreground="gray" VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock x:Name="CheckIn" Grid.Row="0" Text="28/12/2021" FontSize="14" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="CheckOut" Grid.Row="1" Text="31/12/2021" FontSize="14" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center"/>
+                        </Grid>
+
+
+                    </Grid>
+                    
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <Grid.Resources>
+                        <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
+                            <Setter Property="Foreground" Value="#2f9cfa" />
+                            <Setter Property="TextDecorations" Value="Underline" />
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="True">
+                                    <Setter Property="Cursor" Value="Hand" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Resources>
+                    <Button x:Name="View"  Background="White" Width="140" FontSize="15"  Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Foreground="#2f9cfa" >
+                        View Detail
+                    </Button>
+                </Grid>
+
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>
