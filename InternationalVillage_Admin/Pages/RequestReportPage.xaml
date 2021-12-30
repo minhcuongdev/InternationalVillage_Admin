@@ -15,10 +15,19 @@
       TextOptions.TextFormattingMode="Ideal"
       TextOptions.TextRenderingMode="Auto"
       FontFamily="{DynamicResource MaterialDesignFont}"
+      DataContext="{StaticResource RequestRevenueReport}"
       
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RequestReportPage">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadName}" CommandParameter="{Binding ElementName=FullName}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding InitYear}" CommandParameter="{Binding ElementName=cbbYear}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Grid Background="White" >
         <Grid.RowDefinitions>
@@ -107,11 +116,10 @@
                                 VerticalAlignment="Stretch"
                                 AcceptsReturn="True"
                                 TextWrapping="Wrap"
+                                IsReadOnly="True"
                                 materialDesign:HintAssist.Hint="FullName" 
-                                x:Name="FullName"
-                                IsEnabled="True" Margin="50,0,25,0" HorizontalAlignment="Stretch"   >
-                        </TextBox>
-                        <TextBlock x:Name="FullNameError" Grid.Row="1" Text="Example: VictoryA " FontSize="15" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="50,0,25,0" TextWrapping="WrapWithOverflow" />
+                                x:Name="FullName" Margin="50,0,25,0" HorizontalAlignment="Stretch"   />
+                        <TextBlock x:Name="FullNameError" Grid.Row="1"  FontSize="15" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="50,0,25,0" TextWrapping="WrapWithOverflow" />
 
                     </Grid>
 
@@ -128,9 +136,22 @@
                             materialDesign:HintAssist.Hint="Type of Report"
                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="25,0,50,0">
 
-                            <ComboBoxItem Content="By week" />
+                            <ComboBoxItem Content="By day" IsSelected="True"  />
                             <ComboBoxItem Content="By month" />
-                            <ComboBoxItem Content="By year" />
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding SelectedChangeType}" CommandParameter="{Binding ElementName=TypeOfReport}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding HiddenStartDate}" CommandParameter="{Binding ElementName=StartDate}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding HiddenDueDate}" CommandParameter="{Binding ElementName=DueDate}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding HiddenYear}" CommandParameter="{Binding ElementName=cbbYear}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </ComboBox>
                         <TextBlock x:Name="TypeIncidentError" Grid.Row="1"  FontSize="15" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="25,0,50,0" TextWrapping="WrapWithOverflow" />
 
@@ -152,9 +173,18 @@
                         <DatePicker Grid.Row="0"
                             x:Name="StartDate"  
                             materialDesign:HintAssist.Hint="Start date"
-                            Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50,0,25,0" FirstDayOfWeek="Monday" />
+                            Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50,0,25,0" FirstDayOfWeek="Monday">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedDateChanged">
+                                    <i:InvokeCommandAction Command="{Binding CheckinDateChanged}" CommandParameter="{Binding ElementName=StartDate}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="LostKeyboardFocus">
+                                    <i:InvokeCommandAction Command="{Binding ValidateCheckinDate}" CommandParameter="{Binding ElementName=StartDateError}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </DatePicker>
 
-                        <TextBlock  Grid.Row="1"  FontSize="15" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="50,0,25,0" TextWrapping="WrapWithOverflow" />
+                        <TextBlock x:Name="StartDateError" Grid.Row="1"  FontSize="15" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="50,0,25,0" TextWrapping="WrapWithOverflow" />
 
 
                     </Grid>
@@ -169,22 +199,43 @@
                             x:Name="DueDate"
                             materialDesign:HintAssist.Hint="Due date"
                             Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="25,0,50,0" >
-
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedDateChanged">
+                                    <i:InvokeCommandAction Command="{Binding CheckoutDateChanged}" CommandParameter="{Binding ElementName=DueDate}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="LostKeyboardFocus">
+                                    <i:InvokeCommandAction Command="{Binding ValidateCheckoutDate}" CommandParameter="{Binding ElementName=DueDateError}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </DatePicker>
-                        <TextBlock x:Name="CheckoutDateError" Grid.Row="1"  FontSize="15" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="25,0,50,0" TextWrapping="WrapWithOverflow" />
+                        <TextBlock x:Name="DueDateError" Grid.Row="1"  FontSize="15" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="25,0,50,0" TextWrapping="WrapWithOverflow" />
 
                     </Grid>
                 </Grid>
 
             </Grid>
             <Grid Grid.Row="2" >
+                <ComboBox                     
+                        Style="{StaticResource MaterialDesignFilledComboBox}"
+                        materialDesign:HintAssist.Hint="Year"                        
+                        HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,15,20,15" 
+                        Visibility="Hidden"
+                        x:Name="cbbYear">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectedChangeYear}" CommandParameter="{Binding ElementName=cbbYear}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                </ComboBox>
                 <Button
-                    x:Name="Book"
+                    x:Name="Send"
                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
                     materialDesign:ButtonAssist.CornerRadius="20"           
                     IsEnabled="True"  HorizontalAlignment="Center" Width="300" Height="45"  VerticalAlignment="Stretch"
-                    Command="{Binding Book}"
-                    CommandParameter="{Binding ElementName=Book}" >
+                    Command="{Binding Send}"
+                    CommandParameter="{Binding ElementName=Send}" >
+                    
                <TextBlock Text="SEND" />
                 </Button>
 

@@ -190,14 +190,17 @@ namespace InternationalVillage_Admin.Pages
             {
                 lineChart.Visibility = Visibility.Hidden;
                 int lu = 0; int high = 0; int stand = 0;
+                int sumPeople = 0;
                 DataTable data = ReportStore.Instance.GetPieChartByDay(dpStartDate.SelectedDate.Value, dpDueDate.SelectedDate.Value);
                 foreach (DataRow row in data.Rows)
                 {
                     if (row["TypeOfApartment"].ToString().Equals("3A") && row["Sum"] != null) lu = Int32.Parse(row["Sum"].ToString());
                     else if (row["TypeOfApartment"].ToString().Equals("3B") && row["Sum"] != null) high = Int32.Parse(row["Sum"].ToString());
                     else if (row["TypeOfApartment"].ToString().Equals("2A") && row["Sum"] != null) stand = Int32.Parse(row["Sum"].ToString());
+                    sumPeople += Int32.Parse(row["People"].ToString());
                 }
                 PieChart(lu, high, stand);
+                TblTotalCustomer.Text = sumPeople.ToString();
 
                 int Pool = 0; int Gym = 0; int Restaurant = 0; int Golf = 0; int Tennis = 0; int Bar = 0;
                 DataTable data2 = ReportStore.Instance.GetBarChartByDay(dpStartDate.SelectedDate.Value, dpDueDate.SelectedDate.Value);
@@ -212,20 +215,24 @@ namespace InternationalVillage_Admin.Pages
                 }
                 BarChart(Pool, Gym, Restaurant, Golf, Tennis, Bar);
 
+                TblTotalRenenue.Text = "$"+ReportStore.Instance.GetTotalRevenueByDay(dpStartDate.SelectedDate.Value, dpDueDate.SelectedDate.Value);
             }
             else 
             {
                 int year = Int32.Parse(cbbYear.SelectedItem.ToString());
                 lineChart.Visibility = Visibility.Visible;
                 int lu = 0; int high = 0; int stand = 0;
+                int sumPeople = 0;
                 DataTable data = ReportStore.Instance.GetPieChartByMonth(year);
                 foreach (DataRow row in data.Rows)
                 {
                     if (row["TypeOfApartment"].ToString().Equals("3A") && row["Sum"] != null) lu = Int32.Parse(row["Sum"].ToString());
                     else if (row["TypeOfApartment"].ToString().Equals("3B") && row["Sum"] != null) high = Int32.Parse(row["Sum"].ToString());
                     else if (row["TypeOfApartment"].ToString().Equals("2A") && row["Sum"] != null) stand = Int32.Parse(row["Sum"].ToString());
+                    sumPeople += Int32.Parse(row["People"].ToString());
                 }
                 PieChart(lu, high, stand);
+                TblTotalCustomer.Text = sumPeople.ToString();
 
                 int Pool = 0; int Gym = 0; int Restaurant = 0; int Golf = 0; int Tennis = 0; int Bar = 0;
                 DataTable data2 = ReportStore.Instance.GetBarChartByMonth(year);
@@ -239,6 +246,8 @@ namespace InternationalVillage_Admin.Pages
                     else if (row["ServiceName"].ToString().Equals("Bar") && row["Sum"] != null) Bar = Int32.Parse(row["Sum"].ToString());
                 }
                 BarChart(Pool, Gym, Restaurant, Golf, Tennis, Bar);
+
+                TblTotalRenenue.Text = "$" + ReportStore.Instance.GetTotalRevenueByMonth(year);
 
                 int[,] data3 = ReportStore.Instance.GetLineChart(year);
                 ChartValues<double> luxury = new ChartValues<double>();
@@ -275,6 +284,7 @@ namespace InternationalVillage_Admin.Pages
             
                 LineChart(luxury, highstand, standard, lable);
             }
+            MessageBox.Show("Send report success!");
         }
     }
 }
