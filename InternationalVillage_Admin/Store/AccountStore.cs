@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows;
 using InternationalVillage_Admin.Model;
 
 namespace InternationalVillage_Admin.Store
@@ -50,6 +50,14 @@ namespace InternationalVillage_Admin.Store
                     string query2 = "select * from Receptionist where ID_Receptionist = '" + IdUser+  "'";
                     DataTable data2 = DataProvider.Instance.ExecuteQuery(query2);
                     name = (data2.Rows[0])["FullName"].ToString();
+                    
+                }
+                if (role.Equals("Manager"))
+                {
+                    string query3 = "select * from Manager where Id_Manager = '" + IdUser + "'";
+                    DataTable data3 = DataProvider.Instance.ExecuteQuery(query3);
+                    name = (data3.Rows[0])["FullName"].ToString();
+                    
                 }
                 return account;
             }

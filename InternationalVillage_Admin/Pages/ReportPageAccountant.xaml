@@ -49,7 +49,7 @@
                 </Style>
             </Grid.Resources>
             <TextBlock Foreground="Black" Margin="20,0,0,0" VerticalAlignment="Center" FontSize="15" FontWeight="Bold">
-                <Hyperlink NavigateUri="ReceptionistPage.xaml">BACK</Hyperlink>
+                <Hyperlink NavigateUri="AccountantPage.xaml">BACK</Hyperlink>
             </TextBlock>
         </Grid>
 
@@ -165,7 +165,7 @@
                                     <ColumnDefinition Width="7.5*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="/Image/group.png" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"  />
-                                <TextBlock Grid.Column="1" Text="1,568" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom"  HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="TblTotalCustomer" Grid.Column="1" Text="0" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom"  HorizontalAlignment="Center"/>
                             </Grid>
 
                             <Grid Grid.Row="1">
@@ -194,7 +194,7 @@
                                     <ColumnDefinition Width="7.5*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="/Image/cash.png" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"  />
-                                <TextBlock Grid.Column="1" Text="$1,568" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom"  HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="TblTotalRenenue" Grid.Column="1" Text="$0" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom"  HorizontalAlignment="Center"/>
                             </Grid>
 
                             <Grid Grid.Row="1">
@@ -215,7 +215,7 @@
             </Grid>
 
             <materialDesign:Card  Margin="30,10,30,0" materialDesign:ShadowAssist.ShadowDepth="Depth1" Padding="10" Grid.Row="2">
-                <lvc:CartesianChart x:Name="lineChart" Series="{Binding SeriesCollection_Line}" LegendLocation="Top" >
+                <lvc:CartesianChart x:Name="lineChart"  LegendLocation="Top" >
                     <lvc:CartesianChart.AxisY>
                         <lvc:Axis Title="Sales" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
                     </lvc:CartesianChart.AxisY>

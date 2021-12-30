@@ -290,8 +290,6 @@
 
                     <TextBlock Grid.Row="8" Text="THANK YOU !" FontSize="20" FontWeight="Bold"  VerticalAlignment="Center"  HorizontalAlignment="Center"/>
 
-
-
                 </Grid>
             </Grid>
 

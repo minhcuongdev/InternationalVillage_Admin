@@ -48,7 +48,7 @@
                         <Image Grid.Column="0" Source="/Image/analytics.png"  VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <TextBlock Grid.Column="1" Text="Report Information" FontSize="16" FontWeight="ExtraBold" VerticalAlignment="Center" Foreground="Black" Margin="10,0,0,0" HorizontalAlignment="Left" />
                     </Grid>
-                    <TextBlock x:Name="Type" Grid.Row="1" Text="By day"  Foreground="Black" FontWeight="Bold"
+                    <TextBlock x:Name="TblType" Grid.Row="1" Text="By day"  Foreground="Black" FontWeight="Bold"
                            FontSize="14" VerticalAlignment="Center"  TextWrapping="Wrap"/>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
@@ -60,8 +60,8 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Start Date" FontSize="14" Foreground="gray" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Row="1" Text="End Date" FontSize="14" Foreground="gray" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="TblTitleStart" Grid.Row="0" Text="Start Date" FontSize="14" Foreground="gray" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="TblTitleDue" Grid.Row="1" Text="Due Date" FontSize="14" Foreground="gray" VerticalAlignment="Center"/>
                         </Grid>
 
                         <Grid Grid.Column="1">
@@ -69,8 +69,8 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock x:Name="CheckIn" Grid.Row="0" Text="28/12/2021" FontSize="14" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center"/>
-                            <TextBlock x:Name="CheckOut" Grid.Row="1" Text="31/12/2021" FontSize="14" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="TblStartDate" Grid.Row="0" Text="28/12/2021" FontSize="14" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="TblDueDate" Grid.Row="1" Text="31/12/2021" FontSize="14" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center"/>
                         </Grid>
 
 
@@ -97,8 +97,9 @@
                             </Style.Triggers>
                         </Style>
                     </Grid.Resources>
-                    <Button x:Name="View"  Background="White" Width="140" FontSize="15"  Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Foreground="#2f9cfa" >
-                        View Detail
+                    <Button x:Name="View"  Background="White" Width="140" FontSize="15"  Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Foreground="#2f9cfa" Click="View_Click" >
+                       
+                        <Hyperlink NavigateUri="/Pages/ReportPage.xaml">View details</Hyperlink>
                     </Button>
                 </Grid>
 

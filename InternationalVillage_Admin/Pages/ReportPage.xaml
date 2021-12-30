@@ -49,7 +49,7 @@
                 </Style>
             </Grid.Resources>
             <TextBlock Foreground="Black" Margin="20,0,0,0" VerticalAlignment="Center" FontSize="15" FontWeight="Bold">
-                <Hyperlink NavigateUri="ReceptionistPage.xaml">BACK</Hyperlink>
+                <Hyperlink NavigateUri="ListofReportPage.xaml">BACK</Hyperlink>
             </TextBlock>
         </Grid>
 
@@ -79,7 +79,8 @@
 
                 <ComboBox Grid.Column="1"                      
                         Style="{StaticResource MaterialDesignFilledComboBox}"
-                        materialDesign:HintAssist.Hint="Type of Report"                        
+                        materialDesign:HintAssist.Hint="Type of Report"            
+                          Visibility="Hidden"
                         HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="210,0,30,0" >
                     <ComboBoxItem
                                 Content="By week" />
@@ -98,8 +99,8 @@
                 </Grid.ColumnDefinitions>
 
                 <materialDesign:Card Margin="30,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth1" Padding="5" Grid.Column="0">
-                    <lvc:PieChart LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}">
-                        <lvc:PieChart.Series>
+                    <lvc:PieChart x:Name="pieChart" LegendLocation="Bottom"  Hoverable="False" DataTooltip="{x:Null}" DataClick="pieChart_DataClick" >
+                        <!--   <lvc:PieChart.Series >
                             <lvc:PieSeries Title="Luxury" Values="3" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
                             <lvc:PieSeries Title="High Standard" Values="4" DataLabels="True" 
@@ -107,14 +108,14 @@
                             <lvc:PieSeries Title="Standard" Values="6" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
 
-                        </lvc:PieChart.Series>
+                        </lvc:PieChart.Series>  -->
                     </lvc:PieChart>
                 </materialDesign:Card>
 
                 <materialDesign:Card Margin="15,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth1" Padding="5" Grid.Column="1">
-                    <lvc:CartesianChart Series="{Binding SeriesCollection_Bar}" >
+                    <lvc:CartesianChart x:Name="barChart"  >
                         <lvc:CartesianChart.AxisX>
-                            <lvc:Axis Title="Services" Labels="{Binding Labels}"></lvc:Axis>
+                            <lvc:Axis Title="Services" Labels="{Binding Label_Bar}"></lvc:Axis>
                         </lvc:CartesianChart.AxisX>
                         <lvc:CartesianChart.AxisY>
                             <lvc:Axis Title="Count" LabelFormatter="{Binding Formatter}"></lvc:Axis>
@@ -140,7 +141,7 @@
                                     <ColumnDefinition Width="7.5*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="/Image/group.png" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"  />
-                                <TextBlock Grid.Column="1" Text="1,568" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom"  HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="TblTotalCustomer" Grid.Column="1" Text="0" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom"  HorizontalAlignment="Center"/>
                             </Grid>
 
                             <Grid Grid.Row="1">
@@ -152,7 +153,7 @@
                                 Foreground="Gray"  Text="Total customers" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15">
                                 </TextBlock>
                             </Grid>
-                            
+
                         </Grid>
                     </materialDesign:Card>
 
@@ -169,7 +170,7 @@
                                     <ColumnDefinition Width="7.5*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="/Image/cash.png" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"  />
-                                <TextBlock Grid.Column="1" Text="$1,568" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom"  HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="TblTotalRenenue" Grid.Column="1" Text="$0" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom"  HorizontalAlignment="Center"/>
                             </Grid>
 
                             <Grid Grid.Row="1">
@@ -182,15 +183,15 @@
                                 </TextBlock>
                             </Grid>
 
-                            
+
                         </Grid>
                     </materialDesign:Card>
                 </Grid>
 
             </Grid>
 
-            <materialDesign:Card Margin="30,10,30,0" materialDesign:ShadowAssist.ShadowDepth="Depth1" Padding="10" Grid.Row="2">
-                <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Top" >
+            <materialDesign:Card  Margin="30,10,30,0" materialDesign:ShadowAssist.ShadowDepth="Depth1" Padding="10" Grid.Row="2">
+                <lvc:CartesianChart x:Name="lineChart" Series="{Binding SeriesCollection_Line}" LegendLocation="Top" >
                     <lvc:CartesianChart.AxisY>
                         <lvc:Axis Title="Sales" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
                     </lvc:CartesianChart.AxisY>
