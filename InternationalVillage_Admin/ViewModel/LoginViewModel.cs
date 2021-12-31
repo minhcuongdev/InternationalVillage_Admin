@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-
+using System.Windows.Media.Imaging;
 using InternationalVillage_Admin.Store;
 
 namespace InternationalVillage_Admin.ViewModel
@@ -19,6 +19,9 @@ namespace InternationalVillage_Admin.ViewModel
         public ICommand HandleTextChanged { get; set; }
         public ICommand HandlePasswordChanged { get; set; }
         public ICommand Drag { get; set; }
+
+        public ICommand ShowPassword { get; set; }
+        public ICommand HidePassword { get; set; }
 
         private string username = "";
         private string password = "";
@@ -35,6 +38,18 @@ namespace InternationalVillage_Admin.ViewModel
             HandlePasswordChanged = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
             {
                 Password = p.Password;
+                if (p.Parent is Grid container)
+                {
+                    Image img = container.FindName("ImgShowHide") as Image;
+                    if (Password.Length > 0)
+                    {
+                        img.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        img.Visibility = Visibility.Hidden;
+                    }
+                }
             });
             CloseLoginWindow = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -49,6 +64,16 @@ namespace InternationalVillage_Admin.ViewModel
             Drag = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 p.DragMove();
+            });
+
+            ShowPassword = new RelayCommand<Grid>((p) => { return true; }, (p) =>
+            {
+                showPassword(p);
+            });
+
+            HidePassword = new RelayCommand<Grid>((p) => { return true; }, (p) =>
+            {
+                hidePassword(p);
             });
 
             SignIn = new RelayCommand<Window>((p) => {
@@ -67,6 +92,32 @@ namespace InternationalVillage_Admin.ViewModel
                     MessageBox.Show("Wrong Account !! Please, Enter again !!");
                 }
             });
+        }
+
+        void showPassword(Grid p)
+        {
+            Image img = p.FindName("ImgShowHide") as Image;
+            TextBox visiblePassword = p.FindName("VisiblePassword") as TextBox;
+            PasswordBox password = p.FindName("PasswordBox") as PasswordBox;
+
+            img.Source = new BitmapImage(new Uri("Image/Hide.jpg", UriKind.RelativeOrAbsolute));
+            visiblePassword.Visibility = Visibility.Visible;
+            password.Visibility = Visibility.Hidden;
+
+            visiblePassword.Text = password.Password;
+        }
+
+        void hidePassword(Grid p)
+        {
+            Image img = p.FindName("ImgShowHide") as Image;
+            TextBox visiblePassword = p.FindName("VisiblePassword") as TextBox;
+            PasswordBox password = p.FindName("PasswordBox") as PasswordBox;
+
+            img.Source = new BitmapImage(new Uri("Image/Show.jpg", UriKind.RelativeOrAbsolute));
+            visiblePassword.Visibility = Visibility.Hidden;
+            password.Visibility = Visibility.Visible;
+
+            password.Focus();
         }
     }
 }

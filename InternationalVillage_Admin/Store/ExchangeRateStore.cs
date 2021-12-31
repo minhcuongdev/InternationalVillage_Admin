@@ -14,10 +14,22 @@ namespace InternationalVillage_Admin.Store
 
         ExchangeRateStore() { }
 
-        List<ExchangeRate> exchangerateList = FakeData.ExchangeRateData.Instance.GetExchangeRateList();
-
         public List<ExchangeRate> GetExchangeRateList()
         {
+            List<ExchangeRate> exchangerateList = new List<ExchangeRate>();
+
+            ExchangeRate rate1 = new ExchangeRate("/Image/united-states.png", "America", "USD", "1");
+            ExchangeRate rate2 = new ExchangeRate("/Image/european-union.png", "EURO", "EUR", "0.887");
+            ExchangeRate rate3 = new ExchangeRate("/Image/vietnam.png", "Vietname", "VND", "22,662");
+            ExchangeRate rate4 = new ExchangeRate("/Image/singapore.png", "Singapore", "SGD", "1.361");
+            ExchangeRate rate5 = new ExchangeRate("/Image/australia.png", "Australia", "AUD", "1.382");
+
+            exchangerateList.Add(rate1);
+            exchangerateList.Add(rate2);
+            exchangerateList.Add(rate3);
+            exchangerateList.Add(rate4);
+            exchangerateList.Add(rate5);
+
             return exchangerateList;
         }
 

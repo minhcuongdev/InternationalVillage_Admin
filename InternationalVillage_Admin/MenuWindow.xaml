@@ -265,9 +265,9 @@
 
                     <Grid Grid.Row="3" VerticalAlignment="Bottom" Width="200" Margin="0 0 0 20">
                         <StackPanel Grid.Row="1" Orientation="Horizontal">
-                            <Ellipse Width="40" Height="40" Margin="10 0 0 0">
+                            <Ellipse Cursor="Hand" Width="40" Height="40" Margin="10 0 0 0">
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="/Assets/Avatar/avatar.jpg" Stretch="Fill">
+                                    <ImageBrush x:Name="Avatar" ImageSource="/Assets/Avatar/avatar.png" Stretch="Fill">
 
                                     </ImageBrush>
                                 </Ellipse.Fill>
@@ -275,11 +275,19 @@
                                     <i:EventTrigger EventName="MouseLeftButtonDown">
                                         <i:InvokeCommandAction Command="{Binding OpenProfilePage}" CommandParameter="{Binding ElementName=PagesNavigation}"/>
                                     </i:EventTrigger>
+                                    <i:EventTrigger EventName="Loaded">
+                                        <i:InvokeCommandAction Command="{Binding LoadAvatar}" CommandParameter="{Binding ElementName=Avatar}"/>
+                                    </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Ellipse>
                             <StackPanel Orientation="Vertical" Margin="8 0 0 0">
-                                <Label Content="QuynhTon" Foreground="#020F16" FontSize="14" FontWeight="SemiBold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
-                                <Label Content="ID: 19520244" Foreground="#BFBFC4" FontSize="11" FontWeight="Regular" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="0 -10 0 0"/>
+                                <Label x:Name="NameAccount" Content="QuynhTon" Foreground="#020F16" FontSize="14" FontWeight="SemiBold" HorizontalContentAlignment="Center" HorizontalAlignment="Left">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding LoadName}" CommandParameter="{Binding ElementName=NameAccount}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Label>
                             </StackPanel>
                         </StackPanel>
                     </Grid>

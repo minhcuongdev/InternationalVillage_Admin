@@ -219,7 +219,9 @@
                     </Grid.ColumnDefinitions>
 
                     <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
-                    materialDesign:ButtonAssist.CornerRadius="20" Grid.Column="0" Content="Reject" Background="#FF8247" Width="120" FontSize="15" FontWeight="DemiBold" Foreground="White" BorderBrush="#FF8247" Margin="-10,0,0,0"/>
+                    materialDesign:ButtonAssist.CornerRadius="20" Grid.Column="0" Content="Reject" Background="#FF8247" Width="120" FontSize="15" FontWeight="DemiBold" Foreground="White" BorderBrush="#FF8247" Margin="-10,0,0,0" Command="{Binding Reject}" CommandParameter="{Binding ElementName=ApartmentDetail}"/>
+
+
                     <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
                     materialDesign:ButtonAssist.CornerRadius="20" Grid.Column="1" Background="#2f9cfa" Content="Accept" Width="120" FontSize="15" FontWeight="DemiBold" Margin="0" HorizontalAlignment="Left">
                         <i:Interaction.Triggers>

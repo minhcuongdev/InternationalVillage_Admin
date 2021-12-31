@@ -111,10 +111,10 @@ namespace InternationalVillage_Admin.Utilities
 
         public bool Required(TextBlock p, string data, string name, int minimumLenght = 0, int maximumLength = 50)
         {
+            p.Foreground = System.Windows.Media.Brushes.Red;
             if (data.Equals(""))
             {
                 p.Text = "Please enter " + name + " !";
-                p.Foreground = System.Windows.Media.Brushes.Red;
                 p.Visibility = Visibility.Visible;
                 return false;
             }
@@ -147,10 +147,10 @@ namespace InternationalVillage_Admin.Utilities
 
         public bool NumberRange(TextBlock p, string data, string name, int minimum = 0, int maximum = 50)
         {
+            p.Foreground = System.Windows.Media.Brushes.Red;
             if (data.Equals(""))
             {
                 p.Text = " Please enter " + name;
-                p.Foreground = System.Windows.Media.Brushes.Red;
                 p.Visibility = Visibility.Visible;
                 return false;
             }

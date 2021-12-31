@@ -109,11 +109,15 @@ namespace InternationalVillage_Admin.ViewModel
                 if (type.Equals("By day"))
                 {
                     int re = ReportStore.Instance.InsertReportByDay(checkinDate, checkoutDate);
+                    string content = "Create revenue report from day "+ checkinDate.ToString("MM/dd/yyyy") + " to "+ checkoutDate.ToString("MM/dd/yyyy");
+                    NotificationStore.Instance.NotificationAcceptedRequisition("Accountant_1", DateTime.Now, content);
                     if (re > 0) MessageBox.Show("Success!");
                 }
                 else
                 {
                     int re = ReportStore.Instance.InsertReportByMonth(year);
+                    string content = "Create revenue report for the year " + year;
+                    NotificationStore.Instance.NotificationAcceptedRequisition("Accountant_1", DateTime.Now, content);
                     if (re > 0) MessageBox.Show("Success!");
                 }
 

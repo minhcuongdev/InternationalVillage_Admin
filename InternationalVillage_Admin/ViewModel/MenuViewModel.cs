@@ -28,7 +28,8 @@ namespace InternationalVillage_Admin.ViewModel
         public ICommand MouseEnter { get; set; }
         public ICommand MouseLeave { get; set; }
 
-
+        public ICommand LoadAvatar { get; set; }
+        public ICommand LoadName { get; set; }
 
         public MenuViewModel()
         {
@@ -85,6 +86,17 @@ namespace InternationalVillage_Admin.ViewModel
             {
 
                 p.Background = Brushes.Transparent;
+            });
+
+            LoadAvatar = new RelayCommand<ImageBrush>((p) => { return true; }, (p) =>
+            {
+                if (!AccountStore.Instance.Avatar.Equals(""))
+                    p.ImageSource = new ImageSourceConverter().ConvertFromString(AccountStore.Instance.Avatar) as ImageSource;
+            });
+
+            LoadName = new RelayCommand<Label>((p) => { return true; }, (p) =>
+            {
+                p.Content = AccountStore.Instance.Name;
             });
         }
     }

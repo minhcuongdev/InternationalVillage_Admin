@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows;
+using InternationalVillage_Admin.Store;
 
 namespace InternationalVillage_Admin.ViewModel
 {
-    class NotificationUCViewModel:BaseViewModel
+    public class NotificationUCViewModel:BaseViewModel
     {
         public ICommand CloseNoti { get; set; }
 
@@ -20,7 +21,14 @@ namespace InternationalVillage_Admin.ViewModel
                 FrameworkElement stackPanel = GetStackPanelParent(p);
                 if (stackPanel is StackPanel s)
                 {
-                    s.Children.Remove(p);
+                    if (p.FindName("TimeCreate") is TextBlock time)
+                    {
+                        DateTime TimeCreate = DateTime.Parse(time.Text);
+                        if (NotificationStore.Instance.DeleteNotification(AccountStore.Instance.IdUser, TimeCreate))
+                        {
+                            s.Children.Remove(p);
+                        }
+                    }
                 }
             });
         }

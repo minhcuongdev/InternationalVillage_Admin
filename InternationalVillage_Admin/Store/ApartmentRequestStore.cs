@@ -36,9 +36,9 @@ namespace InternationalVillage_Admin.Store
             return null;
         }
 
-        public bool UpdateState()
+        public bool UpdateState(DateTime checkin, DateTime checkout,string content = "Accepted")
         {
-            string query = "Update BookingApartmentTemp set State = 'Accepted' where Id_Customer = '" + ApartmentRequest.IdCustomer + "'";
+            string query = string.Format("Update BookingApartmentTemp set State = '{3}' where Id_Customer ='{0}' and CheckInDate = '{1}' and CheckOutDate = '{2}';", ApartmentRequest.IdCustomer, checkin.ToString("yyyy-MM-dd HH:mm:ss"), checkout.ToString("yyyy-MM-dd HH:mm:ss"),content);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
