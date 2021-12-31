@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 
 using InternationalVillage_Admin.Component;
+using InternationalVillage_Admin.Model;
+using InternationalVillage_Admin.Store;
 
 namespace InternationalVillage_Admin.ViewModel
 {
@@ -18,10 +20,13 @@ namespace InternationalVillage_Admin.ViewModel
         {
             LoadNotification = new RelayCommand<StackPanel>((p) => { return true; }, (p) =>
             {
-                for (int i = 0; i < 20; i++)
+                List<Notification> list = NotificationStore.Instance.GetListNotification(AccountStore.Instance.IdUser);
+
+                foreach (Notification noti in list)
                 {
                     NotificationUC notificationUC = new NotificationUC();
-                    notificationUC.ContentOfNotification.Text = i.ToString();
+                    notificationUC.ContentOfNotification.Text = noti.Content;
+                    notificationUC.TimeCreate.Text = noti.TimeCreate.ToString("MM/dd/yyyy HH:mm:ss");
                     p.Children.Add(notificationUC);
                 }
             });

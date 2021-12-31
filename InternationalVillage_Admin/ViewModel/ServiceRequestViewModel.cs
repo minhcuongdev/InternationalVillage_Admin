@@ -16,6 +16,7 @@ namespace InternationalVillage_Admin.ViewModel
     {
         public ICommand LoadTable { get; set; }
         public ICommand Approved { get; set; }
+        public ICommand Reject { get; set; }
         public ICommand SelectedItem { get; set; }
 
         private ServiceRequest serviceSelected = null;
@@ -41,6 +42,7 @@ namespace InternationalVillage_Admin.ViewModel
                 {
                     ServiceRequestStore.Instance.UpdateState(serviceSelected);
                     PaymentStore.Instance.UpdateToTalService(idBill);
+                    NotificationStore.Instance.NotificationAcceptedRequisition(serviceSelected.IdCustomer, DateTime.Now, "Entertainment service has been accepted");
                     LoadServiceTable(p);
                 }
                 else
@@ -48,6 +50,13 @@ namespace InternationalVillage_Admin.ViewModel
                     MessageBox.Show("error");
                 }
 
+            });
+
+            Reject = new RelayCommand<DataGrid>((p) => { if (serviceSelected != null) return true; return false; }, (p) =>
+            {
+                ServiceRequestStore.Instance.UpdateState(serviceSelected,"Reject");
+                NotificationStore.Instance.NotificationAcceptedRequisition(serviceSelected.IdCustomer, DateTime.Now, "Service has been refused");
+                LoadServiceTable(p);
             });
         }
 

@@ -100,17 +100,20 @@ namespace InternationalVillage_Admin.ViewModel
             }, (p) =>
             {
 
-                if(PaymentStore.Instance.CreateBill(ApartmentRequestStore.Instance.ApartmentRequest.IdCustomer, ApartmentRequestStore.Instance.ApartmentRequest.CheckIn, ApartmentRequestStore.Instance.ApartmentRequest.CheckOut))
+                if (PaymentStore.Instance.CreateBill(ApartmentRequestStore.Instance.ApartmentRequest.IdCustomer, ApartmentRequestStore.Instance.ApartmentRequest.CheckIn, ApartmentRequestStore.Instance.ApartmentRequest.CheckOut))
                 {
-                    string idBill = PaymentStore.Instance.IdBill;
-                    ChangeTypeApartment change = new ChangeTypeApartment();
-                    foreach (ApartmentUC uc in ApartmentStore.Instance.ApartmentSlectedList)
+                    if (NotificationStore.Instance.NotificationAcceptedRequisition(ApartmentRequestStore.Instance.ApartmentRequest.IdCustomer, DateTime.Now, "Reservation request has been accepted"))
                     {
-                        PaymentStore.Instance.InsertDetailApartmentBill(uc.ContentOfApartment.Text, idBill, change.ChangeTypeToPrice(ApartmentRequestStore.Instance.ApartmentRequest.Type), ApartmentRequestStore.Instance.ApartmentRequest.CheckIn, ApartmentRequestStore.Instance.ApartmentRequest.CheckOut);
-                        ApartmentStore.Instance.InsertBookingApartmentTable(ApartmentRequestStore.Instance.ApartmentRequest.IdCustomer, uc.ContentOfApartment.Text, change.ChangeTypeToPrice(ApartmentRequestStore.Instance.ApartmentRequest.Type), ApartmentRequestStore.Instance.ApartmentRequest.CheckIn, ApartmentRequestStore.Instance.ApartmentRequest.CheckOut);
+                        string idBill = PaymentStore.Instance.IdBill;
+                        ChangeTypeApartment change = new ChangeTypeApartment();
+                        foreach (ApartmentUC uc in ApartmentStore.Instance.ApartmentSlectedList)
+                        {
+                            PaymentStore.Instance.InsertDetailApartmentBill(uc.ContentOfApartment.Text, idBill, change.ChangeTypeToPrice(ApartmentRequestStore.Instance.ApartmentRequest.Type), ApartmentRequestStore.Instance.ApartmentRequest.CheckIn, ApartmentRequestStore.Instance.ApartmentRequest.CheckOut);
+                            ApartmentStore.Instance.InsertBookingApartmentTable(ApartmentRequestStore.Instance.ApartmentRequest.IdCustomer, uc.ContentOfApartment.Text, change.ChangeTypeToPrice(ApartmentRequestStore.Instance.ApartmentRequest.Type), ApartmentRequestStore.Instance.ApartmentRequest.CheckIn, ApartmentRequestStore.Instance.ApartmentRequest.CheckOut);
+                        }
+                        ApartmentRequestStore.Instance.UpdateState(ApartmentRequestStore.Instance.ApartmentRequest.CheckIn, ApartmentRequestStore.Instance.ApartmentRequest.CheckOut);
+                        PaymentStore.Instance.UpdateToTal(idBill);
                     }
-                    ApartmentRequestStore.Instance.UpdateState();
-                    PaymentStore.Instance.UpdateToTal(idBill);
                 }
 
                 ApartmentStore.Instance.ApartmentSlectedList.Clear();

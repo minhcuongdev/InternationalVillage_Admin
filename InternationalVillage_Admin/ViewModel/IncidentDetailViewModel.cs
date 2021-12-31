@@ -63,6 +63,7 @@ namespace InternationalVillage_Admin.ViewModel
             {
                 if(IncidentStore.Instance.UpdateState(IncidentStore.Instance.IncidentSelected.IdIncident, AccountStore.Instance.IdUser))
                 {
+                    NotificationStore.Instance.NotificationAcceptedRequisition(IncidentStore.Instance.IncidentSelected.IdCustomer, DateTime.Now, "Incident has been solved");
                     p.NavigationService.Navigate(new Uri("/Pages/Incidentrequest.xaml", UriKind.RelativeOrAbsolute));
                 }
             });

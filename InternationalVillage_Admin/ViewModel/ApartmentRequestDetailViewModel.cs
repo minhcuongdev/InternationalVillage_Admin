@@ -22,8 +22,9 @@ namespace InternationalVillage_Admin.ViewModel
         public ICommand LoadTypeOfApartment { get; set; }
         public ICommand LoadQuantity { get; set; }
         public ICommand LoadStatus { get; set; }
+        public ICommand Reject { get; set; }
 
-        
+
         public ApartmentRequestDetailViewModel()
         {
             ShowApartmentForm = new RelayCommand<Page>((p) => { return true; }, (p) =>
@@ -35,6 +36,15 @@ namespace InternationalVillage_Admin.ViewModel
                     p.NavigationService.Navigate(new Uri("Pages/HandleRequest.xaml", UriKind.RelativeOrAbsolute));
                     PaymentStore.Instance.isFinished = false;
                 }
+            });
+
+            Reject = new RelayCommand<Page>((p) => { return true; }, (p) =>
+            {
+                ApartmentRequestStore.Instance.UpdateState(ApartmentRequestStore.Instance.ApartmentRequest.CheckIn, ApartmentRequestStore.Instance.ApartmentRequest.CheckOut,"Reject");
+                NotificationStore.Instance.NotificationAcceptedRequisition(ApartmentRequestStore.Instance.ApartmentRequest.IdCustomer, DateTime.Now, "Reservation request has been declined");
+                p.NavigationService.Navigate(new Uri("Pages/HandleRequest.xaml", UriKind.RelativeOrAbsolute));
+                ApartmentStore.Instance.ApartmentSlectedList.Clear();
+                PaymentStore.Instance.isFinished = false;
             });
 
             LoadCustomer = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>

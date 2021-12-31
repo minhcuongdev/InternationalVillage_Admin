@@ -45,8 +45,10 @@ namespace InternationalVillage_Admin.ViewModel
             if((grid as Grid) != null)
             {
                 Grid g = grid as Grid;
-                TextBlock text = g.FindName("Number") as TextBlock;
-                text.Text = ApartmentStore.Instance.ApartmentSlectedList.Count.ToString();
+                if (g.FindName("Number") is TextBlock text)
+                {
+                    text.Text = ApartmentStore.Instance.ApartmentSlectedList.Count.ToString();
+                }
             }
         }
     }

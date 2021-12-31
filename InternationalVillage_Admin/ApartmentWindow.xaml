@@ -114,11 +114,8 @@
                     </TextBlock>
                 </Grid>
 
-                <Button x:Name="Done" Command="{Binding HandleRequest}" CommandParameter="{Binding ElementName=ApartmentWD}" Grid.Column="2" Height="45" Width="80" Content="DONE" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-12,0,0">
-                    
-                </Button>
-            
-            
+                <Button x:Name="Done" Command="{Binding HandleRequest}" CommandParameter="{Binding ElementName=ApartmentWD}" Grid.Column="2" Height="45" Width="80" Content="DONE" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-12,0,0"/>
+
             </Grid>
 
             <Rectangle Grid.Row="3"  Width="1000" Height="1" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Top" Fill="#C8C8C8"/>

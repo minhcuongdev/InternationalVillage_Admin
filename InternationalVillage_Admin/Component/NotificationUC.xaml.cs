@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InternationalVillage_Admin.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,13 @@ namespace InternationalVillage_Admin.Component
     /// </summary>
     public partial class NotificationUC : UserControl
     {
+        public NotificationUCViewModel Notification { get; set; }
+
         public NotificationUC()
         {
             InitializeComponent();
+
+            this.DataContext = Notification = new NotificationUCViewModel();
         }
     }
 }

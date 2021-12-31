@@ -137,7 +137,6 @@ namespace InternationalVillage_Admin.Pages
             }
         }
         
-        string type;
         //Line Graph
         public SeriesCollection SeriesCollection_Line { get; set; }
 

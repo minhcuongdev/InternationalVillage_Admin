@@ -32,9 +32,9 @@ namespace InternationalVillage_Admin.Store
             return list;
         }
 
-        public bool UpdateState(ServiceRequest s)
+        public bool UpdateState(ServiceRequest s,string content = "Accepted")
         {
-            string query = string.Format("Update OderingServiceTable set State = 'Accepted' where Id_Customer = '{0}' and Id_Service ='{1}' and CheckInDate = '{2}' and CheckOutDate= '{3}'",s.IdCustomer,s.IdService,s.CheckIn.ToString("yyyy-MM-dd H:mm:ss"),s.CheckOut.ToString("yyyy-MM-dd H:mm:ss"));
+            string query = string.Format("Update OderingServiceTable set State = '{4}' where Id_Customer = '{0}' and Id_Service ='{1}' and CheckInDate = '{2}' and CheckOutDate= '{3}'",s.IdCustomer,s.IdService,s.CheckIn.ToString("yyyy-MM-dd H:mm:ss"),s.CheckOut.ToString("yyyy-MM-dd H:mm:ss"),content);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;

@@ -149,7 +149,7 @@
                 
                 <Grid >
                     <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
-                    materialDesign:ButtonAssist.CornerRadius="20" Width="150" Height="45" FontWeight="Bold" FontSize="15" Background="#FF8247" BorderBrush="Transparent" Margin="0,0,200,0"  HorizontalAlignment="Right">Reject</Button>
+                    materialDesign:ButtonAssist.CornerRadius="20" Width="150" Height="45" FontWeight="Bold" FontSize="15" Background="#FF8247" BorderBrush="Transparent" Margin="0,0,200,0"  HorizontalAlignment="Right" Command="{Binding Reject}" CommandParameter="{Binding ElementName=DataGridService}">Reject</Button>
                 </Grid>
 
                 <Grid >
