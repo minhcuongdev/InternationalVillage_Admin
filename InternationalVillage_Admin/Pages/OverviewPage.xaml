@@ -63,12 +63,14 @@
 
         <TextBlock Grid.Row="1" Text="OVERVIEW" Foreground="#1261a0" HorizontalAlignment="Left"  FontSize="30"  FontWeight="Bold" Margin="35,7,0,0" VerticalAlignment="Center"/>
             
-        <Grid Grid.Row="2" HorizontalAlignment="Left" Margin="35,0,0,0">
+        <Grid Grid.Row="2" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="500"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <ListBox Grid.Row="0"
+            <ListBox Grid.Row="0" Margin="35,0,0,0"
                 Style="{StaticResource MaterialDesignFilterChipPrimaryListBox}">
                 <ListBoxItem 
                     IsSelected="True"
@@ -81,11 +83,25 @@
                     Content="Incident" HorizontalAlignment="Left" Margin="6,0,0,0" />
                 
             </ListBox>
-            <ComboBox Grid.Column="1"                      
+
+            <DatePicker Grid.Column="1" 
+                            x:Name="CheckinDate"  
+                            materialDesign:HintAssist.Hint="Check-in"
+                            Style="{StaticResource MaterialDesignFilledDatePicker}" 
+                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="60,-20,0,30"/>
+
+            <DatePicker Grid.Column="2" 
+                            x:Name="CheckoutDate"  
+                            materialDesign:HintAssist.Hint="Check-out"
+                            Style="{StaticResource MaterialDesignFilledDatePicker}" 
+                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,-20,50,30">
+            </DatePicker>
+
+
+            <ComboBox Grid.Column="3"                      
                         Style="{StaticResource MaterialDesignFilledComboBox}"
                         materialDesign:HintAssist.Hint="Type of Apartment"                        
-                        Height="45"
-                        Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-12,0,0">
+                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,-20,30,30">
                 <ComboBoxItem
                                 Content="Luxury" />
                 <ComboBoxItem
@@ -95,9 +111,9 @@
             </ComboBox>
         </Grid>
 
-        <Rectangle Grid.Row="3"  Width="750" Height="1" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Top" Fill="#C8C8C8"/>
+        <Rectangle Grid.Row="3"  Height="3" HorizontalAlignment="Stretch" Margin="35,10,0,0" VerticalAlignment="Top" Fill="Gray"/>
 
-        <ScrollViewer Grid.Row="4" Margin="35,0" Height="auto"  HorizontalScrollBarVisibility="Visible"  ScrollViewer.VerticalScrollBarVisibility="Auto" >
+        <ScrollViewer Grid.Row="4" Margin="35,10,0,0" Height="auto"  HorizontalScrollBarVisibility="Visible"  ScrollViewer.VerticalScrollBarVisibility="Auto" >
             <WrapPanel x:Name="ApartmentPanel"  Width="800" HorizontalAlignment="Left">
 
             </WrapPanel>
