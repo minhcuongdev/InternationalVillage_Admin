@@ -22,4 +22,5 @@
     <viewmodel:ReportPageViewModel x:Key="ReportPageVM"></viewmodel:ReportPageViewModel>
     <viewmodel:ListofReportViewModel x:Key="ListofReportPageVM"></viewmodel:ListofReportViewModel>
     <viewmodel:RequestRevenueReportViewModel x:Key="RequestRevenueReport" ></viewmodel:RequestRevenueReportViewModel>
+    <viewmodel:ForgotPasswordViewModel x:Key="ForgotPasswordVM"></viewmodel:ForgotPasswordViewModel>
 </ResourceDictionary>

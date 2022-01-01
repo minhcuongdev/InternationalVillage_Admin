@@ -71,6 +71,12 @@ namespace InternationalVillage_Admin.Store
             return tb.Rows.Count > 0;
         }
 
+        public DataTable GetPasswordByUsername(string username)
+        {
+            string query = string.Format("select Password from Account where Username = '" + username + "'");
+            DataTable result = DataProvider.Instance.ExecuteQuery(query);
+            return result;
+        }
         public bool UpdatePassword(string newPassword)
         {
             string query = string.Format("update Account set Password = '{0}' where Id_Account = '{1}'", newPassword, idAccount);
