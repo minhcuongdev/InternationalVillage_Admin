@@ -34,8 +34,8 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.75*"></RowDefinition>
-                <RowDefinition Height="5.75*"></RowDefinition>
-                <RowDefinition Height="3.5*"></RowDefinition>
+                <RowDefinition Height="5.25*"></RowDefinition>
+                <RowDefinition Height="3.75*"></RowDefinition>
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0"
@@ -238,6 +238,12 @@
                             Style="{StaticResource MaterialDesignBody1TextBlock}"
                             HorizontalAlignment="Left" Foreground="#1261a0" FontSize="15" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center">
                             Forgot password ?
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseDown">
+                                        <i:InvokeCommandAction Command="{Binding OpenForgotPassword}" CommandParameter="{Binding ElementName=ProfilePage}"/>
+                                    </i:EventTrigger>
+                                    
+                                </i:Interaction.Triggers>
                             </TextBlock>
 
                             <TextBlock Grid.Column="1" Cursor="Hand"

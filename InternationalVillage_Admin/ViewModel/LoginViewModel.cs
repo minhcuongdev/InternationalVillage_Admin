@@ -23,6 +23,8 @@ namespace InternationalVillage_Admin.ViewModel
         public ICommand ShowPassword { get; set; }
         public ICommand HidePassword { get; set; }
 
+        public ICommand OpenForgotPassword { get; set; }
+
         private string username = "";
         private string password = "";
 
@@ -64,6 +66,12 @@ namespace InternationalVillage_Admin.ViewModel
             Drag = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 p.DragMove();
+            });
+
+            OpenForgotPassword = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                ForgotPasswordWindow Fforgotpassword = new ForgotPasswordWindow();
+                Fforgotpassword.ShowDialog();
             });
 
             ShowPassword = new RelayCommand<Grid>((p) => { return true; }, (p) =>

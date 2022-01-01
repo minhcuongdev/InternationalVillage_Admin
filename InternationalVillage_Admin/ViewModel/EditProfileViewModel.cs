@@ -12,11 +12,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
+
+
 namespace InternationalVillage_Admin.ViewModel
 {
     class EditProfileViewModel : BaseViewModel
     {
         public ICommand OpenChangePassword { get; set; }
+        public ICommand OpenForgotPassword { get; set; }
 
         public ICommand LoadProfile { get; set; }
         public ICommand SelectPicture { get; set; }
@@ -48,6 +51,12 @@ namespace InternationalVillage_Admin.ViewModel
             {
                 ChangePasswordWindow changepassform = new ChangePasswordWindow();
                 changepassform.ShowDialog();
+            });
+
+            OpenForgotPassword = new RelayCommand<Page>((p) => { return true; }, (p) =>
+            {
+                ForgotPasswordWindow Fforgotpass = new ForgotPasswordWindow();
+                Fforgotpass.ShowDialog();
             });
 
             SelectPicture = new RelayCommand<ImageBrush>((p) => { return true; }, (p) =>

@@ -164,7 +164,14 @@
                             <Label Style="{StaticResource MaterialDesignLabel}" Margin="0,0,-10.667,0.333" FontWeight="Bold"
                                        Content="? Forgot password" HorizontalAlignment="Right" Padding="0,4,7,4" FlowDirection="RightToLeft" Width="140"
                                        Foreground="#176ec6"
-                                       />
+                                       >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseDown">
+                                        <i:InvokeCommandAction Command="{Binding OpenForgotPassword}" CommandParameter="{Binding ElementName=LoginWD}"/>
+                                    </i:EventTrigger>
+                                    
+                                </i:Interaction.Triggers>
+                            </Label>
                         </Grid>
                     </Grid>
 

@@ -100,6 +100,9 @@
     <Compile Include="ExportBillWindow.xaml.cs">
       <DependentUpon>ExportBillWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ForgotPasswordWindow.xaml.cs">
+      <DependentUpon>ForgotPasswordWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MenuWindow.xaml.cs">
       <DependentUpon>MenuWindow.xaml</DependentUpon>
     </Compile>
@@ -213,6 +216,7 @@
     <Compile Include="ViewModel\EditProfileViewModel.cs" />
     <Compile Include="ViewModel\ExchangeRatePageViewModel.cs" />
     <Compile Include="ViewModel\ExportBillViewModel.cs" />
+    <Compile Include="ViewModel\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModel\HandleRequestViewModel.cs" />
     <Compile Include="ViewModel\IncidentDetailViewModel.cs" />
     <Compile Include="ViewModel\IncidentRequestViewModel.cs" />
@@ -252,6 +256,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExportBillWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ForgotPasswordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
