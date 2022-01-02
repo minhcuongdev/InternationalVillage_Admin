@@ -23,11 +23,6 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OverviewPage">
 
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadApartment}" CommandParameter="{Binding ElementName=ApartmentPanel}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
     <Grid Background="white">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -72,49 +67,114 @@
             </Grid.ColumnDefinitions>
             <ListBox Grid.Row="0" Margin="35,0,0,0"
                 Style="{StaticResource MaterialDesignFilterChipPrimaryListBox}">
-                <ListBoxItem 
+                <ListBoxItem x:Name="All"
                     IsSelected="True"
-                    Content="All" />
-                <ListBoxItem                   
-                    Content="Taken" HorizontalAlignment="Left" Margin="6,0,0,0" />
-                <ListBoxItem
-                    Content="Avalable" HorizontalAlignment="Left" Margin="6,0,0,0" />
-                <ListBoxItem
-                    Content="Incident" HorizontalAlignment="Left" Margin="6,0,0,0" />
-                
+                    Content="All" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding SelectedItem}" CommandParameter="{Binding ElementName=All}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding LoadAll}" CommandParameter="{Binding ElementName=ApartmentPanel}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListBoxItem>
+                <ListBoxItem x:Name="Taken"                   
+                    Content="Taken" HorizontalAlignment="Left" Margin="6,0,0,0" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding SelectedItem}" CommandParameter="{Binding ElementName=Taken}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding LoadTaken}" CommandParameter="{Binding ElementName=ApartmentPanel}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListBoxItem>
+                <ListBoxItem x:Name="Available"
+                    Content="Avalable" HorizontalAlignment="Left" Margin="6,0,0,0" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding SelectedItem}" CommandParameter="{Binding ElementName=Available}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding LoadAvailable}" CommandParameter="{Binding ElementName=ApartmentPanel}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListBoxItem>
+                <ListBoxItem x:Name="Incident"
+                    Content="Incident" HorizontalAlignment="Left" Margin="6,0,0,0" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding SelectedItem}" CommandParameter="{Binding ElementName=Incident}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding LoadIncident}" CommandParameter="{Binding ElementName=ApartmentPanel}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListBoxItem>
+
             </ListBox>
 
             <DatePicker Grid.Column="1" 
                             x:Name="CheckinDate"  
                             materialDesign:HintAssist.Hint="Check-in"
                             Style="{StaticResource MaterialDesignFilledDatePicker}" 
-                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="60,-20,0,30"/>
+                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="60,-20,0,30">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectedDateChanged">
+                        <i:InvokeCommandAction Command="{Binding CheckinDateChanged}" CommandParameter="{Binding ElementName=CheckinDate}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="SelectedDateChanged">
+                        <i:InvokeCommandAction Command="{Binding CheckoutDateSetUp}" CommandParameter="{Binding ElementName=CheckoutRange}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="SelectedDateChanged">
+                        <i:InvokeCommandAction Command="{Binding RenderApartment}" CommandParameter="{Binding ElementName=ApartmentPanel}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </DatePicker>
 
             <DatePicker Grid.Column="2" 
                             x:Name="CheckoutDate"  
                             materialDesign:HintAssist.Hint="Check-out"
                             Style="{StaticResource MaterialDesignFilledDatePicker}" 
                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,-20,50,30">
+                <DatePicker.BlackoutDates>
+                    <CalendarDateRange x:Name="CheckoutRange" />
+                </DatePicker.BlackoutDates>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectedDateChanged">
+                        <i:InvokeCommandAction Command="{Binding CheckoutDateChanged}" CommandParameter="{Binding ElementName=CheckoutDate}"/>
+                        <i:InvokeCommandAction Command="{Binding RenderApartment}" CommandParameter="{Binding ElementName=ApartmentPanel}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </DatePicker>
 
 
-            <ComboBox Grid.Column="3"                      
+            <ComboBox x:Name="TypeOfApartment" Grid.Column="3"                      
                         Style="{StaticResource MaterialDesignFilledComboBox}"
                         materialDesign:HintAssist.Hint="Type of Apartment"                        
                         HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,-20,30,30">
                 <ComboBoxItem
                                 Content="Luxury" />
                 <ComboBoxItem
-                                Content="High standard" />
+                                Content="Standard" />
                 <ComboBoxItem
                                 Content="Normal" />
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding TypeOfApartmentChanged}" CommandParameter="{Binding ElementName=TypeOfApartment}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding RenderApartment}" CommandParameter="{Binding ElementName=ApartmentPanel}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </ComboBox>
         </Grid>
 
         <Rectangle Grid.Row="3"  Height="3" HorizontalAlignment="Stretch" Margin="35,10,0,0" VerticalAlignment="Top" Fill="Gray"/>
 
         <ScrollViewer Grid.Row="4" Margin="35,10,0,0" Height="auto"  HorizontalScrollBarVisibility="Visible"  ScrollViewer.VerticalScrollBarVisibility="Auto" >
-            <WrapPanel x:Name="ApartmentPanel"  Width="800" HorizontalAlignment="Left">
+            <WrapPanel x:Name="ApartmentPanel"  MaxWidth="1000" HorizontalAlignment="Left">
 
             </WrapPanel>
         </ScrollViewer>

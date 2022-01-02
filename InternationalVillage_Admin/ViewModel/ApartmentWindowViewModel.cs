@@ -38,10 +38,10 @@ namespace InternationalVillage_Admin.ViewModel
 
                 ChangeTypeApartment change = new ChangeTypeApartment();
 
-                AvailableList = ApartmentStore.Instance.GetAvailableList(change.ChangeTypeOfApartment(ApartmentRequestStore.Instance.ApartmentRequest.Type), ApartmentRequestStore.Instance.ApartmentRequest.CheckIn);
+                AvailableList = ApartmentStore.Instance.GetAvailableList(change.ChangeTypeOfApartment(ApartmentRequestStore.Instance.ApartmentRequest.Type), ApartmentRequestStore.Instance.ApartmentRequest.CheckIn, ApartmentRequestStore.Instance.ApartmentRequest.CheckOut);
                 RenderAvailableList(p);
 
-                TakenList = ApartmentStore.Instance.GetTakenList(change.ChangeTypeOfApartment(ApartmentRequestStore.Instance.ApartmentRequest.Type));
+                TakenList = ApartmentStore.Instance.GetTakenList(change.ChangeTypeOfApartment(ApartmentRequestStore.Instance.ApartmentRequest.Type), ApartmentRequestStore.Instance.ApartmentRequest.CheckIn, ApartmentRequestStore.Instance.ApartmentRequest.CheckOut);
                 RenderTakenList(p);
 
                 IncidentList = ApartmentStore.Instance.GetIncidentList(change.ChangeTypeOfApartment(ApartmentRequestStore.Instance.ApartmentRequest.Type));
