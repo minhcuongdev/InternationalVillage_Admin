@@ -60,9 +60,9 @@ namespace InternationalVillage_Admin.ViewModel
         {
             LoadApartment = new RelayCommand<WrapPanel>((p) => { return true; }, (p) =>
             {
-                LuxuryList = ApartmentStore.Instance.GetAvailableList("3A",BookingStore.Instance.CheckIn);
-                StandardList = ApartmentStore.Instance.GetAvailableList("3B",BookingStore.Instance.CheckIn);
-                NormalList = ApartmentStore.Instance.GetAvailableList("2A",BookingStore.Instance.CheckIn);
+                LuxuryList = ApartmentStore.Instance.GetAvailableList("3A",BookingStore.Instance.CheckIn, BookingStore.Instance.CheckOut);
+                StandardList = ApartmentStore.Instance.GetAvailableList("3B",BookingStore.Instance.CheckIn, BookingStore.Instance.CheckOut);
+                NormalList = ApartmentStore.Instance.GetAvailableList("2A",BookingStore.Instance.CheckIn, BookingStore.Instance.CheckOut);
                 RenderAvailableList(p,LuxuryList);
             });
 

@@ -48,7 +48,8 @@ namespace InternationalVillage_Admin.Utilities
 
         public string SelecttionChanged(ComboBox p)
         {
-            string data = p.Text.Trim();
+            ComboBoxItem typeItem = (ComboBoxItem)p.SelectedItem;
+            string data = typeItem.Content.ToString();
             if (data.Length > 0)
             {
                 p.BorderBrush = System.Windows.Media.Brushes.Green;
@@ -211,12 +212,12 @@ namespace InternationalVillage_Admin.Utilities
             }
             catch (RegexMatchTimeoutException e)
             {
-
+                MessageBox.Show(e.Message);
                 return false;
             }
             catch (ArgumentException e)
             {
-
+                MessageBox.Show(e.Message);
                 return false;
             }
 

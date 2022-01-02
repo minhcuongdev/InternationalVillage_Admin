@@ -161,7 +161,7 @@
 
 
                         <Grid Grid.Column="1" HorizontalAlignment="Right">
-                            <Label Style="{StaticResource MaterialDesignLabel}" Margin="0,0,-10.667,0.333" FontWeight="Bold"
+                            <Label Cursor="Hand" Style="{StaticResource MaterialDesignLabel}" Margin="0,0,-10.667,0.333" FontWeight="Bold"
                                        Content="? Forgot password" HorizontalAlignment="Right" Padding="0,4,7,4" FlowDirection="RightToLeft" Width="140"
                                        Foreground="#176ec6"
                                        >
