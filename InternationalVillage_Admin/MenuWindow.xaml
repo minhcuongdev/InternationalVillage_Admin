@@ -11,7 +11,7 @@
         
         mc:Ignorable="d"
         
-        DataContext="{StaticResource MenuVM}"
+        DataContext="{Binding Source={StaticResource VMLocator}, Path=MenuVM}"
         
         x:Name="MenuWD"
         
@@ -19,6 +19,14 @@
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         Background="Transparent" AllowsTransparency="True"
         ResizeMode="NoResize" WindowState="Normal">
+    <i:Interaction.Triggers>
+        <i:EventTrigger>
+            <i:InvokeCommandAction Command="{Binding ConnectCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding LogoutCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Border CornerRadius="25" Background="#f3f3f3">
         <Grid>

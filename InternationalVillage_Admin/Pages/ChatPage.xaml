@@ -9,10 +9,21 @@
       xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"             
       Background="{DynamicResource MaterialDesignPaper}"
       
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      
+      xmlns:data="clr-namespace:InternationalVillage_Admin.Data" 
+      d:DataContext = "{d:DesignInstance IsDesignTimeCreatable=True, Type={x:Type data:SampleChatViewModel}}"
+      
+      DataContext="{Binding Source={StaticResource VMLocator}, Path=ChatVM}"
       
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ChatPage">
+    <i:Interaction.Triggers>
+        <i:EventTrigger>
+            <i:InvokeCommandAction Command="{Binding LoginCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Page.Resources>
         <Style x:Key="SendButtonStyle" TargetType="{x:Type Button}">
@@ -146,8 +157,7 @@
                         <Ellipse x:Name="ClipEllipse" Fill="White"/>
                         <materialDesign:PackIcon Kind="AccountCircle" SnapsToDevicePixels="True" Width="Auto" Height="Auto"
                                                  Margin="-4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                        <!--<Image Source="{Binding Photo, Converter={StaticResource ByteBmpSrcConverter},
-                            TargetNullValue={StaticResource BlankImage}}" Stretch="UniformToFill"/>-->
+                        <Image Source="{Binding Avatar}" Stretch="UniformToFill"/>
                     </Grid>
                     <!--Name-->
                     <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left"
@@ -173,7 +183,7 @@
                                     <MultiDataTrigger>
                                         <MultiDataTrigger.Conditions>
                                             <Condition Binding="{Binding DataContext.IsConnected, 
-                                                RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}" Value="True"/>
+                                                RelativeSource={RelativeSource FindAncestor, AncestorType=Page}}" Value="True"/>
                                             <Condition Binding="{Binding IsLoggedIn}" Value="True"/>
                                         </MultiDataTrigger.Conditions>
                                         <MultiDataTrigger.Setters>
@@ -313,7 +323,11 @@
                                  TextWrapping="Wrap" AcceptsReturn="True" CaretBrush="#7F000000"
                                  VerticalScrollBarVisibility="Auto"
                                  Text="{Binding TextMessage, UpdateSourceTrigger=PropertyChanged}">
-
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="KeyUp">
+                                    <i:InvokeCommandAction Command="{Binding TypingCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </TextBox>
                         <!--Image-->
                         <Button Grid.Column="1" Foreground="#FF6E6E6E" Margin="4"

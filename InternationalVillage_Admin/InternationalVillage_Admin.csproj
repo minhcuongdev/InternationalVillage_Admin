@@ -52,6 +52,9 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.2.1.2, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.4.2.1\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Client, Version=2.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Client.2.4.2\lib\net45\Microsoft.AspNet.SignalR.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
@@ -59,8 +62,24 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Reactive, Version=5.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.5.0.0\lib\net472\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -72,6 +91,12 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Unity.Abstractions, Version=5.11.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.10\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.11.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.10\lib\net47\Unity.Container.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -97,6 +122,7 @@
     <Compile Include="Component\ReportUC.xaml.cs">
       <DependentUpon>ReportUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\SampleChatViewModel.cs" />
     <Compile Include="ExportBillWindow.xaml.cs">
       <DependentUpon>ExportBillWindow.xaml</DependentUpon>
     </Compile>
@@ -109,14 +135,17 @@
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Apartment.cs" />
     <Compile Include="Model\ApartmentRequest.cs" />
+    <Compile Include="Model\ChatMessage.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Bill.cs" />
     <Compile Include="Model\DetailBooking.cs" />
     <Compile Include="Model\ExchangeRate.cs" />
     <Compile Include="Model\Incident.cs" />
     <Compile Include="Model\Notification.cs" />
+    <Compile Include="Model\Participant.cs" />
     <Compile Include="Model\Report.cs" />
     <Compile Include="Model\ServiceRequest.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="MsgBoxOK.xaml.cs">
       <DependentUpon>MsgBoxOK.xaml</DependentUpon>
     </Compile>
@@ -192,10 +221,17 @@
     <Compile Include="Pages\SettingPage.xaml.cs">
       <DependentUpon>SettingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\ChatService.cs" />
+    <Compile Include="Services\DialogService.cs" />
+    <Compile Include="Services\IChatService.cs" />
+    <Compile Include="Services\IDialogService.cs" />
+    <Compile Include="Services\MessageType.cs" />
+    <Compile Include="Services\UserModes.cs" />
     <Compile Include="Store\AccountStore.cs" />
     <Compile Include="Store\ApartmentRequestStore.cs" />
     <Compile Include="Store\ApartmentStore.cs" />
     <Compile Include="Store\BookingStore.cs" />
+    <Compile Include="Store\ChatStore.cs" />
     <Compile Include="Store\DataProvider.cs" />
     <Compile Include="Store\ExchangeRateStore.cs" />
     <Compile Include="Store\IncidentStore.cs" />
@@ -206,6 +242,7 @@
     <Compile Include="Utilties\ChangeTypeApartment.cs" />
     <Compile Include="Utilties\ConnectDB.cs" />
     <Compile Include="Utilties\Validate.cs" />
+    <Compile Include="Utilties\ViewModelLocator.cs" />
     <Compile Include="ViewModel\ApartmentRequestDetailViewModel.cs" />
     <Compile Include="ViewModel\ApartmentUCViewModel.cs" />
     <Compile Include="ViewModel\ApartmentWindowViewModel.cs" />
@@ -213,6 +250,7 @@
     <Compile Include="ViewModel\BookApartmentServicePageViewModel.cs" />
     <Compile Include="ViewModel\BookingPageViewModel.cs" />
     <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModel\ChatViewModel.cs" />
     <Compile Include="ViewModel\EditProfileViewModel.cs" />
     <Compile Include="ViewModel\ExchangeRatePageViewModel.cs" />
     <Compile Include="ViewModel\ExportBillViewModel.cs" />
