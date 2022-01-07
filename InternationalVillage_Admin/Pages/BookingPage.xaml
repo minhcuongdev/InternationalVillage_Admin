@@ -345,7 +345,7 @@
                     materialDesign:ButtonAssist.CornerRadius="25"
                     BorderBrush="#2f9cfa"
                     Background="#2f9cfa"
-                    Height="40"
+                    Height="45"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="15,0,30,0" x:Name="Next" Command="{Binding Next}" CommandParameter="{Binding ElementName=BookingFormPage}">

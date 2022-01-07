@@ -90,13 +90,14 @@
 
         <Grid Grid.Row="4">
             <Grid.RowDefinitions>
-                <RowDefinition Height="70"></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="EXCHANGE RATE"  HorizontalAlignment="Left"  Foreground="#2f9cfa" FontSize="20"  FontWeight="Bold" Margin="40,0,0,0" Padding="0,0,0,5" VerticalAlignment="Center"/>
             
             <!--Start DataGrid-->
-            <DataGrid x:Name="DataGridRate" Grid.Row="1" Margin="40,0,0,0" ColumnWidth="140" Width="600" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" Height="auto" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid x:Name="DataGridRate" Grid.Row="1" Margin="40,0,40,0" ColumnWidth="140" FontSize="14" AutoGenerateColumns="False" AlternatingRowBackground="AliceBlue" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" Height="auto" IsReadOnly="True">
                 <DataGrid.Resources>
                     <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
                         <Setter Property="Background" Value="White" />
@@ -107,16 +108,16 @@
                 </DataGrid.Resources>
 
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="Ensign">
+                    <DataGridTemplateColumn Width="1*" Header="Ensign">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Image HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" Source="{Binding Image}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Country" Binding="{Binding Country}"/>
-                    <DataGridTextColumn  Header="Unit " Binding="{Binding Unit}" />
-                    <DataGridTextColumn  Header="1 USD" Binding="{Binding Value}" />
+                    <DataGridTextColumn Width="1*" Header="Country" Binding="{Binding Country}"/>
+                    <DataGridTextColumn Width="1*" Header="Unit " Binding="{Binding Unit}" />
+                    <DataGridTextColumn Width="1*" Header="1 USD" Binding="{Binding Value}" />
 
                 </DataGrid.Columns>
                 <i:Interaction.Triggers>
@@ -128,14 +129,7 @@
             <!--End DataGrid-->
 
             <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"                   
-                    materialDesign:ButtonAssist.CornerRadius="20" Grid.Row="1" Background="#2f9cfa" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="REFRESH" Width="120" Height="40" Margin="650,-20,0,0"/>
-
-
-
-
-
-
-
+                    materialDesign:ButtonAssist.CornerRadius="20" Grid.Row="2" Background="#2f9cfa" HorizontalAlignment="Right" FontSize="15" Margin="10,0,40,0" Content="REFRESH" Width="150" Height="45" />
 
 
         </Grid>

@@ -32,8 +32,8 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Hi Receptionist !" Foreground="#1261a0" HorizontalAlignment="Left"  FontSize="25"  FontWeight="Bold" Margin="40,0,0,0" Padding="0,0,0,5" VerticalAlignment="Center"/>
-            <TextBlock Grid.Row="1" Text="Click each of cards below to complete your business tasks." Foreground="gray" HorizontalAlignment="Left"  FontSize="14"  FontWeight="Normal" Margin="40,0,0,0" Padding="0,0,0,5" VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="0" Text="Hi Receptionist !" Foreground="#1261a0" HorizontalAlignment="Left"  FontSize="30"  FontWeight="Bold" Margin="40,0,0,0" Padding="0,0,0,5" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Text="Click each of cards below to complete your business tasks." Foreground="gray" HorizontalAlignment="Left"  FontSize="15"  FontWeight="Normal" Margin="40,0,0,0" Padding="0,0,0,5" VerticalAlignment="Top"/>
         </Grid>
 
         <Grid Grid.Row="1" Height="150" HorizontalAlignment="Center" Margin="0,0,0,0">
